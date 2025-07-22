@@ -9,24 +9,24 @@ interface HeaderProps {
     cartCount: number;
 }
 
-const prefetchScript = (href: string) => {
-    // Check if a prefetch link for this href already exists
-    if (document.querySelector(`link[rel="modulepreload"][href="${href}"]`)) {
-        return;
-    }
-    const link = document.createElement('link');
-    link.rel = 'modulepreload';
-    link.href = href;
-    document.head.appendChild(link);
-};
-
 const Header: React.FC<HeaderProps> = ({ cartCount }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
     const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState<string | null>(null);
+    const [isScrolled, setIsScrolled] = useState(false);
     const headerRef = useRef<HTMLElement>(null);
     const { t } = useLanguage();
     const location = useLocation();
+
+    // Scroll listener for dynamic header styling
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial check on load
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     // Close mobile menu on route change
     useEffect(() => {
@@ -45,89 +45,66 @@ const Header: React.FC<HeaderProps> = ({ cartCount }) => {
         };
     }, [isMenuOpen]);
 
+    // Close desktop dropdown on outside click
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
                 setOpenDesktopSubmenu(null);
             }
         };
-
         document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     const getTranslationKey = (name: string) => `nav_${name.replace(/ /g, '_')}`;
-    const ChevronIcon = ChevronRightIcon; // Site is now LTR only
+    const ChevronIcon = ChevronRightIcon;
 
-    const handlePrefetch = (path?: string) => {
-        if (!path) return;
-        // This is a conceptual demonstration. In a real build system (like Vite),
-        // you would prefetch the specific JS chunk for that route.
-        // Here, we preload the main script as a placeholder.
-        prefetchScript('/index.tsx');
-    };
-
-    const DesktopNav = () => {
-        const linkClasses = "py-1 px-1 lg:px-2 uppercase tracking-wider main-nav-link flex items-center gap-1";
-        const activeLinkClasses = "active font-semibold";
-        const inactiveLinkClasses = "opacity-80";
-
-        return (
-            <nav className="hidden lg:flex items-center space-x-4">
-                {NAV_LINKS.map((link) => (
-                    <div 
-                        key={link.name} 
-                        className="relative"
+    const DesktopNav = () => (
+        <nav className="hidden lg:flex items-center space-x-4">
+            {NAV_LINKS.map((link) => (
+                <div key={link.name} className="relative">
+                    <button
+                        onClick={(e) => {
+                            if (link.path) return;
+                            e.preventDefault();
+                            setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
+                        }}
+                        className="w-full"
                     >
-                        <button
-                            onMouseEnter={() => handlePrefetch(link.path)}
+                        <RouterNavLink
+                            to={link.path || '#'}
                             onClick={(e) => {
-                                if (link.path) {
-                                    // If it has a path, let the NavLink handle it
-                                    return;
+                                if (!link.path) {
+                                    e.preventDefault();
+                                    setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
+                                } else {
+                                    setOpenDesktopSubmenu(null);
                                 }
-                                e.preventDefault();
-                                setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
                             }}
-                            className="w-full"
+                            className={({ isActive }) => `py-1 px-1 lg:px-2 uppercase tracking-wider main-nav-link flex items-center gap-1 ${link.path && isActive ? 'active' : ''}`}
                         >
-                            <RouterNavLink
-                                to={link.path || '#'}
-                                 onClick={(e) => {
-                                    if (!link.path) {
-                                        e.preventDefault();
-                                        setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
-                                    } else {
-                                        setOpenDesktopSubmenu(null);
-                                    }
-                                }}
-                                 className={({ isActive }) => `${linkClasses} ${link.path && isActive ? activeLinkClasses : inactiveLinkClasses}`}
-                            >
-                                <span>{t(getTranslationKey(link.name) as any)}</span>
-                                {link.submenus && <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${openDesktopSubmenu === link.name ? 'rotate-180' : ''}`} />}
-                            </RouterNavLink>
-                        </button>
-                        {link.submenus && (
-                            <div className={`absolute top-full start-0 mt-2 min-w-[250px] max-h-[80vh] overflow-y-auto bg-[var(--c-surface)] shadow-xl rounded-md border border-[var(--c-border)] p-2 z-30 transition-all duration-300 ${openDesktopSubmenu === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}>
-                                {link.submenus.map(submenu => (
-                                    <RouterNavLink
-                                        key={submenu.name}
-                                        to={submenu.path || '#'}
-                                        onClick={() => setOpenDesktopSubmenu(null)}
-                                        className={({ isActive }) => `block px-4 py-2 text-sm rounded-md transition-colors ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)]' : 'text-[var(--c-text-primary)]/90 hover:bg-[var(--c-accent-primary)]/10 hover:text-[var(--c-accent-primary)]'}`}
-                                    >
-                                        {t(getTranslationKey(submenu.name) as any)}
-                                    </RouterNavLink>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </nav>
-        );
-    };
+                            <span>{t(getTranslationKey(link.name) as any)}</span>
+                            {link.submenus && <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${openDesktopSubmenu === link.name ? 'rotate-180' : ''}`} />}
+                        </RouterNavLink>
+                    </button>
+                    {link.submenus && (
+                        <div className={`absolute top-full start-0 mt-2 min-w-[250px] max-h-[80vh] overflow-y-auto bg-[var(--c-surface)] shadow-xl rounded-md border border-[var(--c-border)] p-2 z-30 transition-all duration-300 ${openDesktopSubmenu === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}>
+                            {link.submenus.map(submenu => (
+                                <RouterNavLink
+                                    key={submenu.name}
+                                    to={submenu.path || '#'}
+                                    onClick={() => setOpenDesktopSubmenu(null)}
+                                    className={({ isActive }) => `block px-4 py-2 text-sm rounded-md transition-colors ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)]' : 'text-[var(--c-text-primary)]/90 hover:bg-[var(--c-accent-primary)]/10 hover:text-[var(--c-accent-primary)]'}`}
+                                >
+                                    {t(getTranslationKey(submenu.name) as any)}
+                                </RouterNavLink>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            ))}
+        </nav>
+    );
 
     const MobileNav = () => (
         <>
@@ -171,37 +148,32 @@ const Header: React.FC<HeaderProps> = ({ cartCount }) => {
 
     return (
         <>
-            <header ref={headerRef} className="bg-[var(--c-bg)]/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm border-b border-[var(--c-border)]">
+            <header ref={headerRef} className={isScrolled ? 'header--scrolled' : 'header--top'}>
                 <div className="container mx-auto px-4 sm:px-6 md:px-8">
-                    <div className="flex items-center justify-between h-28">
+                    <div className="flex items-center justify-between h-24">
                         
-                        {/* --- Left Side: Logo --- */}
                         <div className="flex-shrink-0">
                             <Link to="/" className="logo-group flex items-center">
                                 <img src="https://i.postimg.cc/BZ7Qgx8s/vkluxgem-logo-smll.webp" alt="VickyLuxGems Logo" className="header-logo"/>
                             </Link>
                         </div>
 
-                        {/* --- Center: Desktop Navigation --- */}
                         <div className="hidden lg:flex justify-center flex-grow">
                             <DesktopNav />
                         </div>
 
-                        {/* --- Right Side: Icons --- */}
                         <div className="flex items-center">
-                             {/* Cart Icon (All Sizes) */}
-                            <button className="relative p-2 rounded-full hover:bg-[var(--c-accent-primary)]/10 transition-colors lg:ms-2" aria-label="View shopping cart">
-                                <CartIcon className="h-6 w-6 text-[var(--c-text-primary)] opacity-80" />
+                            <button className="relative p-2 rounded-full hover:bg-white/10 transition-colors lg:ms-2" aria-label="View shopping cart">
+                                <CartIcon className="h-6 w-6 cart-icon" />
                                 {cartCount > 0 && (
                                     <span className="absolute -top-1 -end-1 block h-5 w-5 rounded-full bg-[var(--c-accent-secondary)] text-white text-xs flex items-center justify-center border-2 border-[var(--c-bg)]">
                                         {cartCount}
                                     </span>
                                 )}
                             </button>
-                            {/* Mobile Menu Button */}
                              <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="p-2 rounded-md text-[var(--c-text-primary)] opacity-80 hover:bg-[var(--c-accent-primary)]/10 lg:hidden mobile-menu-button"
+                                className="p-2 rounded-md hover:bg-white/10 lg:hidden mobile-menu-button"
                                 aria-label="Toggle menu"
                                 aria-controls="mobile-nav-panel"
                                 aria-expanded={isMenuOpen}
@@ -213,7 +185,6 @@ const Header: React.FC<HeaderProps> = ({ cartCount }) => {
                 </div>
             </header>
 
-            {/* Mobile Menu Overlay & Panel */}
             {isMenuOpen && (
                 <div 
                     className="mobile-nav-overlay lg:hidden" 
