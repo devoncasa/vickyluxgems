@@ -63,10 +63,10 @@ const AmberLocationPage: React.FC = () => {
                 imageUrl="https://i.postimg.cc/YSjbzK3j/Vicky-Amber-Gems-background-0010.jpg"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto dark-context">
+                <div className="content-page-block max-w-4xl mx-auto p-8 md:p-12 rounded-lg shadow-xl border border-[var(--c-border-muted)]">
                     <div className="text-center mb-12">
                         <h1 className="text-5xl font-bold tracking-tight">Where Burmese Amber is Found</h1>
-                        <p className="mt-4 text-xl">The Heart of the Hukawng Valley</p>
+                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]">The Heart of the Hukawng Valley</p>
                     </div>
 
                     <div className="mt-12 prose prose-lg lg:prose-xl max-w-none text-[var(--c-text-primary)]/90 mx-auto">

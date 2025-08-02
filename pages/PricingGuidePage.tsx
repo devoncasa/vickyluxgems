@@ -37,13 +37,13 @@ const PricingGuidePage: React.FC = () => {
             />
             <JsonLd data={webPageSchema} />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto">
+                <div className="content-page-block--dark dark-context max-w-4xl mx-auto p-8 md:p-12 rounded-lg shadow-xl">
                     <div className="text-center">
                         <h1 className="text-5xl font-bold tracking-tight">Our Amber Pricing & Quality Guide</h1>
-                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]">A Transparent Look into the Value of Your Amber</p>
+                        <p className="mt-4 text-xl">A Transparent Look into the Value of Your Amber</p>
                     </div>
 
-                    <div className="mt-12 prose prose-lg lg:prose-xl max-w-none text-[var(--c-text-primary)]/90 mx-auto">
+                    <div className="mt-12 prose prose-lg lg:prose-xl max-w-none mx-auto">
                         <p className="lead">
                             At Vicky Lux Gems, we believe that understanding the value of your piece is as important as its beauty. Our pricing is a direct reflection of rarity, quality, and craftsmanship. This guide provides a transparent look at how we determine the price of our authentic Burmese amber.
                         </p>
@@ -53,7 +53,7 @@ const PricingGuidePage: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                                 <h2 className="text-4xl mt-0">The Foundation: Color & Rarity</h2>
-                                <p className="text-[var(--c-text-secondary)]">
+                                <p>
                                     The journey of pricing begins with the amber's natural color, which is a primary indicator of its rarity and market value. Each color tier has a different base price per gram.
                                 </p>
                             </div>
@@ -70,20 +70,20 @@ const PricingGuidePage: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                                 <h2 className="text-4xl mt-0">Beyond Color: The Nuances of Quality</h2>
-                                <p className="text-[var(--c-text-secondary)]">
+                                <p>
                                     Within each color, quality is paramount. Our "Quality Tier" filter helps you navigate these nuances, but it's not a simple one-size-fits-all metric. It adapts to the unique characteristics of each amber type.
                                 </p>
                             </div>
                         </div>
                         
                         <div className="not-prose space-y-4 my-8">
-                            <div className="p-6 bg-[var(--c-accent-primary)]/20 border-l-4 border-[var(--c-accent-primary)] rounded-r-lg">
+                            <div className="p-6 bg-white/10 border-l-4 border-[var(--c-accent-secondary)] rounded-r-lg">
                                 <h3 className="text-2xl font-semibold">For Most Amber: It's All About Clarity</h3>
-                                <p className="mt-2 text-[var(--c-text-primary)]/80">For most colors, the Quality Tier (Standard, Select, Premium) directly corresponds to the amber's clarity. "Premium" pieces are exceptionally clear with minimal inclusions, while "Standard" pieces might have more visible natural patterns or "swirls."</p>
+                                <p className="mt-2">For most colors, the Quality Tier (Standard, Select, Premium) directly corresponds to the amber's clarity. "Premium" pieces are exceptionally clear with minimal inclusions, while "Standard" pieces might have more visible natural patterns or "swirls."</p>
                             </div>
-                            <div className="p-6 bg-[var(--c-accent-primary)]/30 border-l-4 border-[var(--c-accent-primary-hover)] rounded-r-lg">
-                                <h3 className="text-2xl font-semibold">Exception: <ReactRouterDOM.Link to="/amber-colors#mila" className="text-[var(--c-accent-primary-hover)] hover:underline">Mila Amber</ReactRouterDOM.Link> & Richness</h3>
-                                <p className="mt-2 text-[var(--c-text-primary)]/80">Mila amber is unique. Its value isn't just in clarity but in its 'richness'—the depth and complexity of its semi-liquid, semi-solid internal structure. A "Premium" Mila piece has an almost molten-gold appearance, a quality far rarer than simple clarity.</p>
+                            <div className="p-6 bg-white/10 border-l-4 border-[var(--c-accent-primary)] rounded-r-lg">
+                                <h3 className="text-2xl font-semibold">Exception: <ReactRouterDOM.Link to="/amber-colors#mila" className="hover:underline">Mila Amber</ReactRouterDOM.Link> & Richness</h3>
+                                <p className="mt-2">Mila amber is unique. Its value isn't just in clarity but in its 'richness'—the depth and complexity of its semi-liquid, semi-solid internal structure. A "Premium" Mila piece has an almost molten-gold appearance, a quality far rarer than simple clarity.</p>
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@ const PricingGuidePage: React.FC = () => {
                             </div>
                             <div className="flex-grow">
                                 <h2 className="text-4xl mt-0">Craftsmanship & Scarcity: The Bead Size Rule</h2>
-                                <p className="text-[var(--c-text-secondary)]">
+                                <p>
                                    The final major factor is bead size. As beads get larger, their price increases not linearly, but exponentially.
                                 </p>
                             </div>
@@ -108,7 +108,7 @@ const PricingGuidePage: React.FC = () => {
 
                         <div className="mt-16 text-center not-prose">
                             <h3 className="text-3xl">See It in Action</h3>
-                            <p className="mt-2 text-[var(--c-text-secondary)]">Ready to see how these rules come together? Use our builder to create your pre-order and watch the transparent price breakdown update with every choice you make.</p>
+                            <p className="mt-2">Ready to see how these rules come together? Use our builder to create your pre-order and watch the transparent price breakdown update with every choice you make.</p>
                             <ReactRouterDOM.Link to="/build-your-set" className="mt-6 inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg">
                                 Build Your Custom Pre-Order
                             </ReactRouterDOM.Link>

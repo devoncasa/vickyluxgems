@@ -146,7 +146,7 @@
     </style>
     <style>
       :root {
-        /* UPDATED: New Elegant Color Palette */
+        /* Luminous Earth Color Palette */
         --c-bg: #FDFBF8; /* Primary Background: Soft Cream */
         --c-surface: #F8F5F2;
         --c-surface-alt: #F0EBE6;
@@ -154,16 +154,16 @@
         --c-footer-text: #EAE3DA;
         --c-img-placeholder-bg: #EAE0D5;
 
-        --c-heading: #5D4037; /* Darker than text for hierarchy */
-        --c-text-primary: #5D4037; /* Dark Text: Rich, dark brown */
+        --c-heading: #5D4037; /* Primary Dark Text: Rich Earth */
+        --c-text-primary: #5D4037; /* Primary Dark Text: Rich Earth */
         --c-text-secondary: #8D6E63;
-        --c-heading-on-dark: #F5F5DC; /* Light Text: Creamy off-white */
+        --c-heading-on-dark: #F5F5DC; /* Primary Light Text: Luminous Cream */
 
         --c-border: rgba(93, 64, 55, 0.15);
-        --c-border-muted: #B49B5E; /* Antique Gold for key borders */
-        --c-accent-primary: #904a21; /* Primary Accent: Cognac */
+        --c-border-muted: #B49B5E; /* Primary Accent: Antique Gold */
+        --c-accent-primary: #904a21; /* Secondary Accent: Deep Cognac */
         --c-accent-primary-hover: #824D33; /* Darker Cognac */
-        --c-accent-secondary: #B49B5E; /* Secondary Accent: Antique Gold */
+        --c-accent-secondary: #B49B5E; /* Primary Accent: Antique Gold */
         --c-accent-secondary-hover: #A1887F; /* Darker Gold/Clay */
 
         --c-builder-text: #5D4037;
@@ -201,13 +201,13 @@
         position: relative;
         z-index: 2;
       }
-      /* CSS FIX: Changed overlay to be dark for readability and fixed stacking */
+      /* CSS FIX: Removed dark overlay to preserve background vibrancy */
       .page-container-with-bg::before {
         content: '';
         position: absolute;
         inset: 0;
         z-index: 1; /* Sits on top of parent background, below content */
-        background-color: rgba(61, 53, 46, 0.85); /* Dark overlay for contrast */
+        /* background-color: rgba(61, 53, 46, 0.85); -- REMOVED */
         -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
       }
@@ -252,6 +252,20 @@
           --tw-prose-invert-links: #fff;
           --tw-prose-invert-bold: #fff;
       }
+      .dark-context .prose {
+          --tw-prose-body: #FFFFFF;
+          --tw-prose-headings: var(--c-heading-on-dark);
+          --tw-prose-lead: #EAE3DA;
+          --tw-prose-links: #F5F5DC;
+          --tw-prose-bold: #FFFFFF;
+          --tw-prose-counters: #EAE3DA;
+          --tw-prose-bullets: #F5F5DC;
+          --tw-prose-hr: rgba(245, 245, 220, 0.2);
+          --tw-prose-quotes: #F5F5DC;
+          --tw-prose-quote-borders: #B49B5E;
+          --tw-prose-captions: #EAE3DA;
+      }
+
       .prose p { margin-bottom: 1.25em; }
       .btn-primary {
           background-color: var(--c-accent-primary);
@@ -330,7 +344,7 @@
           z-index: 10;
           max-width: 48rem;
           text-align: center;
-          background: rgba(253, 251, 248, 0.5);
+          background: rgba(253, 251, 248, 0.6);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           padding: 2.5rem 2rem;
@@ -551,21 +565,40 @@
       }
       .flipping-card.is-flipped .flipping-card-inner { transform: rotateY(180deg); }
       .brand-name { font-weight: 700; color: var(--c-heading); }
-      
-      .content-page-block {
-        background-color: rgba(253, 251, 248, 0.7);
-        -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      .dark-context .brand-name {
+        font-weight: 700; color: var(--c-heading-on-dark);
+        background: linear-gradient(45deg, #F5F5DC, #f1eab9, #eaddaa);
+         -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
       }
       
+      .content-page-block {
+        background-color: rgba(253, 251, 248, 0.6);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--c-border-muted);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+      }
+      
+      .content-page-block--dark {
+        background-color: rgba(61, 53, 46, 0.75); /* Semi-transparent Rich Earth */
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--c-border-muted);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+      }
 
       .blog-content-block {
-        background-color: rgba(253, 251, 248, 0.8);
-        -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: rgba(253, 251, 248, 0.6);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--c-border-muted);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
       }
       .blog-content-block h1, .blog-content-block h2, .blog-content-block p, .blog-content-block span, .blog-content-block button {
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        text-shadow: none;
       }
       
       .admin-modal-overlay {

@@ -192,11 +192,11 @@ const MalaBuilder: React.FC = () => {
 
 const BuildYourOwnPage: React.FC = () => {
     const { t, lang, setLang } = useLanguage();
-    const [activeBuilder, setActiveBuilder] = useState<'mala' | 'bracelet'>('bracelet');
+    const [activeBuilder, setActiveBuilder] = useState<'bracelet' | 'mala'>('bracelet');
 
     const tabClasses = "px-6 py-3 text-lg font-semibold rounded-t-lg transition-colors duration-200 focus:outline-none w-full sm:w-auto";
-    const activeTabClasses = "bg-[var(--c-accent-primary)] text-white shadow-sm";
-    const inactiveTabClasses = "bg-transparent text-white/70 hover:text-white hover:bg-white/10";
+    const activeTabClasses = "bg-[var(--c-surface)] text-[var(--c-accent-primary-hover)] shadow-sm";
+    const inactiveTabClasses = "bg-transparent text-[var(--c-text-secondary)] hover:bg-[var(--c-accent-primary)]/10 hover:text-[var(--c-accent-primary-hover)]";
 
     return (
         <div 
@@ -210,20 +210,22 @@ const BuildYourOwnPage: React.FC = () => {
                 imageUrl="https://i.postimg.cc/pXtcbS21/Vicky-Amber-Gems-background-0014.jpg"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-10 dark-context relative">
-                     <div className="absolute top-0 right-0 z-10">
-                        <LanguageSwitcher context="dark" />
+                <div className="content-page-block rounded-lg p-8 md:p-12 relative mb-8">
+                     <div className="absolute top-4 right-4 z-10">
+                        <LanguageSwitcher context="light" />
                     </div>
-                    <h1 className="text-5xl font-bold tracking-tight">{t('nav_Build_Amber_Set' as any)}</h1>
-                    <p className="mt-4 text-xl max-w-3xl mx-auto">
-                        {t('build_page_subtitle')}
-                    </p>
-                    <SectionDivider />
+                    <div className="text-center">
+                        <h1 className="text-5xl font-bold tracking-tight">{t('nav_Build_Amber_Set' as any)}</h1>
+                        <p className="mt-4 text-xl max-w-3xl mx-auto text-[var(--c-text-secondary)]">
+                            {t('build_page_subtitle')}
+                        </p>
+                        <SectionDivider />
+                    </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto content-page-block rounded-lg shadow-lg">
                     {/* Tabs */}
-                    <div className="flex flex-col sm:flex-row border-b-2 border-white/20">
+                    <div className="flex flex-col sm:flex-row border-b-2 border-[var(--c-border)] px-4 pt-4">
                         <button
                             onClick={() => setActiveBuilder('bracelet')}
                             className={`${tabClasses} ${activeBuilder === 'bracelet' ? activeTabClasses : inactiveTabClasses}`}
@@ -239,7 +241,7 @@ const BuildYourOwnPage: React.FC = () => {
                          <div className="flex-grow"></div>
                     </div>
 
-                    <div className="bg-[var(--c-surface)] p-6 md:p-10 rounded-b-lg shadow-lg">
+                    <div className="p-6 md:p-10">
                         {activeBuilder === 'bracelet' ? <BraceletBuilder /> : <MalaBuilder />}
                     </div>
                 </div>

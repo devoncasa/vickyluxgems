@@ -1,3 +1,5 @@
+
+
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PRAYER_BEAD_DATA } from '../constants';
@@ -143,26 +145,4 @@ const PrayerBeadCustomizerPage: React.FC = () => {
                             <h3 className="text-2xl font-bold mb-4">{t('pbc_your_build')}</h3>
                             <ul className="space-y-2 text-[var(--c-text-secondary)] list-disc list-inside bg-[var(--c-surface-alt)] p-4 rounded-md border border-[var(--c-border)]">
                                 {Object.entries(customSelections).map(([component, material]) => (
-                                    <li key={component}>
-                                        <span className="font-semibold text-[var(--c-text-primary)]">{t(getComponentTranslationKey(component))}:</span> {material}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                                <button onClick={handleReset} className="w-full sm:w-auto px-6 py-3 rounded-lg bg-stone-200 text-stone-700 font-semibold hover:bg-stone-300 transition-colors">
-                                    {t('pbc_reset_selections')}
-                                </button>
-                                <button onClick={handleSubmit} className="flex-grow btn-primary text-white font-bold py-3 px-6 rounded-lg text-lg">
-                                    {t('pbc_submit_quote')}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default PrayerBeadCustomizerPage;
+                               

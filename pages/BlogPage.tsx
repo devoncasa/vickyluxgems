@@ -1,10 +1,11 @@
 
+
 import React, { useState, useEffect } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
 import { BLOG_POSTS, BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
 
-type FilterType = 'All' | 'Soul' | 'Science' | 'Craftsmanship';
+type FilterType = 'All' | 'Soul' | 'Science' | 'Craftsmanship' | 'GemTech Insights';
 
 const BlogPage: React.FC = () => {
   const location = ReactRouterDOM.useLocation();
@@ -13,7 +14,7 @@ const BlogPage: React.FC = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const filterParam = params.get('filter');
-    if (filterParam === 'Soul' || filterParam === 'Science' || filterParam === 'Craftsmanship') {
+    if (filterParam === 'Soul' || filterParam === 'Science' || filterParam === 'Craftsmanship' || filterParam === 'GemTech Insights') {
       setFilter(filterParam);
     } else {
         setFilter('All');
@@ -25,12 +26,14 @@ const BlogPage: React.FC = () => {
     return article.category === filter;
   });
 
-  const getCategoryStyles = (category: 'Soul' | 'Science' | 'Craftsmanship') => {
+  const getCategoryStyles = (category: 'Soul' | 'Science' | 'Craftsmanship' | 'GemTech Insights') => {
         switch (category) {
             case 'Science':
                 return 'text-[var(--c-accent-secondary-hover)]'; // Rich Brown
             case 'Craftsmanship':
                 return 'text-emerald-800'; // Deep Olive/Green
+            case 'GemTech Insights':
+                return 'text-blue-800'; // Techy Blue
             case 'Soul':
             default:
                 return 'text-[var(--c-accent-primary)]'; // Muted Gold
@@ -71,6 +74,7 @@ const BlogPage: React.FC = () => {
                 <FilterButton type="Soul" label="Stories & History" />
                 <FilterButton type="Science" label="Guides & Science" />
                 <FilterButton type="Craftsmanship" label="Art & Craftsmanship" />
+                <FilterButton type="GemTech Insights" label="GemTech Insights" />
               </div>
             </div>
 

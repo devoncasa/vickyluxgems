@@ -15,7 +15,7 @@ const ImageWithAlt: React.FC<{ src: string; alt: string; className?: string }> =
 );
 
 const AboutPage: React.FC = () => {
-    const { lang } = useLanguage();
+    const { lang, t } = useLanguage();
     
     const webPageSchema = {
         "@context": "https://schema.org",
@@ -53,7 +53,7 @@ const AboutPage: React.FC = () => {
 
                     <div className="mt-12 prose prose-lg lg:prose-xl max-w-none text-[var(--c-text-primary)]/90 mx-auto">
                         <div className="not-prose">
-                           <ImageWithAlt src="https://placehold.co/1200x675/A56C50/F8F5F2?text=Vicky+LuxGems+Showcase" alt="An array of beautiful precious and ethically sourced Myanmar gems, showcasing their natural beauty and craftsmanship." />
+                           <ImageWithAlt src="https://placehold.co/1200x675/A56C50/F8F5F2?text=Vicky+LuxGems+Showcase" alt={t('alt_about_showcase' as any)} />
                         </div>
                         
                         <h2>Our Story: A Passion for Purity</h2>
@@ -61,13 +61,13 @@ const AboutPage: React.FC = () => {
                         <div className="not-prose grid md:grid-cols-2 gap-8 items-center text-lg text-[var(--c-text-primary)]/90">
                             <div className="space-y-6 text-left">
                                 <p>
-                                    Founded on a deep-seated passion for the world's finest gemstones, <span className="brand-name">Vicky LuxGems</span> began as the personal mission of our founder, Vicky Sinchoury. A certified gemologist with family roots in the gem trade, Vicky embarked on a journey to bring rare treasures from the historic mines of Myanmar to the international stage, not just as commodities, but as stories forged in the earth.
+                                    Founded on a multi-generational legacy, <span className="brand-name">Vicky LuxGems</span> is the modern expression of over 40 years of family expertise in the Burmese amber trade. The personal mission of our founder, Vicky Sinchoury, is to carry this heritage forward.
                                 </p>
                                 <p>
-                                    What started as a simple appreciation for their beauty grew into an unwavering commitment to authenticity, ethical sourcing, and scientific verification. Today, <span className="brand-name">Vicky LuxGems</span> stands as a trusted bridge between the ancient world of gemstones and discerning collectors worldwide.
+                                    Though not a certified gemologist himself, he has spent years immersed in the world of rare natural gemstones, guided by his family's deep knowledge, with a special focus on authentic Burmese amber. Vicky is dedicated to bridging the legacy of traditional gemstone craftsmanship with modern standards of authenticity and ethical sourcing, bringing rare treasures from Myanmar to the international stage.
                                 </p>
                             </div>
-                            <ImageWithAlt src="https://placehold.co/600x600/7E746A/FFFFFF?text=Vicky+Sinchoury" alt="Portrait of Vicky Sinchoury, Founder and Certified Gemologist of Vicky LuxGems, an expert in heirloom quality jewelry." className="aspect-square" />
+                            <ImageWithAlt src="https://placehold.co/600x600/7E746A/FFFFFF?text=Vicky+Sinchoury" alt={t('alt_about_founder_portrait' as any)} className="aspect-square" />
                         </div>
 
                         <h2>Our Mission: The Pillars of Our Promise</h2>
@@ -82,7 +82,7 @@ const AboutPage: React.FC = () => {
                             <li><strong>Client Education:</strong> Empowering our clients with the knowledge to appreciate the unique history, scientific properties, and spiritual significance of their purchase.</li>
                         </ul>
                         <div className="not-prose">
-                            <ImageWithAlt src="https://placehold.co/1200x675/C8A97E/3D352E?text=Gemological+Tools" alt="Close-up of high-quality gemological tools, including a loupe and calipers, on a table with gemstones, demonstrating our scientific approach." />
+                            <ImageWithAlt src="https://placehold.co/1200x675/C8A97E/3D352E?text=Gemological+Tools" alt={t('alt_about_gem_tools' as any)} />
                         </div>
 
                         <h2>Why Choose Us? The Vicky LuxGems Difference</h2>
@@ -91,12 +91,12 @@ const AboutPage: React.FC = () => {
                            Choosing <span className="brand-name">Vicky LuxGems</span> means choosing unparalleled quality and integrity. We offer:
                         </p>
                          <ul>
-                            <li><strong>Verifiable Expertise:</strong> Our founder is a certified gemologist, and our assessments are based on rigorous standards from world-renowned institutions like the GIA and GIT. This expertise underpins every item we offer.</li>
+                            <li><strong>Verifiable Expertise:</strong> Our assessments are based on rigorous standards from world-renowned institutions like the GIA and GIT, backed by 40 years of family experience. This expertise underpins every item we offer.</li>
                             <li><strong>Scientific Verification:</strong> We don't just rely on a trained eye. We use modern tools like UV fluorescence testing and microscopic analysis to ensure you are getting real, high-quality gems. You can read more on our <ReactRouterDOM.Link to="/our-guarantee">guarantee page</ReactRouterDOM.Link>.</li>
                              <li><strong>A Transparent Supply Chain:</strong> Our direct relationships with miners in regions like the Hukawng Valley and Mogok mean we can trace our gems from the mine to your hands, ensuring both authenticity and ethical practices. This is not just a promise; it's the foundation of our business.</li>
                         </ul>
                         <div className="not-prose">
-                            <ImageWithAlt src="https://placehold.co/1200x675/9FB8AD/3D352E?text=Ethical+Sourcing" alt="A gemologist carefully inspecting a raw gemstone with professional tools, representing our commitment to quality and authenticity." />
+                            <ImageWithAlt src="https://placehold.co/1200x675/9FB8AD/3D352E?text=Ethical+Sourcing" alt={t('alt_about_ethical_sourcing' as any)} />
                         </div>
 
                         {/* Call to Action */}

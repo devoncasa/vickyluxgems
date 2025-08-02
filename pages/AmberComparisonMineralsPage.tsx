@@ -61,10 +61,10 @@ const AmberComparisonMineralsPage: React.FC = () => {
                 imageUrl="https://i.postimg.cc/Twz7P7n1/Vicky-Amber-Gems-background-0017.jpg"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto dark-context">
+                <div className="content-page-block max-w-4xl mx-auto p-8 md:p-12 rounded-lg shadow-xl border border-[var(--c-border-muted)]">
                     <div className="text-center mb-12">
                         <h1 className="text-5xl font-bold tracking-tight">Comparison to Mineral Stones</h1>
-                        <p className="mt-4 text-xl">Organic Gem vs. Crystalline Mineral</p>
+                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]">Organic Gem vs. Crystalline Mineral</p>
                     </div>
 
                     <div className="mt-12 prose prose-lg lg:prose-xl max-w-none text-[var(--c-text-primary)]/90 mx-auto">

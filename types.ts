@@ -177,7 +177,7 @@ export interface Author {
 export interface BlogPost {
   id: string;
   title: string;
-  category: 'Soul' | 'Science' | 'Craftsmanship';
+  category: 'Soul' | 'Science' | 'Craftsmanship' | 'GemTech Insights';
   summary: string;
   author: Author;
   date: string;
@@ -480,4 +480,3 @@ export type RosaryPart =
   | 'decadePaterBeads'
   | 'invitatoryAveBeads'
   | 'invitatoryPaterBead';
-

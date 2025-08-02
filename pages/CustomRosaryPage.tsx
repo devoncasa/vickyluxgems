@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
 import SectionDivider from '../components/SectionDivider';
@@ -17,8 +18,8 @@ const CustomRosaryPage: React.FC = () => {
             style={{ backgroundImage: `url('${BACKGROUND_IMAGES[7]}')`}}
         >
             <SEO 
-                titleKey="seo_custom_rosary_title"
-                descriptionKey="seo_custom_rosary_desc"
+                titleKey="home_custom_rosary_title"
+                descriptionKey="home_custom_rosary_desc"
                 keywordsKey="seo_custom_rosary_keywords"
                 imageUrl="https://placehold.co/1200x675/A3A3A3/3D352E?text=Custom+Rosaries"
             />

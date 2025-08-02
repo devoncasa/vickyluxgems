@@ -34,7 +34,6 @@ export const BACKGROUND_IMAGES = [
   'https://i.postimg.cc/v8nNsJfN/vkluxgems-background-landscape-0037.webp',
   'https://i.postimg.cc/jdrkdMhd/vkluxgems-background-landscape-0038.webp',
   'https://i.postimg.cc/MKb3c1s0/vkluxgems-background-landscape-0039.webp',
-  'https://i.postimg.cc/FRsBmzbb/vkluxgems-background-landscape-004.webp',
   'https://i.postimg.cc/x1fxLq7w/vkluxgems-background-landscape-0040.webp',
   'https://i.postimg.cc/1X87ndjf/vkluxgems-background-landscape-005.webp',
   'https://i.postimg.cc/dtTSJzCf/vkluxgems-background-landscape-006.webp',
@@ -101,7 +100,14 @@ export const NAV_LINKS: NavLink[] = [
         { name: 'Glossary of Terms', path: '/glossary' },
     ]
   },
-  { name: 'Blogs', path: '/blog' },
+  { 
+    name: 'Blogs', 
+    path: '/blog',
+    submenus: [
+        { name: 'All Blog Posts', path: '/blog' },
+        { name: 'GemTech Pillar Page', path: '/gemtech-pillar' },
+    ]
+  },
   { name: 'Shop', path: '/collection' },
   { 
     name: 'Custom Jewelry',
@@ -677,9 +683,9 @@ export const MATERIAL_DETAILS: MaterialDetail[] = [
 
 const VICKY_AUTHOR: Author = {
     name: "Vicky Sinchoury",
-    title: "Founder & Certified Gemologist",
+    title: "Founder of Vicky Burmese Amber & Gems and Vicky LuxGems",
     imageUrl: "https://placehold.co/100x100/7E746A/FFFFFF?text=VS",
-    bio: "Vicky Sinchoury is a certified gemologist and the founder of Vicky Lux Gems. With over a decade of experience in sourcing and authenticating rare Burmese amber, she is passionate about bridging the gap between ancient gemological wisdom and modern scientific verification."
+    bio: "Vicky Sinchoury is the founder of Vicky Burmese Amber & Gems and Vicky LuxGems, carrying forward over 40 years of family expertise in the Burmese amber trade. Though not a certified gemologist himself, he has spent years immersed in the world of rare natural gemstones, with a deep focus on authentic Burmese amber. Vicky is dedicated to bridging the legacy of traditional gemstone craftsmanship with modern standards of authenticity and ethical sourcing."
 };
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -832,6 +838,289 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "August 19, 2025",
         featuredImage: "https://placehold.co/1200x675/C8A97E/3D352E?text=Styling+Bracelets",
         readingTime: 6
+    },
+    // GemTech Articles from PDF
+    {
+        id: 'gem-tech-1',
+        category: 'GemTech Insights',
+        title: "Beyond the Loupe: How Artificial Intelligence is Revolutionizing Diamond Grading",
+        summary: "For over a century, the final word on a diamond's quality has rested in the hands of a highly trained human gemologist. Today, that paradigm is undergoing a seismic shift, driven by artificial intelligence.",
+        author: VICKY_AUTHOR,
+        date: "September 01, 2025",
+        featuredImage: "https://placehold.co/1200x675/5D4037/FFFFFF?text=AI+Diamond+Grading",
+        readingTime: 4
+    },
+    {
+        id: 'gem-tech-2',
+        category: 'GemTech Insights',
+        title: "The Unbreakable Promise: Securing Sapphire Provenance with Blockchain",
+        summary: "The answer to gemstone provenance is no longer just a matter of trust or paper certificates; it is a matter of cryptographic certainty delivered by blockchain technology.",
+        author: VICKY_AUTHOR,
+        date: "September 02, 2025",
+        featuredImage: "https://placehold.co/1200x675/2A4C88/FFFFFF?text=Blockchain+Sapphire",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-3',
+        category: 'GemTech Insights',
+        title: "3D Printing the Crown Jewels: How Additive Manufacturing is Liberating Jewelry Design",
+        summary: "The advent of 3D printing, or additive manufacturing, is not just an evolution; it's a creative liberation for jewelry designers, shattering old constraints and allowing for the creation of forms so complex they seem almost impossible.",
+        author: VICKY_AUTHOR,
+        date: "September 03, 2025",
+        featuredImage: "https://placehold.co/1200x675/D4AF37/FFFFFF?text=3D+Printed+Jewelry",
+        readingTime: 4
+    },
+    {
+        id: 'gem-tech-4',
+        category: 'GemTech Insights',
+        title: "The Virtual Vault: How Augmented Reality is Reshaping the Jewelry Shopping Experience",
+        summary: "Augmented Reality (AR) is not just closing the sensory gap for online jewelry retailers; it's creating an entirely new, enhanced shopping experience that often surpasses the physical store.",
+        author: VICKY_AUTHOR,
+        date: "September 04, 2025",
+        featuredImage: "https://placehold.co/1200x675/BE9EC9/FFFFFF?text=AR+Virtual+Try-On",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-5',
+        category: 'GemTech Insights',
+        title: "Precision Perfected: The Rise of Robotic Lapidary and CAD in Gemstone Cutting",
+        summary: "The integration of Computer-Aided Design (CAD) and robotics has elevated the art of lapidary to a level of geometric perfection once thought impossible, from 3D scanning the rough to robotic faceting.",
+        author: VICKY_AUTHOR,
+        date: "September 05, 2025",
+        featuredImage: "https://placehold.co/1200x675/88929B/FFFFFF?text=Robotic+Gem+Cutting",
+        readingTime: 4
+    },
+    {
+        id: 'gem-tech-6',
+        category: 'GemTech Insights',
+        title: "Investing in Color: Using Data Analytics to Forecast Trends in the Colored Gemstone Market",
+        summary: "Big data and artificial intelligence are pulling back the curtain, transforming gemstone investment into a sophisticated, data-driven science that goes far beyond simple auction prices.",
+        author: VICKY_AUTHOR,
+        date: "September 06, 2025",
+        featuredImage: "https://placehold.co/1200x675/A56C50/FFFFFF?text=Gemstone+Data+Analytics",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-7',
+        category: 'GemTech Insights',
+        title: "The Hidden Spectrum: Advanced Spectroscopy for Gemstone Identification and Origin Detection",
+        summary: "Advanced spectroscopic techniques allow us to look inside a gemstone at an atomic level, revealing secrets about its identity, history, and origin that are invisible to the naked eye.",
+        author: VICKY_AUTHOR,
+        date: "September 07, 2025",
+        featuredImage: "https://placehold.co/1200x675/6A0DAD/FFFFFF?text=Gemstone+Spectroscopy",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-8',
+        category: 'GemTech Insights',
+        title: "Nanotechnology's New Sparkle: The Future of Gemstone Coatings and Enhancements",
+        summary: "We are entering an entirely new frontier: nanotechnology. This cutting-edge field operates at the atomic level, allowing for the application of ultra-thin film coatings that can fundamentally alter a gemstone's appearance and properties.",
+        author: VICKY_AUTHOR,
+        date: "September 08, 2025",
+        featuredImage: "https://placehold.co/1200x675/A3C1AD/FFFFFF?text=Nanotech+Coatings",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-9',
+        category: 'GemTech Insights',
+        title: "Greener Than Nature? The Science and Sustainability of Lab-Grown Emeralds",
+        summary: "From an environmental scientist's perspective, the emergence of high-quality lab-grown emeralds presents a compelling and sustainable alternative to traditional mining.",
+        author: VICKY_AUTHOR,
+        date: "September 09, 2025",
+        featuredImage: "https://placehold.co/1200x675/34D399/FFFFFF?text=Lab-Grown+Emeralds",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-10',
+        category: 'GemTech Insights',
+        title: "The Digital Afterlife: The Role of NFTs in High Jewelry Provenance and Ownership",
+        summary: "The emergence of Non-Fungible Tokens (NFTs) offers a revolutionary solution to documenting and transferring ownership of significant physical assets like high jewelry, acting as a 'digital twin' on the blockchain.",
+        author: VICKY_AUTHOR,
+        date: "September 10, 2025",
+        featuredImage: "https://placehold.co/1200x675/C0C0C0/FFFFFF?text=Jewelry+NFTs",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-11',
+        category: 'GemTech Insights',
+        title: "From Rough to Radiant: The High-Tech Journey of a Modern Diamond",
+        summary: "The journey of a diamond from a deep, ancient deposit to a sparkling centerpiece on a ring is a modern marvel of technology and engineering, optimized for efficiency, beauty, and responsibility.",
+        author: VICKY_AUTHOR,
+        date: "September 11, 2025",
+        featuredImage: "https://placehold.co/1200x675/E5E7EB/FFFFFF?text=Modern+Diamond+Journey",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-12',
+        category: 'GemTech Insights',
+        title: "The Allure of Imperfection: Using AI to Map and Appreciate Gemstone Inclusions",
+        summary: "Technology is challenging the view of inclusions as flaws, allowing us to see these features not as defects, but as beautiful, unique stories frozen in time.",
+        author: VICKY_AUTHOR,
+        date: "September 12, 2025",
+        featuredImage: "https://placehold.co/1200x675/9FB8AD/FFFFFF?text=Gemstone+Inclusions",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-13',
+        category: 'GemTech Insights',
+        title: "Beyond Earth: The Technology Behind Creating Diamonds in a Plasma Reactor",
+        summary: "The concept of creating diamonds in a lab is a fascinating reality made possible by a process called Chemical Vapor Deposition (CVD), which harnesses fundamental principles of physics to build a diamond, atom by single atom.",
+        author: VICKY_AUTHOR,
+        date: "September 13, 2025",
+        featuredImage: "https://placehold.co/1200x675/8B5CF6/FFFFFF?text=CVD+Diamond+Reactor",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-14',
+        category: 'GemTech Insights',
+        title: "The Pressure Cooker: Unveiling the HPHT Process for Diamond Creation and Color Enhancement",
+        summary: "The High-Pressure/High-Temperature (HPHT) process is a remarkable feat of engineering that directly replicates the intense geological conditions deep within the Earth's mantle where natural diamonds are born.",
+        author: VICKY_AUTHOR,
+        date: "September 14, 2025",
+        featuredImage: "https://placehold.co/1200x675/FBBF24/FFFFFF?text=HPHT+Diamond+Press",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-15',
+        category: 'GemTech Insights',
+        title: "Smart Jewelry: The Integration of Wearable Tech into Precious Gemstone Pieces",
+        summary: "The industry is on the cusp of a major aesthetic evolution: the seamless integration of powerful technology into high-end, precious jewelry.",
+        author: VICKY_AUTHOR,
+        date: "September 15, 2025",
+        featuredImage: "https://placehold.co/1200x675/BCAAA4/FFFFFF?text=Smart+Jewelry",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-16',
+        category: 'GemTech Insights',
+        title: "The Light Fantastic: Exploring the Use of Lasers in Gemstone Inscription and Repair",
+        summary: "From a laser engineer's practical perspective, lasers are one of the most precise and versatile tools in the modern gemologist's arsenal, used for everything from permanent identification to delicate repair.",
+        author: VICKY_AUTHOR,
+        date: "September 16, 2025",
+        featuredImage: "https://placehold.co/1200x675/DC143C/FFFFFF?text=Laser+Inscription",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-17',
+        category: 'GemTech Insights',
+        title: "Digital Showroom: How High-Fidelity 3D Models are Transforming Online Gem Sales",
+        summary: "The solution to conveying a gemstone's true beauty online is to move beyond flat, 2D photos and embrace interactive, high-fidelity 3D models.",
+        author: VICKY_AUTHOR,
+        date: "September 17, 2025",
+        featuredImage: "https://placehold.co/1200x675/7E6B64/FFFFFF?text=3D+Gemstone+Models",
+        readingTime: 3
+    },
+    {
+        id: 'gem-tech-18',
+        category: 'GemTech Insights',
+        title: "Paraíba Tourmaline: The Technology Behind Detecting Copper and Ensuring Authenticity",
+        summary: "The value and very definition of a Paraíba tourmaline depend on the presence of one key element: copper. Distinguishing a true copper-bearing tourmaline requires highly sophisticated laboratory technology like LA-ICP-MS.",
+        author: VICKY_AUTHOR,
+        date: "September 18, 2025",
+        featuredImage: "https://placehold.co/1200x675/14B8A6/FFFFFF?text=Paraiba+Tourmaline",
+        readingTime: 3
+    },
+    // Burmese Amber Articles from PDF
+    {
+        id: 'burmite-deep-dive-1',
+        category: 'Soul',
+        title: "A Lost World Encased: How Burmese Amber is a Priceless Archive of Dinosaur-Era Life",
+        summary: "From a paleontologist's perspective, Burmese amber, or Burmite, is arguably the most important fossil deposit discovered in a generation, preserving life from 99 million years ago with breathtaking fidelity.",
+        author: VICKY_AUTHOR,
+        date: "September 19, 2025",
+        featuredImage: "https://placehold.co/1200x675/B27732/FFFFFF?text=Dinosaur+Feather+in+Amber",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-deep-dive-2',
+        category: 'Science',
+        title: "Reading the Resin: What Burmese Amber Tells Us About Earth's Ancient Climate",
+        summary: "The amber itself is a direct messenger from an ancient world, carrying vital clues about the Earth's climate 99 million years ago, including direct samples of the Cretaceous atmosphere.",
+        author: VICKY_AUTHOR,
+        date: "September 20, 2025",
+        featuredImage: "https://placehold.co/1200x675/A3C1AD/FFFFFF?text=Ancient+Climate+Data",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-deep-dive-3',
+        category: 'Soul',
+        title: "The Stone of the Ancestors: Burmese Amber's Role in Ancient Trade and Cultural Identity",
+        summary: "Burmite is a cultural artifact that tells a story of human trade, artistry, and identity stretching back thousands of years, from the Neolithic period to the Silk Road and into the cultural heritage of the Kachin people.",
+        author: VICKY_AUTHOR,
+        date: "September 21, 2025",
+        featuredImage: "https://placehold.co/1200x675/D4AF37/FFFFFF?text=Ancient+Amber+Trade",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-deep-dive-4',
+        category: 'Science',
+        title: "Nature's Ultimate Polymer: The Unique Chemistry and Durability of Burmese Amber",
+        summary: "Burmese amber is one of nature's most successful and resilient polymers, noticeably harder and denser than other ambers due to a high degree of cross-linking between its polymer chains.",
+        author: VICKY_AUTHOR,
+        date: "September 22, 2025",
+        featuredImage: "https://placehold.co/1200x675/88929B/FFFFFF?text=Amber+Polymer+Structure",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-deep-dive-5',
+        category: 'Science',
+        title: "Echoes of Life: The Quest for Ancient DNA and Biomolecules in Burmese Amber",
+        summary: "While intact DNA is off the table, the exceptional preservation quality of Burmite offers the potential to find fragments of other biological building blocks, like proteins and pigments.",
+        author: VICKY_AUTHOR,
+        date: "September 23, 2025",
+        featuredImage: "https://placehold.co/1200x675/BE9EC9/FFFFFF?text=Ancient+Biomolecules",
+        readingTime: 3
+    },
+    // Burmese Amber Varieties from PDF
+    {
+        id: 'burmite-varieties-1',
+        category: 'Soul',
+        title: "The Fire of Time: The Science and Cultural Significance of Red Burmese Amber",
+        summary: "The deep red coloration of 'Blood' or 'Cherry' amber is a result of natural oxidation over 99 million years, a testament to time itself that holds profound cultural meaning.",
+        author: VICKY_AUTHOR,
+        date: "September 24, 2025",
+        featuredImage: "https://placehold.co/1200x675/941C20/FFFFFF?text=Red+Burmese+Amber",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-varieties-2',
+        category: 'Science',
+        title: "The Golden Archive: Why Classic Honey Burmese Amber is Paleontology's Clearest Window",
+        summary: "The primary benefit of classic golden-honey Burmite is its exceptional clarity, which provides an unparalleled, distortion-free window into the minutiae of Cretaceous life.",
+        author: VICKY_AUTHOR,
+        date: "September 25, 2025",
+        featuredImage: "https://placehold.co/1200x675/FBBF24/FFFFFF?text=Golden+Honey+Amber",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-varieties-3',
+        category: 'Science',
+        title: "Turbulent Beauty: What Opaque 'Root Amber' Reveals About Cretaceous Cataclysms",
+        summary: "The lack of clarity in 'Root Amber' is precisely what makes it so valuable. It is a geological masterpiece, a preserved record of a chaotic moment in time, offering unique insights into the dramatic environmental conditions of the Cretaceous forest floor.",
+        author: VICKY_AUTHOR,
+        date: "September 26, 2025",
+        featuredImage: "https://placehold.co/1200x675/6B4F3A/FFFFFF?text=Root+Amber",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-varieties-4',
+        category: 'Science',
+        title: "The Phantom Glow: Unlocking the Physics of Fluorescence in Burmese Amber",
+        summary: "Some rare pieces of Burmese amber exhibit a startling and beautiful transformation under ultraviolet (UV) light, glowing with an intense blue sheen. This is a fascinating natural laboratory for studying the phenomenon of fluorescence.",
+        author: VICKY_AUTHOR,
+        date: "September 27, 2025",
+        featuredImage: "https://placehold.co/1200x675/2563EB/FFFFFF?text=Blue+Fluorescent+Amber",
+        readingTime: 3
+    },
+    {
+        id: 'burmite-varieties-5',
+        category: 'Science',
+        title: "The Forest Floor Record: How Black Burmese Amber Preserves the Micro-Ecosystem",
+        summary: "The darkness of black amber is not a color but a high concentration of preserved organic matter, making it a direct, undisturbed sample of the Cretaceous forest floor's micro-ecosystem.",
+        author: VICKY_AUTHOR,
+        date: "September 28, 2025",
+        featuredImage: "https://placehold.co/1200x675/171717/FFFFFF?text=Black+Amber+with+Mushroom",
+        readingTime: 3
     }
 ];
 
@@ -1340,4 +1629,65 @@ export const ROSARY_CENTERPIECES: RosaryComponent[] = [
     { id: 'center_sacred_heart', name: 'Sacred Heart', imageUrl: 'https://placehold.co/100x100/DC143C/FFD700?text=Sacred+Heart', weightG: 5 },
     { id: 'center_st_michael', name: 'St. Michael', imageUrl: 'https://placehold.co/100x100/87CEEB/00008B?text=St.+Michael', weightG: 7 },
     { id: 'center_guardian_angel', name: 'Guardian Angel', imageUrl: 'https://placehold.co/100x100/F5F5DC/DAA520?text=Guardian+Angel', weightG: 4 },
+];
+
+export const GLOSSARY_TERMS = [
+  { termKey: 'term_agate', defKey: 'def_agate' }, { termKey: 'term_altar_beads', defKey: 'def_altar_beads' }, { termKey: 'term_amber', defKey: 'def_amber' },
+  { termKey: 'term_amulet', defKey: 'def_amulet' }, { termKey: 'term_anointing_oil', defKey: 'def_anointing_oil' }, { termKey: 'term_artisanal_gem', defKey: 'def_artisanal_gem' },
+  { termKey: 'term_aura_cleansing', defKey: 'def_aura_cleansing' }, { termKey: 'term_aventurine', defKey: 'def_aventurine' }, { termKey: 'term_balance_stones', defKey: 'def_balance_stones' },
+  { termKey: 'term_bezel_setting', defKey: 'def_bezel_setting' }, { termKey: 'term_blessing_ceremony', defKey: 'def_blessing_ceremony' }, { termKey: 'term_bloodstone', defKey: 'def_bloodstone' },
+  { termKey: 'term_blue_spinel', defKey: 'def_blue_spinel' }, { termKey: 'term_brahma_knot', defKey: 'def_brahma_knot' }, { termKey: 'term_buddhist_mala', defKey: 'def_buddhist_mala' },
+  { termKey: 'term_burmite', defKey: 'def_burmite' }, { termKey: 'term_carnelian', defKey: 'def_carnelian' }, { termKey: 'term_cats_eye', defKey: 'def_cats_eye' },
+  { termKey: 'term_chakra_stones', defKey: 'def_chakra_stones' }, { termKey: 'term_citrine', defKey: 'def_citrine' }, { termKey: 'term_cruciform_pendant', defKey: 'def_cruciform_pendant' },
+  { termKey: 'term_crystal_grid', defKey: 'def_crystal_grid' }, { termKey: 'term_cultural_beads', defKey: 'def_cultural_beads' }, { termKey: 'term_cut_grade', defKey: 'def_cut_grade' },
+  { termKey: 'term_devotional_string', defKey: 'def_devotional_string' }, { termKey: 'term_divination_tools', defKey: 'def_divination_tools' }, { termKey: 'term_divine_geometry', defKey: 'def_divine_geometry' },
+  { termKey: 'term_double_terminated_quartz', defKey: 'def_double_terminated_quartz' }, { termKey: 'term_drilled_gem', defKey: 'def_drilled_gem' }, { termKey: 'term_durability_index', defKey: 'def_durability_index' },
+  { termKey: 'term_dzi_beads', defKey: 'def_dzi_beads' }, { termKey: 'term_earth_element_stone', defKey: 'def_earth_element_stone' }, { termKey: 'term_elastic_cord', defKey: 'def_elastic_cord' },
+  { termKey: 'term_electroplated_gem', defKey: 'def_electroplated_gem' }, { termKey: 'term_emerald', defKey: 'def_emerald' }, { termKey: 'term_energy_resonance', defKey: 'def_energy_resonance' },
+  { termKey: 'term_engraved_symbol_beads', defKey: 'def_engraved_symbol_beads' }, { termKey: 'term_evil_eye_beads', defKey: 'def_evil_eye_beads' }, { termKey: 'term_faceted_cut', defKey: 'def_faceted_cut' },
+  { termKey: 'term_faith_beads', defKey: 'def_faith_beads' }, { termKey: 'term_feather_inclusion', defKey: 'def_feather_inclusion' }, { termKey: 'term_feldspar', defKey: 'def_feldspar' },
+  { termKey: 'term_fire_agate', defKey: 'def_fire_agate' }, { termKey: 'term_fossil_gemstone', defKey: 'def_fossil_gemstone' }, { termKey: 'term_frequency_healing', defKey: 'def_frequency_healing' },
+  { termKey: 'term_full_mala', defKey: 'def_full_mala' }, { termKey: 'term_garnet', defKey: 'def_garnet' }, { termKey: 'term_gem_carving', defKey: 'def_gem_carving' },
+  { termKey: 'term_geode', defKey: 'def_geode' }, { termKey: 'term_gilded_gemstone', defKey: 'def_gilded_gemstone' }, { termKey: 'term_gold_plated_beads', defKey: 'def_gold_plated_beads' },
+  { termKey: 'term_grading_certificate', defKey: 'def_grading_certificate' }, { termKey: 'term_grounding_stone', defKey: 'def_grounding_stone' }, { termKey: 'term_guru_bead', defKey: 'def_guru_bead' },
+  { termKey: 'term_halal_gemstone', defKey: 'def_halal_gemstone' }, { termKey: 'term_hand_knotted_mala', defKey: 'def_hand_knotted_mala' }, { termKey: 'term_healing_crystal', defKey: 'def_healing_crystal' },
+  { termKey: 'term_hematite', defKey: 'def_hematite' }, { termKey: 'term_heritage_beads', defKey: 'def_heritage_beads' }, { termKey: 'term_holy_water_pearl', defKey: 'def_holy_water_pearl' },
+  { termKey: 'term_hypersthene', defKey: 'def_hypersthene' }, { termKey: 'term_idol_beads', defKey: 'def_idol_beads' }, { termKey: 'term_imperial_jade', defKey: 'def_imperial_jade' },
+  { termKey: 'term_inclusion', defKey: 'def_inclusion' }, { termKey: 'term_infrared_resonance', defKey: 'def_infrared_resonance' }, { termKey: 'term_intention_beads', defKey: 'def_intention_beads' },
+  { termKey: 'term_iolite', defKey: 'def_iolite' }, { termKey: 'term_islamic_tesbih', defKey: 'def_islamic_tesbih' }, { termKey: 'term_jade', defKey: 'def_jade' },
+  { termKey: 'term_japa_mala', defKey: 'def_japa_mala' }, { termKey: 'term_jasper', defKey: 'def_jasper' }, { termKey: 'term_jet_stone', defKey: 'def_jet_stone' },
+  { termKey: 'term_jewel_tone', defKey: 'def_jewel_tone' }, { termKey: 'term_jewelry_resin', defKey: 'def_jewelry_resin' }, { termKey: 'term_judgment_bead', defKey: 'def_judgment_bead' },
+  { termKey: 'term_kabbalah_string', defKey: 'def_kabbalah_string' }, { termKey: 'term_kabir_prayer_beads', defKey: 'def_kabir_prayer_beads' }, { termKey: 'term_karma_beads', defKey: 'def_karma_beads' },
+  { termKey: 'term_knotting_technique', defKey: 'def_knotting_technique' }, { termKey: 'term_kundalini_mala', defKey: 'def_kundalini_mala' }, { termKey: 'term_kunzite', defKey: 'def_kunzite' },
+  { termKey: 'term_kyanite', defKey: 'def_kyanite' }, { termKey: 'term_labradorite', defKey: 'def_labradorite' }, { termKey: 'term_lapis_lazuli', defKey: 'def_lapis_lazuli' },
+  { termKey: 'term_lithotherapy', defKey: 'def_lithotherapy' }, { termKey: 'term_locket_beads', defKey: 'def_locket_beads' }, { termKey: 'term_lotus_bead', defKey: 'def_lotus_bead' },
+  { termKey: 'term_love_stone', defKey: 'def_love_stone' }, { termKey: 'term_luxury_rosary', defKey: 'def_luxury_rosary' }, { termKey: 'term_magnetic_clasp', defKey: 'def_magnetic_clasp' },
+  { termKey: 'term_mahogany_obsidian', defKey: 'def_mahogany_obsidian' }, { termKey: 'term_mala', defKey: 'def_mala' }, { termKey: 'term_mantra_beads', defKey: 'def_mantra_beads' },
+  { termKey: 'term_meditation_mala', defKey: 'def_meditation_mala' }, { termKey: 'term_metaphysical_gem', defKey: 'def_metaphysical_gem' }, { termKey: 'term_moonstone', defKey: 'def_moonstone' },
+  { termKey: 'term_mystic_quartz', defKey: 'def_mystic_quartz' }, { termKey: 'term_naga_beads', defKey: 'def_naga_beads' }, { termKey: 'term_natural_amber', defKey: 'def_natural_amber' },
+  { termKey: 'term_navaratna', defKey: 'def_navaratna' }, { termKey: 'term_nazar_bead', defKey: 'def_nazar_bead' }, { termKey: 'term_nephrite_jade', defKey: 'def_nephrite_jade' },
+  { termKey: 'term_nomadic_crafting', defKey: 'def_nomadic_crafting' }, { termKey: 'term_numerical_prayer_cycle', defKey: 'def_numerical_prayer_cycle' }, { termKey: 'term_obsidian', defKey: 'def_obsidian' },
+  { termKey: 'term_offering_beads', defKey: 'def_offering_beads' }, { termKey: 'term_om_symbol_bead', defKey: 'def_om_symbol_bead' }, { termKey: 'term_onyx', defKey: 'def_onyx' },
+  { termKey: 'term_opalite', defKey: 'def_opalite' }, { termKey: 'term_organic_gemstone', defKey: 'def_organic_gemstone' }, { termKey: 'term_orthodox_rosary', defKey: 'def_orthodox_rosary' },
+  { termKey: 'term_pearl', defKey: 'def_pearl' }, { termKey: 'term_peridot', defKey: 'def_peridot' }, { termKey: 'term_petrified_wood', defKey: 'def_petrified_wood' },
+  { termKey: 'term_prayer_beads', defKey: 'def_prayer_beads' }, { termKey: 'term_protection_amulet', defKey: 'def_protection_amulet' }, { termKey: 'term_puja_mala', defKey: 'def_puja_mala' },
+  { termKey: 'term_pyrite', defKey: 'def_pyrite' }, { termKey: 'term_qibla_compass_bead', defKey: 'def_qibla_compass_bead' }, { termKey: 'term_queen_s_amber', defKey: 'def_queen_s_amber' },
+  { termKey: 'term_quenching_process', defKey: 'def_quenching_process' }, { termKey: 'term_quintuple_wrap_bracelet', defKey: 'def_quintuple_wrap_bracelet' }, { termKey: 'term_quranic_tesbih', defKey: 'def_quranic_tesbih' },
+  { termKey: 'term_quartz', defKey: 'def_quartz' }, { termKey: 'term_reiki_stone', defKey: 'def_reiki_stone' }, { termKey: 'term_ritual_incense_bead', defKey: 'def_ritual_incense_bead' },
+  { termKey: 'term_root_chakra_beads', defKey: 'def_root_chakra_beads' }, { termKey: 'term_rosary', defKey: 'def_rosary' }, { termKey: 'term_rose_quartz', defKey: 'def_rose_quartz' },
+  { termKey: 'term_ruby', defKey: 'def_ruby' }, { termKey: 'term_rudraksha', defKey: 'def_rudraksha' }, { termKey: 'term_sacred_geometry_beads', defKey: 'def_sacred_geometry_beads' },
+  { termKey: 'term_sandalwood_beads', defKey: 'def_sandalwood_beads' }, { termKey: 'term_sanskrit_mantra', defKey: 'def_sanskrit_mantra' }, { termKey: 'term_sapphire', defKey: 'def_sapphire' },
+  { termKey: 'term_smoky_quartz', defKey: 'def_smoky_quartz' }, { termKey: 'term_spinel', defKey: 'def_spinel' }, { termKey: 'term_sufi_prayer_beads', defKey: 'def_sufi_prayer_beads' },
+  { termKey: 'term_tektite', defKey: 'def_tektite' }, { termKey: 'term_tesbih_tasbih', defKey: 'def_tesbih_tasbih' }, { termKey: 'term_thai_buddhist_beads', defKey: 'def_thai_buddhist_beads' },
+  { termKey: 'term_tibetan_mala', defKey: 'def_tibetan_mala' }, { termKey: 'term_tiger_s_eye', defKey: 'def_tiger_s_eye' }, { termKey: 'term_tridacna_shell', defKey: 'def_tridacna_shell' },
+  { termKey: 'term_turquoise', defKey: 'def_turquoise' }, { termKey: 'term_ultrasonic_cleaning', defKey: 'def_ultrasonic_cleaning' }, { termKey: 'term_umbrella_blessing_beads', defKey: 'def_umbrella_blessing_beads' },
+  { termKey: 'term_universal_chakra_bead', defKey: 'def_universal_chakra_bead' }, { termKey: 'term_untreated_gemstone', defKey: 'def_untreated_gemstone' }, { termKey: 'term_urdu_calligraphy_beads', defKey: 'def_urdu_calligraphy_beads' },
+  { termKey: 'term_vedic_mala', defKey: 'def_vedic_mala' }, { termKey: 'term_vintage_prayer_beads', defKey: 'def_vintage_prayer_beads' }, { termKey: 'term_virgo_birthstone_bead', defKey: 'def_virgo_birthstone_bead' },
+  { termKey: 'term_visualization_stone', defKey: 'def_visualization_stone' }, { termKey: 'term_volcanic_lava_beads', defKey: 'def_volcanic_lava_beads' }, { termKey: 'term_white_agate', defKey: 'def_white_agate' },
+  { termKey: 'term_wiccan_beads', defKey: 'def_wiccan_beads' }, { termKey: 'term_wisdom_beads', defKey: 'def_wisdom_beads' }, { termKey: 'term_wooden_mala', defKey: 'def_wooden_mala' },
+  { termKey: 'term_worry_beads', defKey: 'def_worry_beads' }, { termKey: 'term_x_ray_gem_testing', defKey: 'def_x_ray_gem_testing' }, { termKey: 'term_xenolith_bead', defKey: 'def_xenolith_bead' },
+  { termKey: 'term_xylopal', defKey: 'def_xylopal' }, { termKey: 'term_yellow_jade', defKey: 'def_yellow_jade' }, { termKey: 'term_yin_yang_beads', defKey: 'def_yin_yang_beads' },
+  { termKey: 'term_yoga_mala', defKey: 'def_yoga_mala' }, { termKey: 'term_yoni_crystal', defKey: 'def_yoni_crystal' }, { termKey: 'term_yule_beads', defKey: 'def_yule_beads' },
+  { termKey: 'term_zikr_beads', defKey: 'def_zikr_beads' }, { termKey: 'term_zircon', defKey: 'def_zircon' }, { termKey: 'term_zodiac_beads', defKey: 'def_zodiac_beads' },
+  { termKey: 'term_zoisite', defKey: 'def_zoisite' }, { termKey: 'term_zuni_fetish_beads', defKey: 'def_zuni_fetish_beads' }
 ];

@@ -52,6 +52,7 @@ import AmberFutureTechPage from './pages/AmberFutureTechPage.tsx';
 import AmberMarketsPage from './pages/AmberMarketsPage.tsx';
 import AmberReligionPage from './pages/AmberReligionPage.tsx';
 import CustomRosaryConfiguratorPage from './pages/CustomRosaryConfiguratorPage.tsx';
+import GemTechPillarPage from './pages/GemTechPillarPage.tsx';
 
 import { AppProvider, useAppContext } from './context/AppContext.tsx';
 import { LanguageProvider } from './i18n/LanguageContext.tsx';
@@ -117,6 +118,9 @@ const AppContent: React.FC = () => {
                         <ReactRouterDOM.Route path="faqs" element={<FaqPage />} />
                         <ReactRouterDOM.Route path="glossary" element={<GlossaryPage />} />
                         <ReactRouterDOM.Route path="contact" element={<ContactPage />} />
+                        
+                        {/* Pillar Pages */}
+                        <ReactRouterDOM.Route path="gemtech-pillar" element={<GemTechPillarPage />} />
                         
                         {/* Amber Guide (Pillar & Cluster) Pages */}
                         <ReactRouterDOM.Route path="amber-guide" element={<AmberPillarPage />} />
