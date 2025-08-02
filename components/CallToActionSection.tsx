@@ -1,0 +1,43 @@
+
+import React from 'react';
+import * as ReactRouterDOM from 'react-router-dom';
+
+interface CallToActionSectionProps {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  buttonLink: string;
+  backgroundImageUrl: string;
+}
+
+const CallToActionSection: React.FC<CallToActionSectionProps> = ({
+  title,
+  subtitle,
+  buttonText,
+  buttonLink,
+  backgroundImageUrl,
+}) => {
+  return (
+    <div className="relative bg-[var(--c-heading)]">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style={{backgroundImage: `url('${backgroundImageUrl}')`}}>
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--c-heading)] via-[var(--c-heading)]/70 to-transparent"></div>
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center dark-context">
+        <h2 className="text-4xl md:text-5xl font-bold font-serif">
+          {title}
+        </h2>
+        <p className="mt-4 max-w-2xl mx-auto text-lg">
+          {subtitle}
+        </p>
+        <div className="mt-8">
+          <ReactRouterDOM.Link to={buttonLink} className="inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg text-lg">
+            {buttonText}
+          </ReactRouterDOM.Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CallToActionSection;

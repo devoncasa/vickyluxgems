@@ -1,0 +1,251 @@
+
+
+import React, { useState, useMemo } from 'react';
+import * as ReactRouterDOM from 'react-router-dom';
+import { AmberColorDetail, Grade, BeadSize, BeadQuantity, Amulet, Metal, CustomPreOrderDetails, PriceBreakdown } from '../types.ts';
+import { AMBER_COLOR_DETAILS, METAL_PRICES, AMULETS, BEAD_SPECS, BACKGROUND_IMAGES } from '../constants.ts';
+import GradeSelectionModal from '../components/GradeSelectionModal.tsx';
+import SectionDivider from '../components/SectionDivider.tsx';
+import BraceletBuilder from '../components/BraceletBuilder.tsx';
+import SEO from '../components/SEO.tsx';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { LanguageSwitcher } from '../components/Header.tsx';
+
+const formatCurrency = (amount: number) => {
+    return `฿${amount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+};
+
+const MalaBuilder: React.FC = () => {
+    const navigate = ReactRouterDOM.useNavigate();
+    const { t } = useLanguage();
+
+    // State
+    const [selectedAmber, setSelectedAmber] = useState<AmberColorDetail | null>(null);
+    const [selectedGrade, setSelectedGrade] = useState<Grade>('Standard');
+    const [beadSize, setBeadSize] = useState<BeadSize>(10);
+    const [beadQuantity, setBeadQuantity] = useState<BeadQuantity>(108);
+    const [selectedAmulet, setSelectedAmulet] = useState<Amulet | null>(null);
+    const [selectedMetal, setSelectedMetal] = useState<Metal>(Metal.None);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Price Calculation
+    const priceBreakdown = useMemo((): PriceBreakdown => {
+        if (!selectedAmber) return { beadsPrice: 0, amuletPrice: 0, metalPrice: 0, totalPrice: 0 };
+
+        const gradeMultiplier: { [key in Grade]: number } = { 'Standard': 1, 'Silver': 1.5, 'High': 2.5 };
+        const beadSpec = BEAD_SPECS.find(s => s.size === beadSize);
+        if (!beadSpec) return { beadsPrice: 0, amuletPrice: 0, metalPrice: 0, totalPrice: 0 };
+
+        const beadsPrice = selectedAmber.basePricePerGram * beadSpec.weight * beadQuantity * gradeMultiplier[selectedGrade];
+        const amuletPrice = selectedAmulet?.price || 0;
+        const metalPrice = METAL_PRICES[selectedMetal];
+        const totalPrice = beadsPrice + amuletPrice + metalPrice;
+
+        return { beadsPrice, amuletPrice, metalPrice, totalPrice };
+    }, [selectedAmber, selectedGrade, beadSize, beadQuantity, selectedAmulet, selectedMetal]);
+
+    // Handlers
+    const handleColorSelect = (color: AmberColorDetail) => {
+        setSelectedAmber(color);
+        setIsModalOpen(true);
+    };
+
+    const handleGradeSelect = (grade: Grade) => {
+        setSelectedGrade(grade);
+        setIsModalOpen(false);
+    };
+
+    const handlePlaceOrder = () => {
+        if (!selectedAmber) {
+            alert(t('build_alert_select_amber'));
+            return;
+        }
+        const details: CustomPreOrderDetails = {
+            amberColor: selectedAmber,
+            grade: selectedGrade,
+            beadSize,
+            beadQuantity,
+            amulet: selectedAmulet,
+            metal: selectedMetal,
+        };
+        navigate(`/order-confirmation`, { state: { details, breakdown: priceBreakdown } });
+    };
+    
+    const selectClass = "w-full p-3 border border-[var(--c-border)] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--c-accent-primary)] bg-[var(--c-surface)]";
+
+    return (
+        <>
+            <GradeSelectionModal 
+                isOpen={isModalOpen && selectedAmber !== null}
+                amberColor={selectedAmber} 
+                onClose={() => setIsModalOpen(false)} 
+                onSelectGrade={handleGradeSelect} 
+            />
+            <div className="grid lg:grid-cols-2 gap-12">
+                {/* Controls */}
+                <div className="space-y-6">
+                    {/* Amber Color */}
+                    <div>
+                        <h3 className="text-xl font-semibold mb-3">{t('build_select_amber_title')}</h3>
+                        <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
+                            {AMBER_COLOR_DETAILS.map(color => (
+                                <button
+                                    key={color.id}
+                                    onClick={() => handleColorSelect(color)}
+                                    className="text-center group focus:outline-none"
+                                    aria-label={`Select ${t(`amber_color_${color.id}_name` as any)}`}
+                                >
+                                    <div
+                                        style={{ backgroundImage: `url(${color.imageUrl})` }}
+                                        className={`w-16 h-16 mx-auto bead-picker ${selectedAmber?.id === color.id ? 'selected' : ''}`}
+                                    ></div>
+                                    <span className={`mt-2 font-semibold text-xs text-center block truncate group-hover:text-[var(--c-accent-primary)] transition-colors ${selectedAmber?.id === color.id ? 'text-[var(--c-accent-primary)]' : 'text-[var(--c-text-secondary)]'}`}>
+                                        {t(`amber_color_${color.id}_name` as any)}
+                                    </span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    {/* Bead Size & Quantity */}
+                    <div className="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label htmlFor="beadSize" className="font-semibold mb-2 block">{t('build_bead_size_title')}</label>
+                            <select id="beadSize" value={beadSize} onChange={e => setBeadSize(Number(e.target.value))} className={selectClass}>
+                                {BEAD_SPECS.map(opt => <option key={opt.size} value={opt.size}>{opt.size.toFixed(2)}mm</option>)}
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="beadQuantity" className="font-semibold mb-2 block">{t('build_bead_quantity_title')}</label>
+                            <select id="beadQuantity" value={beadQuantity} onChange={e => setBeadQuantity(Number(e.target.value) as BeadQuantity)} className={selectClass}>
+                                <option value={27}>{t('build_quantity_27')}</option>
+                                <option value={54}>{t('build_quantity_54')}</option>
+                                <option value={99}>{t('build_quantity_99')}</option>
+                                <option value={108}>{t('build_quantity_108')}</option>
+                            </select>
+                        </div>
+                    </div>
+                    {/* Add-ons */}
+                    <div className="space-y-6">
+                        <h3 className="text-xl font-semibold mb-3">{t('build_addons_title')}</h3>
+                         <div>
+                            <label htmlFor="amulet" className="font-semibold mb-2 block">{t('build_addon_amulet')}</label>
+                            <select id="amulet" value={selectedAmulet?.id || 'none'} onChange={e => setSelectedAmulet(AMULETS.find(a => a.id === e.target.value) || null)} className={selectClass}>
+                                <option value="none">None</option>
+                                {AMULETS.map(a => <option key={a.id} value={a.id}>{a.name} ({formatCurrency(a.price)})</option>)}
+                            </select>
+                        </div>
+                         <div>
+                            <label htmlFor="metal" className="font-semibold mb-2 block">{t('build_addon_metal')}</label>
+                            <select id="metal" value={selectedMetal} onChange={e => setSelectedMetal(e.target.value as Metal)} className={selectClass}>
+                                {Object.values(Metal).map(m => <option key={m} value={m}>{m} {METAL_PRICES[m] > 0 ? `(${formatCurrency(METAL_PRICES[m])})` : ''}</option>)}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {/* Summary */}
+                <div className="bg-[var(--c-surface-alt)] p-6 rounded-lg shadow-inner border border-[var(--c-border)] sticky top-28 self-start">
+                    <h3 className="text-2xl font-bold text-center mb-4">{t('build_summary_title')}</h3>
+                    {!selectedAmber ? (
+                        <p className="text-center text-[var(--c-text-secondary)] py-10">{t('build_summary_placeholder')}</p>
+                    ) : (
+                        <div className="space-y-2">
+                            <div className="flex justify-between items-center text-sm">
+                                <span className="text-[var(--c-text-secondary)]">{t('build_summary_amber_color')}</span>
+                                <span className="font-semibold text-right">{t(`amber_color_${selectedAmber.id}_name` as any)}</span>
+                            </div>
+                             <div className="flex justify-between items-center text-sm">
+                                <span className="text-[var(--c-text-secondary)]">{t('build_summary_quality_grade')}</span>
+                                <span className="font-semibold">{selectedGrade}</span>
+                            </div>
+                            <div className="flex justify-between items-center text-sm">
+                                <span className="text-[var(--c-text-secondary)]">{t('build_summary_config')}</span>
+                                <span className="font-semibold">{t('build_summary_beads', { size: beadSize, quantity: beadQuantity })}</span>
+                            </div>
+                           
+                            <div className="pt-2 mt-2 border-t border-[var(--c-border)] border-dashed">
+                                <p className="font-semibold mb-2">{t('build_summary_breakdown_title')}</p>
+                                 <div className="flex justify-between items-center text-sm">
+                                    <span className="text-[var(--c-text-secondary)]">{t('build_summary_breakdown_beads')}</span>
+                                    <span className="font-semibold">{formatCurrency(priceBreakdown.beadsPrice)}</span>
+                                </div>
+                                {priceBreakdown.metalPrice > 0 && <div className="flex justify-between items-center text-sm text-[var(--c-accent-secondary-hover)]"><span className="text-[var(--c-text-secondary)]">{t('build_summary_breakdown_metal')}</span><span className="font-semibold">+ {formatCurrency(priceBreakdown.metalPrice)}</span></div>}
+                                {priceBreakdown.amuletPrice > 0 && <div className="flex justify-between items-center text-sm text-[var(--c-accent-secondary-hover)]"><span className="text-[var(--c-text-secondary)]">{t('build_summary_breakdown_amulet')}</span><span className="font-semibold">+ {formatCurrency(priceBreakdown.amuletPrice)}</span></div>}
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t-2 border-dashed border-[var(--c-heading)]/20">
+                                <div className="flex justify-between items-baseline">
+                                     <span className="text-lg font-bold">{t('build_summary_total_title')}</span>
+                                     <p className="text-3xl font-bold text-right text-[var(--c-heading)]">{formatCurrency(priceBreakdown.totalPrice)}</p>
+                                </div>
+                            </div>
+                            <button onClick={handlePlaceOrder} className="w-full mt-4 btn-primary text-white font-bold py-3 rounded-lg text-lg">
+                                {t('build_summary_cta')}
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </>
+    );
+}
+
+
+const BuildYourOwnPage: React.FC = () => {
+    const { t, lang, setLang } = useLanguage();
+    const [activeBuilder, setActiveBuilder] = useState<'mala' | 'bracelet'>('bracelet');
+
+    const tabClasses = "px-6 py-3 text-lg font-semibold rounded-t-lg transition-colors duration-200 focus:outline-none w-full sm:w-auto";
+    const activeTabClasses = "bg-[var(--c-accent-primary)] text-white shadow-sm";
+    const inactiveTabClasses = "bg-transparent text-white/70 hover:text-white hover:bg-white/10";
+
+    return (
+        <div 
+            className="page-container-with-bg min-h-screen py-16 md:py-20"
+            style={{ backgroundImage: `url('${BACKGROUND_IMAGES[20]}')` }}
+        >
+            <SEO 
+                titleKey="seo_build_your_own_title"
+                descriptionKey="seo_build_your_own_desc"
+                keywordsKey="seo_build_your_own_keywords"
+                imageUrl="https://i.postimg.cc/pXtcbS21/Vicky-Amber-Gems-background-0014.jpg"
+            />
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-10 dark-context relative">
+                     <div className="absolute top-0 right-0 z-10">
+                        <LanguageSwitcher context="dark" />
+                    </div>
+                    <h1 className="text-5xl font-bold tracking-tight">{t('nav_Build_Amber_Set' as any)}</h1>
+                    <p className="mt-4 text-xl max-w-3xl mx-auto">
+                        {t('build_page_subtitle')}
+                    </p>
+                    <SectionDivider />
+                </div>
+
+                <div className="max-w-7xl mx-auto">
+                    {/* Tabs */}
+                    <div className="flex flex-col sm:flex-row border-b-2 border-white/20">
+                        <button
+                            onClick={() => setActiveBuilder('bracelet')}
+                            className={`${tabClasses} ${activeBuilder === 'bracelet' ? activeTabClasses : inactiveTabClasses}`}
+                        >
+                            {t('build_bracelet_tab')}
+                        </button>
+                        <button
+                            onClick={() => setActiveBuilder('mala')}
+                            className={`${tabClasses} ${activeBuilder === 'mala' ? activeTabClasses : inactiveTabClasses}`}
+                        >
+                            {t('build_mala_tab')}
+                        </button>
+                         <div className="flex-grow"></div>
+                    </div>
+
+                    <div className="bg-[var(--c-surface)] p-6 md:p-10 rounded-b-lg shadow-lg">
+                        {activeBuilder === 'bracelet' ? <BraceletBuilder /> : <MalaBuilder />}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default BuildYourOwnPage;
