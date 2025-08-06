@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
@@ -124,7 +125,9 @@ const GlobalCart: React.FC = () => {
                                 <span className="text-2xl font-bold">{formatCurrency(subtotal)}</span>
                             </div>
                             <div className="flex flex-col gap-3">
-                                <button className="w-full btn-primary btn--intelligent text-white font-bold py-3 rounded-lg text-lg">Checkout</button>
+                                <ReactRouterDOM.Link to="/payment" onClick={() => setIsOpen(false)} className="w-full text-center btn-primary btn--intelligent text-white font-bold py-3 rounded-lg text-lg">
+                                    Checkout
+                                </ReactRouterDOM.Link>
                                 <button onClick={() => setIsOpen(false)} className="w-full text-center text-sm font-semibold text-[var(--c-accent-primary)] hover:underline">
                                     or Continue Shopping
                                 </button>

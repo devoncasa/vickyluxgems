@@ -14,6 +14,8 @@ interface AppContextType {
     removeFromCart: (cartItemId: string) => void;
     updateCartQuantity: (cartItemId: string, newQuantity: number) => void;
     clearCart: () => void;
+    usdtExchangeRate: number;
+    setUsdtExchangeRate: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -22,6 +24,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
     const [products, setProducts] = useState<Product[]>(PRODUCTS);
     const [cart, setCart] = useState<CartItem[]>([]);
+    const [usdtExchangeRate, setUsdtExchangeRate] = useState<number>(36.50);
     
     const addProduct = (newProduct: Product) => {
         setProducts(prevProducts => [newProduct, ...prevProducts]);
@@ -90,7 +93,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             addToCart,
             removeFromCart,
             updateCartQuantity,
-            clearCart
+            clearCart,
+            usdtExchangeRate,
+            setUsdtExchangeRate,
         }}>
             {children}
         </AppContext.Provider>

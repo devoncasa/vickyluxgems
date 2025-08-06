@@ -87,11 +87,11 @@ const productForms = {
 
 // --- Main Admin Panel Component ---
 const AdminPanel: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOpen, onClose }) => {
-    const { products, addProduct, deleteProduct } = useAppContext();
+    const { products, addProduct, deleteProduct, usdtExchangeRate, setUsdtExchangeRate } = useAppContext();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [activeTab, setActiveTab] = useState<'add' | 'manage'>('add');
+    const [activeTab, setActiveTab] = useState<'add' | 'manage' | 'settings'>('add');
     const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
     const initialFormData = useMemo(() => ({
@@ -198,6 +198,13 @@ const AdminPanel: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOpe
             gemCategory: newCategory,
             gemWeightUnit: newCategory === 'Burmese Amber' ? 'grams' : 'carats'
         });
+    };
+
+    const handleUsdtRateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        if (value === '' || /^\d*\.?\d*$/.test(value)) {
+            setUsdtExchangeRate(parseFloat(value) || 0);
+        }
     };
 
     const generatedSKU = useMemo(() => {
@@ -395,9 +402,16 @@ const AdminPanel: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOpe
 
             <div className="admin-modal-content">
                 <button onClick={handleCloseAttempt} className="admin-modal-close-btn" aria-label="Close admin panel"><CloseIcon className="w-8 h-8"/></button>
-                <div className="p-6 border-b border-[var(--c-border)]"><h1 className="text-3xl font-bold text-[var(--c-heading)]">Inventory & Content Management</h1><div className="admin-tabs flex items-center mt-4"><button onClick={() => setActiveTab('add')} className={`admin-tab ${activeTab === 'add' ? 'active' : ''}`}>Add Product</button><button onClick={() => setActiveTab('manage')} className={`admin-tab ${activeTab === 'manage' ? 'active' : ''}`}>Manage Inventory</button></div></div>
+                <div className="p-6 border-b border-[var(--c-border)]">
+                    <h1 className="text-3xl font-bold text-[var(--c-heading)]">Inventory & Content Management</h1>
+                    <div className="admin-tabs flex items-center mt-4">
+                        <button onClick={() => setActiveTab('add')} className={`admin-tab ${activeTab === 'add' ? 'active' : ''}`}>Add Product</button>
+                        <button onClick={() => setActiveTab('manage')} className={`admin-tab ${activeTab === 'manage' ? 'active' : ''}`}>Manage Inventory</button>
+                        <button onClick={() => setActiveTab('settings')} className={`admin-tab ${activeTab === 'settings' ? 'active' : ''}`}>Settings</button>
+                    </div>
+                </div>
                 <div className="admin-modal-body">
-                    {activeTab === 'add' ? (
+                    {activeTab === 'add' && (
                         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
                             <div className="admin-form-section">
                                 <h2>1. Product Specifications</h2>
@@ -434,10 +448,32 @@ const AdminPanel: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOpe
                             </div>
                             <div className="mt-8 pt-6 border-t border-[var(--c-border)]"><button type="button" onClick={handleSaveAndShowModal} disabled={!generatedContent} className="admin-button-primary w-full text-xl py-4 disabled:bg-gray-400 disabled:cursor-not-allowed">Save & Add Product</button></div>
                         </form>
-                    ) : ( /* Manage Inventory Tab */
+                    )}
+                    {activeTab === 'manage' && (
                         <div>
                             {confirmDeleteId && (<div className="admin-confirm-modal"><div className="admin-confirm-modal-content"><h3 className="text-xl font-bold mb-2">Confirm Deletion</h3><p className="mb-4">Are you sure you want to delete "{products.find(p => p.id === confirmDeleteId)?.name}"? This action cannot be undone.</p><div className="flex justify-center gap-4"><button onClick={() => setConfirmDeleteId(null)} className="px-6 py-2 rounded-md bg-gray-200">Cancel</button><button onClick={() => handleDelete(confirmDeleteId)} className="admin-delete-btn">Delete</button></div></div></div>)}
                             <div className="admin-inventory-list space-y-3">{products.map(product => (<div key={product.id} className="admin-inventory-item"><img src={product.media.mainImageUrl} alt={product.name} className="admin-inventory-item-img" /><span className="admin-inventory-item-name">{product.name}</span><button onClick={() => setConfirmDeleteId(product.id)} className="admin-delete-btn">Delete</button></div>))}</div>
+                        </div>
+                    )}
+                    {activeTab === 'settings' && (
+                         <div className="admin-form-section">
+                            <h2>Financial Settings</h2>
+                            <div className="admin-form-field">
+                                <label htmlFor="usdtRate" className="!mb-2">THB to USDT Exchange Rate</label>
+                                <div className="flex items-center gap-2">
+                                    <span className="font-semibold text-lg">1 USDT =</span>
+                                    <input
+                                        type="text"
+                                        id="usdtRate"
+                                        name="usdtRate"
+                                        value={usdtExchangeRate}
+                                        onChange={handleUsdtRateChange}
+                                        className="admin-input w-40 text-lg"
+                                    />
+                                    <span className="font-semibold text-lg">Baht</span>
+                                </div>
+                                <p className="text-xs text-gray-500 mt-1">This rate is used for cryptocurrency payment conversions and rounds up to the next whole USDT.</p>
+                            </div>
                         </div>
                     )}
                 </div>

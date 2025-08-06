@@ -53,6 +53,7 @@ import AmberMarketsPage from './pages/AmberMarketsPage.tsx';
 import AmberReligionPage from './pages/AmberReligionPage.tsx';
 import CustomRosaryConfiguratorPage from './pages/CustomRosaryConfiguratorPage.tsx';
 import GemTechPillarPage from './pages/GemTechPillarPage.tsx';
+import PaymentPage from './pages/PaymentPage.tsx';
 
 import { AppProvider, useAppContext } from './context/AppContext.tsx';
 import { LanguageProvider } from './i18n/LanguageContext.tsx';
@@ -100,6 +101,7 @@ const AppContent: React.FC = () => {
                         <ReactRouterDOM.Route path="collection/:productId" element={<ProductDetailPage />} />
                         <ReactRouterDOM.Route path="build-your-set" element={<BuildYourOwnPage />} />
                         <ReactRouterDOM.Route path="order-confirmation" element={<OrderConfirmationPage />} />
+                        <ReactRouterDOM.Route path="payment" element={<PaymentPage />} />
                         <ReactRouterDOM.Route path="blog" element={<BlogPage />} />
                         <ReactRouterDOM.Route path="blog/:postId" element={<BlogPostPage />} />
                         
