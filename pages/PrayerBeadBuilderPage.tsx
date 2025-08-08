@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import SEO from '../components/SEO';
@@ -6,7 +5,6 @@ import { BACKGROUND_IMAGES, PRAYER_BEAD_SIZES, JUZU_MATERIAL_PRICES, AMBER_COLOR
 import SectionDivider from '../components/SectionDivider';
 import { JuzuGenderStyle, JuzuType, TasselShape, TasselMaterial, BeadSize, AmberColorDetail, PrayerBeadTradition, TesbihBeadCount, TesbihRosaryGrade } from '../types';
 import * as ReactRouterDOM from 'react-router-dom';
-import { toPng } from 'html-to-image';
 
 const formatCurrency = (amount: number) => {
     return `฿${amount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
@@ -192,6 +190,7 @@ const PrayerBeadBuilderPage: React.FC = () => {
         setIsProcessing(true);
         setNotification(null);
         try {
+            const { toPng } = await import('html-to-image');
             const dataUrl = await toPng(captureRef.current, { backgroundColor: '#FCFBF9', pixelRatio: 2 });
             const link = document.createElement('a');
             link.download = `VLG-Custom-${currentTradition}-${Date.now()}.png`;

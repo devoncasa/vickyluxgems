@@ -47,7 +47,10 @@ const PaymentPage: React.FC = () => {
 
     const AccordionItem: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => {
         const isActive = activeAccordion === id;
-        const buttonClass = id === 'card' ? 'btn-payment-standard' : id === 'usdt' ? 'btn-payment-crypto' : '';
+        const buttonClass = id === 'card' ? 'btn-payment-standard' 
+                          : id === 'usdt' ? 'btn-payment-crypto' 
+                          : id === 'local-qr' ? 'btn-payment-local' 
+                          : '';
         return (
             <div className={`payment-accordion-item ${isActive ? 'active' : ''}`}>
                 <button
@@ -120,6 +123,41 @@ const PaymentPage: React.FC = () => {
                                 </div>
                             </AccordionItem>
                             
+                            <AccordionItem id="local-qr" title="Pay with Thai QR (Local Bank Transfer)">
+                                <div className="text-center space-y-6">
+                                    <img 
+                                        src="https://raw.githubusercontent.com/devoncasa/VickyLuxGems-Assets/main/Bkk-Bank-QR.jpg" 
+                                        alt="Thai QR Code for Bangkok Bank"
+                                        className="usdt-qr-code mx-auto"
+                                    />
+                                    
+                                    <div className="space-y-4 payment-info-text text-left px-2 sm:px-4">
+                                        <div>
+                                            <label className="text-xs font-semibold uppercase text-[var(--c-text-secondary)] tracking-wider">Bank</label>
+                                            <p className="font-semibold text-[var(--c-heading)]">Bangkok Bank of Thailand</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="text-xs font-semibold uppercase text-[var(--c-text-secondary)] tracking-wider">Account Number</label>
+                                            <div className="flex items-center justify-between gap-2 mt-1">
+                                                <p className="font-mono text-sm sm:text-base break-all text-[var(--c-heading)]">014 015 0459</p>
+                                                <button onClick={() => handleCopy('0140150459', 'account-no')} className="copy-button flex-shrink-0">{copied['account-no'] ? 'Copied!' : 'Copy'}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-sm text-gray-500">Please send a proof of payment to our <a href="https://m.me/vkmmamber" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Facebook Messenger</a> to confirm your order.</p>
+
+                                    <div className={`p-3 rounded-lg font-semibold transition-colors text-lg ${paymentStatus === 'waiting' ? 'payment-status-waiting' : 'payment-status-confirmed'}`}>
+                                        {paymentStatus === 'waiting' ? 'Waiting for payment...' : '✅ Payment Received!'}
+                                    </div>
+                                    
+                                    {paymentStatus === 'waiting' && (
+                                        <button onClick={handleConfirmPayment} className="btn-primary text-white font-bold py-3 px-6 rounded-lg w-full">I Have Sent The Payment</button>
+                                    )}
+                                </div>
+                            </AccordionItem>
+
                             <AccordionItem id="usdt" title="Pay with Cryptocurrency (USDT) - 10% OFF">
                                 <div className="text-center space-y-6">
                                     <img 

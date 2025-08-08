@@ -1,0 +1,384 @@
+[
+  {
+    "id": "p1-mila-108",
+    "sku": "VAG-MLA-8-108",
+    "name": "Emperor's Gold 'Mila' Mala",
+    "category": "prayer-beads-108",
+    "material": "Amber",
+    "price": 277344,
+    "bestseller": true,
+    "isNewArrival": true,
+    "story": "Crafted from the rarest Mila amber, this 108-bead mala embodies imperial elegance. Its semi-liquid, semi-solid texture creates a dimension of unparalleled richness, making it a highly collectible, investment-grade piece.\n\n**A Meaningful Gift:** This mala is more than just jewelry; it is a profound tool for mindfulness and a symbol of enlightenment. It makes a meaningful gift for a spiritual friend, a cherished anniversary gift, or a powerful addition to your own meditation practice. As a piece of heirloom quality jewelry, it carries an energy that can be passed down through generations.",
+    "energyProperties": ["Prosperity", "Enlightenment", "Royal Power"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/C8A97E/2a2a2a?text=Mila+Amber",
+      "gallery": ["https://placehold.co/600x600/C8A97E/2a2a2a?text=Mila+Amber+View+1", "https://placehold.co/600x600/C8A97E/2a2a2a?text=Mila+Amber+View+2", "https://placehold.co/600x600/FBF9F6/2a2a2a?text=On+Display"]
+    },
+    "specifications": {
+      "beadSize_mm": 8,
+      "beadCount": 108,
+      "totalWeight_grams": 86.4,
+      "clarityLevel": "Premium Grade - High Clarity",
+      "patterns": "Contains distinctive 3D 'Swirl Cloud' patterns.",
+      "finish": "Machine-rounded and precisely cut.",
+      "origin": "Hukawng Valley, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "GIA",
+      "certificateNumber": "GIA-123456789"
+    },
+    "amberDetails": {
+      "colorTier": "Mila (Emperor Gold)",
+      "colorSlug": "mila",
+      "description": "A luxurious golden candle-like color, with a semi-liquid and semi-solid texture blended in one piece.",
+      "rarity": "Extremely rare and visually stunning.",
+      "specialNote": "Highly collectible grade.",
+      "basePricePerGram": 3210,
+      "richnessScore": 9
+    },
+    "tierExplanations": {
+      "Mila": "This piece exhibits the coveted 'Mila' characteristic—a semi-liquid and semi-solid texture blended into one, giving it unparalleled depth. This is a sign of its extreme rarity."
+    },
+    "inventory": {
+      "stock": 2,
+      "isAvailable": true
+    }
+  },
+   {
+    "id": "p3-spinel-bracelet",
+    "sku": "VAG-SPN-BR-8",
+    "name": "Spinel Guardian Bracelet",
+    "category": "bracelets",
+    "material": "Spinel",
+    "price": 7078,
+    "bestseller": true,
+    "story": "Spinel is a powerful protective stone, historically mistaken for ruby. This bracelet features dark, shimmering beads used to ward off negative energy and ground the spirit.",
+    "energyProperties": ["Protection", "Grounding", "Clarity"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/3D4054/FBF9F6?text=Spinel",
+      "gallery": []
+    },
+    "specifications": {
+      "beadSize_mm": 8,
+      "beadCount": 27,
+      "totalWeight_grams": 29.7,
+      "clarityLevel": "A Grade",
+      "finish": "Machine-rounded and polished.",
+      "origin": "Pein Pyit, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "In-house"
+    },
+    "inventory": {
+      "stock": 8,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "new-red-brown-bracelet",
+    "sku": "VAG-RDB-10-27",
+    "name": "Red-Brown Amber Bracelet",
+    "category": "bracelets",
+    "material": "Amber",
+    "price": 10390,
+    "isNewArrival": true,
+    "story": "This bracelet features a rich, earthy red-brown amber, combining the grounding properties of brown amber with the vitality of red. A stone of stability and strength.",
+    "energyProperties": ["Stability", "Strength", "Grounding"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/9F5C46/FBF9F6?text=Red-Brown+Amber",
+      "gallery": []
+    },
+    "specifications": {
+      "beadSize_mm": 10,
+      "beadCount": 27,
+      "totalWeight_grams": 32.4,
+      "clarityLevel": "A Grade",
+      "finish": "Machine-rounded and polished.",
+      "origin": "Hukawng Valley, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "In-house"
+    },
+    "amberDetails": {
+      "colorTier": "Red-Brown Amber",
+      "colorSlug": "red_brown",
+      "description": "A deep, warm blend of red and brown tones.",
+      "rarity": "Uncommon",
+      "specialNote": "Rich, earthy coloration.",
+      "basePricePerGram": 321
+    },
+    "inventory": {
+      "stock": 10,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "new-multicolor-necklace",
+    "sku": "VAG-MLT-N-1",
+    "name": "Multicolor Burmese Amber Necklace",
+    "category": "necklaces",
+    "material": "Amber",
+    "price": 69550,
+    "isNewArrival": true,
+    "story": "A celebration of diversity, this necklace showcases a spectrum of natural Burmese amber colors, from light honey to deep cherry red. Each bead is a unique piece of history.",
+    "energyProperties": ["Harmony", "Balance", "Joy", "Prosperity"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/C8A97E/2a2a2a?text=Multicolor+Amber",
+      "gallery": []
+    },
+    "specifications": {
+      "beadSize_mm": 10,
+      "totalWeight_grams": 65,
+      "clarityLevel": "Mixed Grades",
+      "finish": "Machine-rounded and polished.",
+      "origin": "Hukawng Valley, Myanmar"
+    },
+    "certification": {
+      "isCertified": false
+    },
+    "amberDetails": {
+      "colorTier": "Multicolor Amber",
+      "colorSlug": "multicolor",
+      "description": "A collection of various natural amber colors.",
+      "rarity": "Varies per bead",
+      "specialNote": "Highlights the natural diversity of Burmite.",
+      "basePricePerGram": 1070
+    },
+    "inventory": {
+      "stock": 3,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "new-root-amber-pendant",
+    "sku": "VAG-ROOT-P-1",
+    "name": "Root Amber Pendant with Silver Setting",
+    "category": "pendants",
+    "material": "Amber",
+    "price": 39911,
+    "isNewArrival": true,
+    "story": "This one-of-a-kind pendant features a stunning piece of Root Amber, known for its wood-like organic patterns. Set in 925 Sterling Silver.",
+    "energyProperties": ["Grounding", "Connection to Nature", "Stability"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/6B4F3A/FBF9F6?text=Root+Pendant",
+      "gallery": []
+    },
+    "specifications": {
+      "pendantMetal": "Silver",
+      "totalWeight_grams": 25,
+      "finish": "Polished cabochon",
+      "origin": "Hukawng Valley, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "In-house"
+    },
+    "amberDetails": {
+      "colorTier": "Root Amber",
+      "colorSlug": "root",
+      "description": "Opaque amber with wood-like patterns.",
+      "rarity": "Uncommon",
+      "specialNote": "Pattern is unique to each piece.",
+      "basePricePerGram": 1605
+    },
+    "inventory": {
+      "stock": 7,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "new-cherry-ring",
+    "sku": "VAG-CHY-R-1",
+    "name": "Pure Cherry Red Amber Ring",
+    "category": "rings",
+    "material": "Amber",
+    "price": 23005,
+    "isNewArrival": false,
+    "story": "Carved from a single piece of rare, translucent Cherry Red amber, this ring is a statement of pure, vibrant energy. Its glassy clarity is truly exceptional.",
+    "energyProperties": ["Passion", "Joy", "Artistic Inspiration"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/941C20/FBF9F6?text=Cherry+Ring",
+      "gallery": []
+    },
+    "specifications": {
+      "ringSize": "US 7 (customizable)",
+      "totalWeight_grams": 10,
+      "finish": "Polished",
+      "origin": "Hukawng Valley, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "GIT"
+    },
+    "amberDetails": {
+      "colorTier": "Cherry Red Amber",
+      "colorSlug": "cherry",
+      "description": "Translucent, cherry-like red.",
+      "rarity": "Very Rare",
+      "specialNote": "Carved from a solid piece.",
+      "basePricePerGram": 2301
+    },
+    "inventory": {
+      "stock": 4,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "decorative-fossil-coral",
+    "sku": "VAG-DFC-1",
+    "name": "Fossil Coral Decorative Sphere",
+    "category": "decorative-stones-fossil-coral",
+    "material": "Fossil Coral",
+    "price": 9095,
+    "isNewArrival": true,
+    "story": "A beautiful decorative sphere polished from fossil coral, showcasing ancient marine life patterns. A perfect piece for adding natural elegance to any space.",
+    "energyProperties": ["Grounding", "Change", "Peace"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/D1CFCB/4C433C?text=Fossil+Coral",
+      "gallery": []
+    },
+    "specifications": {
+      "totalWeight_grams": 350,
+      "finish": "Polished Sphere",
+      "origin": "Indonesia"
+    },
+    "certification": {
+      "isCertified": false
+    },
+    "inventory": {
+      "stock": 10,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "decorative-agate-slice",
+    "sku": "VAG-DAS-1",
+    "name": "Banded Agate Decorative Slice",
+    "category": "decorative-stones-agate",
+    "material": "Agate",
+    "price": 4494,
+    "isNewArrival": false,
+    "story": "A stunning, polished slice of banded agate on a custom stand. Its intricate layers reveal a story of geological time, bringing balance and harmony.",
+    "energyProperties": ["Balance", "Harmony", "Stability"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/7E6B64/FBF9F6?text=Agate+Slice",
+      "gallery": []
+    },
+    "specifications": {
+      "totalWeight_grams": 500,
+      "finish": "Polished Slice",
+      "origin": "Brazil"
+    },
+    "certification": {
+      "isCertified": false
+    },
+    "inventory": {
+      "stock": 12,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "p2-ruby-54",
+    "sku": "VAG-RBY-8-54",
+    "name": "Mogok Ruby Vitality Prayer Beads",
+    "category": "prayer-beads-54",
+    "material": "Ruby",
+    "price": 20223,
+    "bestseller": true,
+    "story": "Known as the \"Valley of Rubies,\" Mogok produces gemstones of unparalleled color. This 54-bead mala is believed to invigorate the life force, promoting courage and passion.",
+    "energyProperties": ["Vitality", "Courage", "Passion"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/A72643/FBF9F6?text=Mogok+Ruby",
+      "gallery": []
+    },
+    "specifications": {
+      "beadSize_mm": 8,
+      "beadCount": 54,
+      "totalWeight_grams": 54.0,
+      "clarityLevel": "A+ Grade",
+      "finish": "Machine-rounded and polished.",
+      "origin": "Mogok, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "GIT"
+    },
+    "inventory": {
+      "stock": 15,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "p4-sapphire-108",
+    "sku": "VAG-SPH-8-108",
+    "name": "Celestial Sapphire Wisdom Mala",
+    "category": "prayer-beads-108",
+    "material": "Sapphire",
+    "price": 101115,
+    "bestseller": false,
+    "story": "Prized by royalty for centuries, the blue sapphire is a symbol of wisdom and divine favor. These beads are ideal for deepening spiritual practice and seeking higher knowledge.",
+    "energyProperties": ["Wisdom", "Spirituality", "Prosperity"],
+    "media": {
+      "mainImageUrl": "https://placehold.co/600x600/2A4C88/FBF9F6?text=Sapphire",
+      "gallery": []
+    },
+    "specifications": {
+      "beadSize_mm": 8,
+      "beadCount": 108,
+      "totalWeight_grams": 151.2,
+      "clarityLevel": "A+ Grade",
+      "finish": "Faceted and polished.",
+      "origin": "Mogok, Myanmar"
+    },
+    "certification": {
+      "isCertified": true,
+      "authority": "GIA"
+    },
+    "inventory": {
+      "stock": 5,
+      "isAvailable": true
+    }
+  },
+  {
+    "id": "p7-dark-honey-27",
+    "sku": "VAG-DHK-12-27",
+    "name": "Classic Dark Honey Amber Hand Mala",
+    "category": "prayer-beads-27",
+    "material": "Amber",
+    "price": 5980,
+    "bestseller": false,
+    "story": "A beautiful and classic example of Burmese amber, this 27-bead hand mala showcases the desirable \"cloud swirl\" patterns. A perfect piece for daily mindfulness practice.",
+    "energyProperties": ["Grounding", "Warmth", "Balance"],
+    "media": {
+        "mainImageUrl": "https://placehold.co/600x600/B27732/FBF9F6?text=Dark+Honey",
+        "gallery": []
+    },
+    "specifications": {
+        "beadSize_mm": 12,
+        "beadCount": 27,
+        "totalWeight_grams": 48.6,
+        "clarityLevel": "B Grade (visible inclusions)",
+        "finish": "Machine-rounded and precisely polished.",
+        "origin": "Hukawng Valley, Myanmar"
+    },
+    "certification": {
+        "isCertified": true,
+        "authority": "In-house"
+    },
+    "amberDetails": {
+        "colorTier": "Dark Honey Amber (Cognac)",
+        "colorSlug": "dark_honey",
+        "description": "Deep golden-brown, commonly referred to as “Mekhong Whisky” color in Thailand.",
+        "rarity": "Very Common",
+        "specialNote": "Hand-selected for clarity and beautiful swirl patterns.",
+        "basePricePerGram": 123
+    },
+    "inventory": {
+        "stock": 20,
+        "isAvailable": true
+    }
+  }
+]
