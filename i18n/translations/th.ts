@@ -31,7 +31,7 @@ export const translations = {
     'nav_Roles_in_Religious_Practice': 'อำพันทางความเชื่อและศาสนา',
     'nav_Blogs': 'บทความ',
     'nav_Shop': 'สินค้า',
-    'nav_Custom_Jewelry': 'ประคำมือแบบซูจู',
+    'nav_Custom_Jewelry': 'ออกแบบประคำด้วยตัวเอง',
     'nav_Custom_Tesbih': 'ประคำอำพันศาสนาอิสลาม',
     'nav_Custom_Rosary': 'ประคำศาสนาคริสต์',
     'nav_Build_Amber_Set': 'ออกแบบกำไลและประคำด้วยตัวเอง',
@@ -40,7 +40,7 @@ export const translations = {
     'nav_Contact_Us': 'ติดต่อเรา',
     'nav_language_switcher_label': 'ภาษา',
     'nav_Glossary_of_Terms': 'อภิธานศัพท์',
-    'nav_Interactive_Prayer_Bead_Customizer': 'เครื่องมือปรับแต่งลูกประคำแบบโต้ตอบ',
+    'nav_Interactive_Prayer_Bead_Customizer': 'เครื่องมือปรับแต่งเม็ดประคำแบบเสมือนจริง',
     'nav_Custom_Juzu': 'จูซุสั่งทำ',
     'nav_GemTech_Pillar_Page': 'ข้อมูลเชิงลึก GemTech',
 
@@ -51,7 +51,7 @@ export const translations = {
     'Bestseller': 'สินค้ายอดนิยม',
 
     // --- Footer ---
-    'footer_address_title': 'วิกกี้ ลักซ์ เจมส์',
+    'footer_address_title': 'วิกกี้ ลักซ์เจมส์',
     'footer_address_detail': '919/1 อาคารจิวเวลรี่เทรดเซ็นเตอร์ ห้อง B1-BB038 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพฯ 10500',
     'footer_explore_title': 'สำรวจ',
     'footer_contact_title': 'ติดต่อเรา',
@@ -65,7 +65,7 @@ export const translations = {
     'footer_line': 'LINE',
     'footer_wechat': 'WeChat',
     'footer_follow_us_title': 'ติดตามเรา',
-    'footer_copyright': '© {{year}} บริษัท วิกกี้ เบอร์มีส แอมเบอร์ แอนด์ เจมส์ จำกัด สงวนลิขสิทธิ์ เลขประจำตัวผู้เสียภาษี: 0105560075361',
+    'footer_copyright': '© {{year}} บริษัท วิกกี้ เบอร์มีส แอมเบอร์ แอนด์ เจมส์ จำกัด / สงวนลิขสิทธิ์ เลขประจำตัวผู้เสียภาษี: 0105560075361',
     'footer_mobile_shop': 'สินค้า',
     'footer_mobile_preorder': 'สั่งทำ',
     'footer_mobile_blog': 'บทความ',
