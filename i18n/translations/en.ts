@@ -65,7 +65,7 @@ export const translations = {
     'footer_line': 'LINE',
     'footer_wechat': 'WeChat',
     'footer_follow_us_title': 'Follow Us',
-    'footer_copyright': '© {{year}} <brand> Co., Ltd. All Rights Reserved. Tax ID: 0105560075361',
+    'footer_copyright': '© {{year}} <Vicky Burmese Amber & Gems> Co., Ltd. All Rights Reserved. Tax ID: 0105560075361',
     'footer_mobile_shop': 'Shop',
     'footer_mobile_preorder': 'Pre-Order',
     'footer_mobile_blog': 'Blog',
