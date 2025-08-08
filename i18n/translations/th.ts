@@ -1,11 +1,11 @@
 export const translations = {
     // --- Header & Nav ---
     'nav_Home': 'หน้าหลัก',
-    'nav_About_Us_&_Policies': 'เกี่ยวกับเราและนโยบาย',
-    'nav_Our_Story': 'เรื่องราวของเรา',
-    'nav_Our_Guarantee': 'การรับประกันของเรา',
+    'nav_About_Us_&_Policies': 'เกี่ยวกับเราและนโยบายต่างๆ',
+    'nav_Our_Story': 'ความเป็นมา',
+    'nav_Our_Guarantee': 'การรับประกัน',
     'nav_How_to_Take_Care': 'วิธีดูแลรักษา',
-    'nav_Pre-Order_Policy': 'นโยบายการสั่งผลิต',
+    'nav_Pre-Order_Policy': 'นโยบายการสั่งทำชิ้นงาน',
     'nav_Shipping_&_Delivery_Policy': 'นโยบายการจัดส่ง',
     'nav_Warranty_Policy': 'นโยบายการรับประกัน',
     'nav_Return_Policy': 'นโยบายการคืนสินค้า',
@@ -18,23 +18,23 @@ export const translations = {
     'nav_How_Burmese_Amber_is_Formed': 'กระบวนการเกิดอำพันพม่า',
     'nav_Physical_&_Chemical_Properties': 'คุณสมบัติทางกายภาพและเคมี',
     'nav_Authenticate_Burmese_Amber': 'การพิสูจน์อำพันพม่าแท้',
-    'nav_The_Different_Types_of_Amber': 'ประเภทต่างๆ ของอำพัน',
+    'nav_The_Different_Types_of_Amber': 'อำพันพม่าชนิดต่างๆ',
     'nav_The_Variety_of_Colors_&_Tones': 'ความหลากหลายของสีและโทนสี',
     'nav_Use_in_the_Gems_Industry': 'การประยุกต์ใช้ในอุตสาหกรรมอัญมณี',
-    'nav_Comparisons_to_Other_Ambers': 'การเปรียบเทียบกับอำพันชนิดอื่น',
+    'nav_Comparisons_to_Other_Ambers': 'เปรียบเทียบกับอำพันชนิดอื่น',
     'nav_Comparisons_to_Other_Minerals': 'การเปรียบเทียบกับแร่ธาตุอื่น',
     'nav_Current_Availability': 'สถานะสินค้าในปัจจุบัน',
     'nav_Mining_Regulations_&_Restrictions': 'กฎระเบียบและข้อจำกัดการทำเหมือง',
-    'nav_Future_Trends': 'แนวโน้มในอนาคต',
+    'nav_Future_Trends': 'เทรนในอนาคต',
     'nav_Future_Tech_&_Amber': 'เทคโนโลยีและอนาคตของอำพัน',
     'nav_Roles_in_Current_Markets': 'บทบาทในตลาดปัจจุบัน',
-    'nav_Roles_in_Religious_Practice': 'บทบาทในความเชื่อและศาสนา',
+    'nav_Roles_in_Religious_Practice': 'อำพันทางความเชื่อและศาสนา',
     'nav_Blogs': 'บทความ',
     'nav_Shop': 'สินค้า',
-    'nav_Custom_Jewelry': 'เครื่องประดับสั่งทำ',
-    'nav_Custom_Tesbih': 'ตัสบีห์สั่งทำ',
-    'nav_Custom_Rosary': 'ประคำสั่งทำ',
-    'nav_Build_Amber_Set': 'สร้างชุดอำพัน',
+    'nav_Custom_Jewelry': 'ประคำมือแบบซูจู',
+    'nav_Custom_Tesbih': 'ประคำอำพันศาสนาอิสลาม',
+    'nav_Custom_Rosary': 'ประคำศาสนาคริสต์',
+    'nav_Build_Amber_Set': 'ออกแบบกำไลและประคำด้วยตัวเอง',
     'nav_Get_to_Know_GIT': 'ทำความรู้จัก GIT',
     'nav_FAQs': 'คำถามที่พบบ่อย',
     'nav_Contact_Us': 'ติดต่อเรา',
@@ -52,7 +52,7 @@ export const translations = {
 
     // --- Footer ---
     'footer_address_title': 'วิกกี้ ลักซ์ เจมส์',
-    'footer_address_detail': '919/1 อาคารจิวเวลรี่เทรดเซ็นเตอร์ ห้อง BB038 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพฯ 10500 ประเทศไทย',
+    'footer_address_detail': '919/1 อาคารจิวเวลรี่เทรดเซ็นเตอร์ ห้อง B1-BB038 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพฯ 10500',
     'footer_explore_title': 'สำรวจ',
     'footer_contact_title': 'ติดต่อเรา',
     'footer_vicky_direct_contact': 'ติดต่อคุณวิกกี้ (โดยตรง)',
@@ -65,7 +65,7 @@ export const translations = {
     'footer_line': 'LINE',
     'footer_wechat': 'WeChat',
     'footer_follow_us_title': 'ติดตามเรา',
-    'footer_copyright': '© {{year}} บริษัท วิกกี้ ลักซ์ เจมส์ จำกัด สงวนลิขสิทธิ์ เลขประจำตัวผู้เสียภาษี: 0105560075361',
+    'footer_copyright': '© {{year}} บริษัท วิกกี้ เบอร์มีส แอมเบอร์ แอนด์ เจมส์ จำกัด สงวนลิขสิทธิ์ เลขประจำตัวผู้เสียภาษี: 0105560075361',
     'footer_mobile_shop': 'สินค้า',
     'footer_mobile_preorder': 'สั่งทำ',
     'footer_mobile_blog': 'บทความ',
@@ -265,7 +265,7 @@ export const translations = {
     'order_confirmation_est_total_title': 'ยอดรวมโดยประมาณ',
 
     // --- Chatbot ---
-    'chatbot_system_prompt': `คุณคือ 'ผู้ช่วยอำพัน' ไกด์ AI ที่เป็นมิตรและมีความรู้สำหรับ 'Vicky Lux Gems' แบรนด์หรูที่เชี่ยวชาญด้านอำพันพม่าแท้คุณภาพสูงและอัญมณีล้ำค่าอื่นๆ 
+    'chatbot_system_prompt': `คุณคือ 'ผู้ช่วยอำพัน' ไกด์ AI ที่เป็นมิตรและมีความรู้สำหรับ 'Vicky LuxGems' แบรนด์หรูที่เชี่ยวชาญด้านอำพันพม่าแท้คุณภาพสูงและอัญมณีล้ำค่าอื่นๆ 
     เป้าหมายของคุณคือการช่วยเหลือผู้ใช้โดยการตอบคำถามเกี่ยวกับผลิตภัณฑ์ของเรา (เช่น เม็ดอำพัน, อัญมณี, เครื่องราง), ประวัติของอำพันพม่า, นโยบายของเรา (การจัดส่ง, การรับประกัน, ฯลฯ), วิธีการสั่งทำสินค้า, และประเภทและคุณภาพต่างๆ ของอำพันที่เรานำเสนอ
     รักษาโทนเสียงที่เป็นมืออาชีพ, หรูหรา, และเป็นประโยชน์ ทำให้คำตอบของคุณกระชับและเข้าใจง่าย
     หากคุณถูกถามคำถามที่ไม่สามารถตอบได้ตามบริบทของร้านอัญมณีระดับไฮเอนด์, โปรดตอบอย่างสุภาพว่าคุณเชี่ยวชาญด้านอัญมณีและอำพัน และแนะนำให้พวกเขาติดต่อฝ่ายสนับสนุนสำหรับคำถามอื่นๆ
@@ -537,7 +537,7 @@ export const translations = {
 
     // --- Construction Popup ---
     'popup_construction_title': 'ยินดีต้อนรับสู่เว็บไซต์ใหม่ของเรา!',
-    'popup_construction_body': 'ยินดีต้อนรับสู่เว็บไซต์ใหม่ของเรา! ขณะนี้เรากำลังพัฒนาระบบให้คุณสามารถออกแบบสร้อยข้อมืออำพันได้ด้วยตัวเอง ส่วนระบบการสั่งซื้อและการชำระเงินยังอยู่ระหว่างการปรับปรุง คุณสามารถทดลองใช้เครื่องมือ "ออกแบบสร้อยอำพัน" ได้แล้ววันนี้ หรือเยี่ยมชมเว็บไซต์หลักและเพจ Facebook ของเราเพื่อดูผลงานและข้อมูลเพิ่มเติม',
+    'popup_construction_body': 'ขณะนี้เรากำลังพัฒนาระบบให้คุณสามารถออกแบบสร้อยข้อมืออำพันได้ด้วยตัวเอง ส่วนระบบการสั่งซื้อและการชำระเงินยังอยู่ระหว่างการปรับปรุง คุณสามารถทดลองใช้เครื่องมือ "ออกแบบสร้อยอำพัน" ได้แล้ววันนี้ หรือเยี่ยมชมเว็บไซต์หลักและเพจ Facebook ของเราเพื่อดูผลงานและข้อมูลเพิ่มเติม',
     'popup_construction_btn1': 'เยี่ยมชมเว็บไซต์เดิมของเรา',
     'popup_construction_btn2': 'เยี่ยมชมหน้า Facebook',
     'popup_construction_btn3': 'สำรวจเว็บไซต์ใหม่',
