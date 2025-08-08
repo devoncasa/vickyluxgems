@@ -1,6 +1,5 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { Product, CartItem, BeadSize } from '../types';
-import { PRODUCTS } from '../constants';
 import { calculateFinalPrice } from '../utils/priceLogic';
 
 interface AppContextType {
@@ -22,9 +21,16 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
-    const [products, setProducts] = useState<Product[]>(PRODUCTS);
+    const [products, setProducts] = useState<Product[]>([]);
     const [cart, setCart] = useState<CartItem[]>([]);
     const [usdtExchangeRate, setUsdtExchangeRate] = useState<number>(36.50);
+
+    useEffect(() => {
+        fetch('/data/products.json')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+            .catch(err => console.error("Failed to fetch products:", err));
+    }, []);
     
     const addProduct = (newProduct: Product) => {
         setProducts(prevProducts => [newProduct, ...prevProducts]);

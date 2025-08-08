@@ -1,11 +1,11 @@
-
 import React from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
-import { useLanguage } from '../i18n/LanguageContext';
-import { NAV_LINKS, PRODUCTS, BLOG_POSTS } from '../constants';
-import { NavLink as NavLinkType } from '../types';
-import { ChevronRightIcon } from './IconComponents';
-import JsonLd from './JsonLd';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { NAV_LINKS, BLOG_POSTS } from '../constants.ts';
+import { NavLink as NavLinkType } from '../types.ts';
+import { ChevronRightIcon } from './IconComponents.tsx';
+import JsonLd from './JsonLd.tsx';
+import { useAppContext } from '../context/AppContext.tsx';
 
 const findNameForPath = (path: string, links: NavLinkType[]): string | null => {
     for (const link of links) {
@@ -21,6 +21,7 @@ const findNameForPath = (path: string, links: NavLinkType[]): string | null => {
 const Breadcrumbs: React.FC = () => {
     const location = ReactRouterDOM.useLocation();
     const { t } = useLanguage();
+    const { products } = useAppContext();
 
     const getTranslationKey = (name: string) => `nav_${name.replace(/ /g, '_')}`;
 
@@ -42,7 +43,7 @@ const Breadcrumbs: React.FC = () => {
             // Handle dynamic segments
             const prevSegment = index > 0 ? pathnames[index - 1] : null;
             if (prevSegment === 'collection') {
-                const product = PRODUCTS.find(p => p.id === segment);
+                const product = products.find(p => p.id === segment);
                 name = product ? product.name : "Product";
             } else if (prevSegment === 'blog') {
                 const post = BLOG_POSTS.find(p => p.id === segment);
