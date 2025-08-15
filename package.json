@@ -18,6 +18,8 @@
     "vite": "^5.3.5"
   },
   "devDependencies": {
+    "@stackbit/cms-git": "^1.0.0",
+    "@stackbit/types": "^1.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0"
   }

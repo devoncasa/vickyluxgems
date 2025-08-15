@@ -64,7 +64,9 @@
     "react-router-dom": "https://esm.sh/react-router-dom@^7.6.3",
     "html-to-image": "https://esm.sh/html-to-image@^1.11.13",
     "vite": "https://esm.sh/vite@^7.0.6",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^4.7.0"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^4.7.0",
+    "@stackbit/types": "https://esm.sh/@stackbit/types@^2.1.14",
+    "@stackbit/cms-git": "https://esm.sh/@stackbit/cms-git@^1.0.35"
   }
 }
 </script>
@@ -1927,6 +1929,7 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
   window.addEventListener('hashchange', ()=>{ /* no-op */ });
 })();
 </script>
+
 <style>
 /* ===== Static Hero (no slide) for HOME only ===== */
 [data-hero-static="1"]{
@@ -2034,6 +2037,38 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
 
   document.addEventListener('DOMContentLoaded', run);
   window.addEventListener('hashchange', run);
+})();
+</script>
+<script>
+/* Runtime binder: swaps hero texts from /content JSON based on current URL (HashRouter aware) */
+(function(){
+  function currentPath(){
+    // Support HashRouter: "#/route" → "/route"
+    const hash = location.hash || "";
+    if (hash.startsWith("#/")) return hash.slice(1).replace(/\/+$/,"") || "/";
+    return (location.pathname.replace(/\/+$/,"") || "/");
+  }
+  function pathToSlug(p){
+    if (p === "/") return "home";
+    return p.replace(/^\/+/,"").replace(/\//g,"-"); // "/amber/history" -> "amber-history"
+  }
+  async function apply(){
+    const p = currentPath();
+    const slug = pathToSlug(p);
+    const url = `/content/pages/${slug}.json`;
+    try{
+      const res = await fetch(url, { cache:"no-store" });
+      if (!res.ok) return;
+      const data = await res.json();
+      const h1 = document.querySelector(".hero-headline, main h1, h1");
+      const sub = document.querySelector(".hero-subheadline, .subtitle, main h2");
+      if (data.heroTitle && h1) h1.textContent = data.heroTitle;
+      if (data.heroSubtitle && sub) sub.textContent = data.heroSubtitle;
+      document.title = data.title ? `${data.title} — Vicky LuxGems` : document.title;
+    }catch(e){}
+  }
+  document.addEventListener("DOMContentLoaded", apply);
+  window.addEventListener("hashchange", apply);
 })();
 </script>
   </body>
