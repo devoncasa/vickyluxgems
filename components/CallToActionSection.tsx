@@ -1,6 +1,6 @@
 
 import React from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface CallToActionSectionProps {
   title: string;
@@ -31,9 +31,9 @@ const CallToActionSection: React.FC<CallToActionSectionProps> = ({
           {subtitle}
         </p>
         <div className="mt-8">
-          <ReactRouterDOM.Link to={buttonLink} className="inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg text-lg">
+          <Link to={buttonLink} className="inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg text-lg">
             {buttonText}
-          </ReactRouterDOM.Link>
+          </Link>
         </div>
       </div>
     </div>

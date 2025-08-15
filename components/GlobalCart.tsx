@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
-import { useAppContext } from '../context/AppContext';
-import { CartIcon, CloseIcon } from './IconComponents';
+import { useAppContext } from '../context/AppContext.tsx';
+import { CartIcon, CloseIcon } from './IconComponents.tsx';
 
 const formatCurrency = (amount: number) => `฿${amount.toLocaleString('en-US')}`;
 

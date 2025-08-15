@@ -61,6 +61,7 @@ export interface ShopCategory {
   name: string;
   slug: string;
   subCategories?: ShopCategory[];
+  material?: Material;
 }
 
 

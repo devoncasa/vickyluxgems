@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="algolia-site-verification"  content="0EE8FC782BF450F3" />
     <title>Vicky LuxGems | Authentic Precious Gems & Timeless Knowledge</title>
-    <link rel="icon" type="image/webp" href="https://raw.githubusercontent.com/devoncasa/VickyLuxGems-Assets/refs/heads/main/vkluxgem%20logo%20smll.webp" />
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/devoncasa/VickyLuxGems-Assets/refs/heads/main/vkluxgem%20logo%20smll.webp" />
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/devoncasa/VickyLuxGems-Assets/refs/heads/main/vkluxgem%20logo%20smll.webp" />
+    <link rel="icon" type="image/webp" href="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" />
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" />
     <!-- Google Analytics (gtag.js) + Soft Consent Mode -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -148,25 +148,26 @@
     </style>
     <style>
       :root {
-        /* Luminous Earth Color Palette */
-        --c-bg: #FDFBF8; /* Primary Background: Soft Cream */
-        --c-surface: #F8F5F2;
-        --c-surface-alt: #F0EBE6;
+        /* Luminous Earth Color Palette (NEW) */
+        --c-bg: #FFF8E7; /* Primary Background: Light Golden Cream */
+        --c-surface: #FFF8E7; /* Solid for UI elements */
+        --c-surface-alt: #F5F1ED; /* Subtle off-white for highlights */
         --c-footer-bg: #3D352E;
         --c-footer-text: #EAE3DA;
         --c-img-placeholder-bg: #EAE0D5;
 
-        --c-heading: #5D4037; /* Primary Dark Text: Rich Earth */
-        --c-text-primary: #5D4037; /* Primary Dark Text: Rich Earth */
-        --c-text-secondary: #8D6E63;
-        --c-heading-on-dark: #F5F5DC; /* Primary Light Text: Luminous Cream */
+        --c-heading: #3B2A1E; /* Primary Dark Text: Rich Earth */
+        --c-text-primary: #3B2A1E; /* Primary Dark Text: Rich Earth */
+        --c-text-secondary: #A18A52; /* Lighter Rich Earth/Gold */
+        --c-heading-on-dark: #FDFDFD; /* Primary Light Text: Luminous Cream */
+        --c-text-on-dark: #FDFDFD; /* Secondary Light Text: Pure White */
 
         --c-border: rgba(93, 64, 55, 0.15);
         --c-border-muted: #B49B5E; /* Primary Accent: Antique Gold */
         --c-accent-primary: #904a21; /* Secondary Accent: Deep Cognac */
         --c-accent-primary-hover: #824D33; /* Darker Cognac */
         --c-accent-secondary: #B49B5E; /* Primary Accent: Antique Gold */
-        --c-accent-secondary-hover: #A1887F; /* Darker Gold/Clay */
+        --c-accent-secondary-hover: #A18A52; /* Darker Gold */
 
         --c-builder-text: #5D4037;
       }
@@ -191,27 +192,17 @@
           -webkit-text-fill-color: transparent;
       }
       .page-container-with-bg {
-        background-image: var(--dynamic-background-image);
-        background-color: var(--c-bg);
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        position: relative;
+        /* This class is now just a layout container. Background is handled by body. */
+        background-color: transparent;
       }
       /* CSS FIX: Explicitly lift the content layer above the overlay */
       .page-container-with-bg > * {
         position: relative;
         z-index: 2;
       }
-      /* CSS FIX: Removed dark overlay to preserve background vibrancy */
       .page-container-with-bg::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: 1; /* Sits on top of parent background, below content */
-        /* background-color: rgba(61, 53, 46, 0.85); -- REMOVED */
-        -webkit-backdrop-filter: blur(4px);
-        backdrop-filter: blur(4px);
+        /* This pseudo-element is no longer needed as the body::after handles the veil */
+        content: none;
       }
       .bg-\[var\(--c-surface\)\] {
           border: 1px solid var(--c-border-muted);
@@ -227,7 +218,7 @@
         text-shadow: 0 1px 4px rgba(0,0,0,0.5);
       }
       .dark-context p, .dark-context li, .dark-context span, .dark-context address, .dark-context a {
-        color: #FFFFFF;
+        color: var(--c-text-on-dark);
         text-shadow: 0 1px 3px rgba(0,0,0,0.5);
       }
       .dark-context p, .dark-context li, .dark-context address { opacity: 0.95; }
@@ -255,17 +246,17 @@
           --tw-prose-invert-bold: #fff;
       }
       .dark-context .prose {
-          --tw-prose-body: #FFFFFF;
+          --tw-prose-body: var(--c-text-on-dark);
           --tw-prose-headings: var(--c-heading-on-dark);
-          --tw-prose-lead: #EAE3DA;
-          --tw-prose-links: #F5F5DC;
-          --tw-prose-bold: #FFFFFF;
-          --tw-prose-counters: #EAE3DA;
-          --tw-prose-bullets: #F5F5DC;
+          --tw-prose-lead: var(--c-heading-on-dark);
+          --tw-prose-links: var(--c-border-muted);
+          --tw-prose-bold: var(--c-text-on-dark);
+          --tw-prose-counters: var(--c-text-on-dark);
+          --tw-prose-bullets: var(--c-heading-on-dark);
           --tw-prose-hr: rgba(245, 245, 220, 0.2);
-          --tw-prose-quotes: #F5F5DC;
-          --tw-prose-quote-borders: #B49B5E;
-          --tw-prose-captions: #EAE3DA;
+          --tw-prose-quotes: var(--c-heading-on-dark);
+          --tw-prose-quote-borders: var(--c-border-muted);
+          --tw-prose-captions: var(--c-text-on-dark);
       }
 
       .prose p { margin-bottom: 1.25em; }
@@ -346,7 +337,7 @@
           z-index: 10;
           max-width: 48rem;
           text-align: center;
-          background: rgba(253, 251, 248, 0.6);
+          background: rgba(253, 251, 248, 0.4);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           padding: 2.5rem 2rem;
@@ -483,6 +474,15 @@
         background-color: rgba(61, 53, 46, 0.92); /* Dark overlay based on --c-footer-bg */
       }
       
+      /* --- Footer Social Icon Effect --- */
+      .social-links img {
+        filter: grayscale(1) brightness(3.5); /* Make icons very light monochrome */
+        transition: filter 0.3s cubic-bezier(.2,.8,.2,1);
+      }
+      .social-links a:hover img {
+        filter: none; /* Return to original color on hover */
+      }
+
       .custom-select, select:not(.custom-slider) {
         background-color: #F5F5DC; color: var(--c-text-primary); border: 2px solid var(--c-border);
         border-radius: 0.5rem; padding: 0.75rem;
@@ -576,8 +576,54 @@
           -webkit-text-fill-color: transparent;
       }
       
+      /* --- Wrist Guide Modal --- */
+      .popup-link{
+        display:inline-flex;align-items:center;gap:.5rem;
+        padding:.45rem .9rem;border:none;cursor:pointer;
+        background:var(--c-accent-primary);color:#fff;border-radius:.5rem;
+        font-size:.9rem;font-weight:600;text-decoration:none;
+        transition:background .2s cubic-bezier(.2,.8,.2,1),transform .2s;
+      }
+      .popup-link:hover{ background:var(--c-accent-primary-hover);transform:translateY(-1px); }
+
+      .gold-inner{ position:relative; }
+      .gold-inner::after{
+        content:"";position:absolute;inset:4px;border:2px solid var(--c-accent-secondary);
+        border-radius:inherit;pointer-events:none;opacity:.95;
+      }
+
+      .vk-modal{ position:fixed; inset:0; display:none; z-index:999;
+        background:rgba(0,0,0,.6); align-items:flex-start; justify-content:center; padding:5vh 16px;
+      }
+      .vk-modal[aria-hidden="false"]{ display:flex; }
+
+      .vk-modal__panel{
+        width:min(560px, 100%); border-radius:1rem; padding:clamp(16px,4vw,28px);
+        border:1px solid rgba(180, 89, 94, .12);
+        background: rgba(255, 248, 231, 0.85);
+        backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+        box-shadow:0 24px 48px rgba(0,0,0,.20);
+        color:var(--c-text-primary); position:relative;
+      }
+      @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+        .vk-modal__panel{ background:rgba(255, 248, 231, 0.95); }
+      }
+      @media(max-width:767px){
+        .vk-modal__panel{ backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(255, 248, 231, 0.98); }
+      }
+
+      .vk-modal__title{ font-size:1.2rem; margin:0 0 .5rem; color:var(--c-heading); }
+      .vk-modal__content p{ margin:.6rem 0; line-height:1.65; }
+
+      .vk-modal__close{
+        position:absolute; top:10px; right:12px; font-size:1.5rem; line-height:1;
+        background:transparent; border:none; color:var(--c-heading);
+        cursor:pointer; padding:.25rem .5rem; border-radius:.5rem;
+      }
+      .vk-modal__close:hover{ background:rgba(0,0,0,.06); }
+
       .content-page-block {
-        background-color: rgba(253, 251, 248, 0.6);
+        background-color: rgba(253, 251, 248, 0.5);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid var(--c-border-muted);
@@ -585,7 +631,7 @@
       }
       
       .content-page-block--dark {
-        background-color: rgba(61, 53, 46, 0.75); /* Semi-transparent Rich Earth */
+        background-color: rgba(61, 53, 46, 0.5); /* Semi-transparent Rich Earth */
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         border: 1px solid var(--c-border-muted);
@@ -593,7 +639,7 @@
       }
 
       .blog-content-block {
-        background-color: rgba(253, 251, 248, 0.6);
+        background-color: rgba(253, 251, 248, 0.4);
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
         border: 1px solid var(--c-border-muted);
@@ -1029,11 +1075,966 @@
         padding-top: 0.5rem;
         border-top: 1px dashed var(--c-border);
       }
+
+      /* --- NEW LANDING PAGE CSS PATCH --- */
+      /* --- Keyframes & Animations --- */
+      @keyframes shimmer {
+        0%   { box-shadow: inset 0 0 0 2px var(--c-accent-secondary); }
+        50%  { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8), inset 0 0 0 4px var(--c-accent-secondary); }
+        100% { box-shadow: inset 0 0 0 2px var(--c-accent-secondary); }
+      }
+      
+      /* --- Layout & Base Styles --- */
+      .container { max-width: 1320px; margin-inline: auto; padding-inline: clamp(24px, 6vw, 80px); }
+      .grid-2-3-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: clamp(16px,3vw,28px); }
+      @media(min-width: 640px) { .grid-2-3-4 { grid-template-columns: repeat(2, 1fr); } }
+      @media(min-width: 768px) { .grid-2-3-4 { grid-template-columns: repeat(3, 1fr); } }
+      @media(min-width: 1024px) { .grid-2-3-4 { grid-template-columns: repeat(4, 1fr); } }
+
+      .lp-card { 
+        border: 1px solid var(--c-border);
+        border-radius:.9rem;
+        box-shadow:0 2px 0 rgba(0,0,0,.04),0 24px 32px rgba(0,0,0,.06);
+        transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s cubic-bezier(.2,.8,.2,1);
+        text-decoration: none;
+      }
+      .lp-card:hover { transform:translateY(-3px); }
+      .lp-cta { display: inline-block; text-decoration: none; background:var(--c-accent-primary);color:#fff;border-radius:.6rem;padding:.8rem 1.4rem;transition:background .2s cubic-bezier(.2,.8,.2,1);}
+      .lp-cta:hover { background:var(--c-accent-primary-hover); }
+
+      /* --- Hero Section --- */
+      .lp-hero { position:relative; isolation:isolate; }
+      .lp-hero .glass { 
+        background-color: rgba(253, 251, 248, 0.4);
+        backdrop-filter:blur(12px); 
+        -webkit-backdrop-filter:blur(12px); 
+        border:1px solid rgba(180, 155, 94, .12); 
+        border-radius:1rem; 
+        padding:clamp(20px,4vw,40px); 
+      }
+      .lp-hero .hero-logo { max-height: 80px; width: auto; margin: 0 auto 1rem; }
+      .hero-parallax-wrapper { position: absolute; inset: 0; z-index: -1; }
+      .hero-parallax-bg { width: 100%; height: 100%; will-change: transform; transition: transform 0.2s ease-out; }
+
+      /* --- Cognac section styles --- */
+      .lp-section {
+        position: relative;
+        margin-block: 0 !important;
+        padding-block: clamp(40px, 8vw, 96px);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+      .lp-section .container {
+        position: relative;
+        z-index: 2;
+      }
+      .lp-section-dark { background: linear-gradient(rgba(255, 248, 231, 0.3), rgba(255, 248, 231, 0.3)), rgba(93, 64, 55, 0.3); color: var(--c-heading-on-dark); }
+      .lp-section-light { background: linear-gradient(rgba(255, 248, 231, 0.3), rgba(255, 248, 231, 0.3)), rgba(169, 124, 80, 0.3); }
+      .lp-section-dark h2, .lp-section-dark h3, .lp-section-dark .font-semibold, .lp-section-dark .trust-badge span { color: var(--c-heading-on-dark); text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+      .lp-section-dark .section-divider-inner { background: linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent); }
+      .lp-section-dark .lp-cta { background-color: var(--c-bg); color: var(--c-heading); }
+      .lp-section-dark .lp-cta:hover { background-color: #fff; }
+      .lp-section-dark .product-card-sacred, .lp-section-dark .lp-card { background-color: rgba(61, 53, 46, 0.4); border-color: rgba(245, 245, 220, 0.3); color: var(--c-footer-text); }
+      .lp-section-dark .product-card-sacred__title, .lp-section-dark .product-card-sacred__price, .lp-section-dark .lp-card h3 { color: var(--c-text-on-dark); }
+
+      /* --- Golden Frames & Interactions --- */
+      .gold-frame { box-shadow: inset 0 0 0 2px var(--c-accent-secondary); border-radius: inherit; }
+      .gold-frame-button:hover, .gold-frame-button:focus-visible { animation: shimmer 0.6s cubic-bezier(.2,.8,.2,1); }
+      .lp-card:hover .gold-frame { animation: shimmer 0.6s cubic-bezier(.2,.8,.2,1); }
+      .lp-section .lp-cta, .lp-section .btn-sacred-primary, .lp-section .btn-sacred-secondary { box-shadow: inset 0 0 0 2px var(--c-accent-secondary); }
+      
+      /* --- Trust Strip --- */
+      .trust-strip { display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+      .trust-badge { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 150px; }
+      .trust-badge svg { width: 40px; height: 40px; margin-bottom: 0.5rem; }
+      .trust-badge span { font-size: 0.875rem; font-weight: 600; line-height: 1.3; }
+
+      /* --- Lazy Load Animation --- */
+      .lazy-image { opacity: 0; transition: opacity 0.8s cubic-bezier(.2,.8,.2,1); }
+      .lazy-image.visible { opacity: 1; }
+      
+      /* --- MOBILE FOREGROUND VISIBILITY FIX PACK (MERGED) --- */
+      /* 1) Establish safe stacking layers */
+      .lp-hero, .lp-section { position: relative; z-index: 0; }
+
+      /* Decorative backgrounds UNDER content (and untouchable) */
+      .lp-hero::before,
+      .section-bg,
+      [data-decorative-bg],
+      .section-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none; /* never block taps */
+      }
+
+      /* Foreground elements ABOVE */
+      .lp-hero .glass,
+      .lp-section .container, /* This covers content, lp-card, lp-cta etc. */
+      .lp-section .content,
+      .lp-section .lp-card,
+      .lp-section .lp-cta,
+      .lp-section .prose,
+      .lp-section .tiles,
+      .lp-section .icons-row {
+        position: relative;
+        z-index: 2;
+      }
+      
+      /* 2) Mobile-safe glass fallback */
+      .glass { /* This is a global glass helper class */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .lp-hero .glass, .glass {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background: rgba(255, 248, 231, 0.86);
+          border: 1px solid rgba(180, 155, 94, .14);
+        }
+      }
+      
+      @media (max-width: 767px) {
+        .lp-hero .glass, .glass {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background: rgba(255, 248, 231, 0.88);
+        }
+        /* 3) Header not overlapping hero text */
+        .lp-hero .glass { 
+          margin-top: clamp(12px, 4vh, 32px);
+        }
+      }
+      
+      /* 3) Header not overlapping hero text (global) */
+      .main-header { z-index: 50; }
+
+      /* 4) On dark imagery, force legible text */
+      .on-dark, .on-dark h1, .on-dark h2, .on-dark p, .on-dark a {
+        color: var(--c-heading-on-dark);
+      }
+      .on-dark p, .on-dark a { color: var(--c-text-on-dark); }
+
+
+      /* 5) Ensure overlays are purely decorative */
+      .section-overlay {
+        background:
+          linear-gradient(to bottom, rgba(255, 248, 231, 0.30), rgba(255, 248, 231, 0.30)),
+          rgba(144,74,33,0.30); /* white fade + cognac wash */
+      }
+
+      /* --- NEW: Save Design Snapshot Styles --- */
+      .vlg-save-btn{
+        display:inline-flex;align-items:center;gap:.5rem;
+        padding:.6rem 1rem;border:none;cursor:pointer;
+        background:var(--c-accent-primary);color:#fff;border-radius:.6rem;
+        font-weight:700;transition:background .2s cubic-bezier(.2,.8,.2,1),transform .2s;
+      }
+      .vlg-save-btn:hover{ background:var(--c-accent-primary-hover); transform:translateY(-1px); }
+
+      .vlg-modal{ position:fixed; inset:0; display:none; z-index:999;
+        background:rgba(0,0,0,.60); align-items:center; justify-content:center; padding:6vh 16px; }
+      .vlg-modal[aria-hidden="false"]{ display:flex; }
+
+      .vlg-panel{
+        width:min(720px,100%); border-radius:1rem; padding:clamp(18px,4vw,28px);
+        border:1px solid rgba(180, 155, 94, .12);
+        background: rgba(255, 248, 231, 0.85);
+        backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+        box-shadow:0 24px 48px rgba(0,0,0,.20); color:var(--c-text-primary); position:relative;
+      }
+      @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+        .vlg-panel{ background:rgba(255, 248, 231, 0.95); }
+      }
+      @media(max-width:767px){ .vlg-panel{ backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(255, 248, 231, 0.98); } }
+
+      .vlg-title{ margin:0 0 .75rem; font-size:1.2rem; color:var(--c-heading); }
+      .vlg-note{ margin:.5rem 0 1rem; }
+
+      .vlg-preview-wrap{
+        border:1px solid var(--c-border); border-radius:.75rem;
+        background:#fff; overflow:hidden; min-height:160px; display:flex; align-items:center; justify-content:center;
+      }
+      #designSnapshot{ display:block; width:100%; height:auto; }
+      .vlg-preview-placeholder{ color:var(--c-text-secondary); padding:1rem; }
+
+      .vlg-actions{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+      .vlg-btn{
+        display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+        padding:.6rem 1rem; border-radius:.6rem; text-decoration:none; font-weight:700;
+        transition:transform .2s cubic-bezier(.2,.8,.2,1), background .2s;
+      }
+      .vlg-btn--primary{ background:var(--c-accent-primary); color:#fff; }
+      .vlg-btn--primary:hover{ background:var(--c-accent-primary-hover); transform:translateY(-1px); }
+      .vlg-btn--ghost{ background:transparent; color:var(--c-accent-primary); border:1px solid var(--c-accent-secondary); }
+      .vlg-btn--ghost:hover{ background:rgba(144,74,33,.06); }
+
+      .vlg-close{
+        position:absolute; top:10px; right:12px; font-size:1.5rem; line-height:1;
+        background:transparent; border:none; color:var(--c-heading);
+        cursor:pointer; padding:.25rem .5rem; border-radius:.5rem;
+      }
+      .vlg-close:hover{ background:rgba(0,0,0,.06); }
+
+      .vlg-help{ display:block; margin-top:.5rem; color:var(--c-text-secondary); }
+
+      /* --- NEW Tabbed Interface Styles --- */
+      .tab-container {
+        border-bottom: 2px solid var(--c-border);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin; /* Firefox */
+        scrollbar-color: var(--c-accent-secondary) var(--c-surface-alt); /* Firefox */
+      }
+      .tab-container::-webkit-scrollbar {
+          height: 6px;
+      }
+      .tab-container::-webkit-scrollbar-track {
+          background: var(--c-surface-alt);
+      }
+      .tab-container::-webkit-scrollbar-thumb {
+          background-color: var(--c-accent-secondary);
+          border-radius: 6px;
+      }
+      .tab-list {
+          display: flex;
+          flex-wrap: nowrap;
+          white-space: nowrap;
+      }
+      .tab-button {
+          padding: 1rem 1.5rem;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          color: var(--c-text-secondary);
+          border-bottom: 3px solid transparent;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+      }
+      .tab-button:hover {
+          color: var(--c-accent-primary-hover);
+          background-color: rgba(144, 74, 33, 0.05);
+      }
+      .tab-button.active {
+          color: var(--c-heading);
+          border-bottom-color: var(--c-accent-secondary);
+          background-color: rgba(180, 155, 94, 0.08);
+      }
+      .tab-content {
+          padding: 2.5rem 0;
+          animation: fadeInContent 0.5s ease-out;
+      }
+      @keyframes fadeInContent {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
     </style>
   <link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+
+    <!-- === Wrist Size Guide Button (bilingual, single-language view) === -->
+    <style>
+    .vlg-wrist-link {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.48rem 0; border:none; cursor:pointer;
+      background:transparent; color:#1d4ed8; /* blue-700 */
+      font-size:.92rem; font-weight:700; text-decoration:none;
+      transition:text-decoration .2s;
+    }
+    .vlg-wrist-link:hover { text-decoration: underline; }
+
+    /* Modal shell (reuses your glass look + safe fallbacks) */
+    #vlgWristModal { position:fixed; inset:0; display:none; z-index:999;
+      background:rgba(0,0,0,.60); align-items:center; justify-content:center; padding:6vh 16px; }
+    #vlgWristModal[aria-hidden="false"] { display:flex; }
+    #vlgWristModal .panel {
+      width:min(560px,100%); border-radius:1rem; padding:clamp(18px,4vw,28px);
+      border:1px solid rgba(180, 155, 94, .12);
+      background: rgba(255, 248, 231, 0.85);
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      box-shadow:0 24px 48px rgba(0,0,0,.20); color:var(--c-text-primary); position:relative;
+    }
+    @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+      #vlgWristModal .panel { background:rgba(255, 248, 231, 0.95); }
+    }
+    @media (max-width:767px){
+      #vlgWristModal .panel { backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(255, 248, 231, 0.98); }
+    }
+    #vlgWristModal .close {
+      position:absolute; top:10px; right:12px; font-size:1.5rem; line-height:1;
+      background:transparent; border:none; color:var(--c-heading); cursor:pointer; padding:.25rem .5rem; border-radius:.5rem;
+    }
+    #vlgWristModal .close:hover { background:rgba(0,0,0,.06); }
+    #vlgWristModal .title { font-size:1.15rem; margin:0 0 .5rem; color:var(--c-heading); }
+    #vlgWristModal .content p { margin:.6rem 0; line-height:1.65; }
+
+    /* Hide/show per language */
+    [lang-block] { display:none; }
+    [lang-block].is-active { display:block; }
+    </style>
+
+    <!-- Modal (injected once) -->
+    <div id="vlgWristModal" role="dialog" aria-modal="true" aria-labelledby="vlgWristTitle" aria-hidden="true">
+      <div class="panel" role="document" tabindex="-1">
+        <button class="close" aria-label="Close">&times;</button>
+        <h2 id="vlgWristTitle" class="title">📏</h2>
+        <div class="content" aria-live="polite">
+          <!-- THAI -->
+          <div lang-block="th">
+            <p><strong>ภาษาไทย:</strong> ใช้สายวัด หรือกระดาษตัดเป็นแผ่นเล็กๆ ยาวพอที่พันรอบข้อมือในตำแหน่งที่เล็กที่สุด โดยที่ไม่แน่นจนเกินไป
+            (<em>ไม่ต้องวัดขนาดเผื่อ</em> เพราะทางร้านจะมีสูตรสำหรับขนาดแต่ละข้อมือให้ใส่ได้แบบพอดีกับหลวมในสไตล์ที่ผู้หญิงใส่)
+            จากนั้นจดตัวเลขที่ได้ และนำมาปรับแต่งกับขนาดในโปรแกรม</p>
+          </div>
+          <!-- ENGLISH -->
+          <div lang-block="en">
+            <p><strong>English:</strong> Use a measuring tape or cut a thin strip of paper long enough to wrap around the
+            smallest part of your wrist. Keep it snug but not tight. <em>Do not add extra allowance</em>—our workshop applies
+            a fit formula so your amber bracelet wears comfortably with a feminine, slightly loose style. Write down the number
+            you get and adjust/select that size in the builder.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    /* Injects "How to measure" links and wires up the modal */
+    (function(){
+      function findTargetAfterHeading(){
+        const headings = Array.from(document.querySelectorAll('h1,h2,h3,h4'));
+        const th = headings.find(h => /กำหนดขนาดข้อมือของคุณ/.test(h.textContent || ''));
+        if (th) return th;
+        return document.querySelector('#braceletSizeStep, .bracelet-size-step') || null;
+      }
+
+      function ensureAndWireLinks(){
+        if (document.getElementById('vlgWristLinkContainer')) return;
+        const target = findTargetAfterHeading();
+        if (!target) return;
+
+        const container = document.createElement('div');
+        container.id = 'vlgWristLinkContainer';
+        container.style.display = 'flex';
+        container.style.gap = '1.5rem';
+        container.style.alignItems = 'center';
+
+        const thLink = document.createElement('button');
+        thLink.className = 'vlg-wrist-link';
+        thLink.type = 'button';
+        thLink.setAttribute('aria-haspopup','dialog');
+        thLink.setAttribute('aria-controls','vlgWristModal');
+        thLink.innerHTML = '📏 วิธีวัดขนาดข้อมือ';
+
+        const enLink = document.createElement('button');
+        enLink.className = 'vlg-wrist-link';
+        enLink.type = 'button';
+        enLink.setAttribute('aria-haspopup','dialog');
+        enLink.setAttribute('aria-controls','vlgWristModal');
+        enLink.innerHTML = '📏 How to Measure Your Wrist';
+        
+        container.appendChild(thLink);
+        container.appendChild(enLink);
+
+        if (target.parentNode) {
+          target.parentNode.insertBefore(container, target.nextSibling);
+        }
+        
+        const modal = document.getElementById('vlgWristModal');
+        if (!modal) return;
+        const panel = modal.querySelector('.panel');
+        const closeBtn = modal.querySelector('.close');
+        let lastFocus = null;
+
+        function open(langToShow){
+          lastFocus = document.activeElement;
+          modal.setAttribute('aria-hidden','false');
+          
+          modal.querySelector('#vlgWristTitle').textContent =
+            (langToShow === 'en') ? '📏 How to Measure Your Wrist' : '📏 วิธีวัดขนาดข้อมือ';
+
+          modal.querySelectorAll('[lang-block]').forEach(el => {
+            el.classList.toggle('is-active', el.getAttribute('lang-block') === langToShow);
+          });
+          
+          if(panel) {
+            panel.setAttribute('tabindex','-1');
+            panel.focus({preventScroll:true});
+          }
+          document.body.style.overflow = 'hidden';
+        }
+
+        function close(){
+          modal.setAttribute('aria-hidden','true');
+          document.body.style.overflow = '';
+          if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        }
+
+        thLink.addEventListener('click', () => open('th'));
+        enLink.addEventListener('click', () => open('en'));
+
+        if(closeBtn) closeBtn.addEventListener('click', close);
+        modal.addEventListener('click', e => { if (e.target === modal) close(); });
+        window.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.getAttribute('aria-hidden')==='false') close(); });
+
+        modal.addEventListener('keydown', e => {
+          if (e.key !== 'Tab' || !panel) return;
+          const list = Array.from(panel.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'))
+            .filter(el => !el.hasAttribute('disabled'));
+          if (!list.length) return;
+          const first = list[0], last = list[list.length-1];
+          if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+          else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+        });
+      }
+      
+      const setup = () => setTimeout(ensureAndWireLinks, 200);
+
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setup);
+      } else {
+          setup();
+      }
+      window.addEventListener('hashchange', setup);
+      
+      const mo = new MutationObserver(() => {
+        if (!document.getElementById('vlgWristLinkContainer')) {
+            setup();
+        }
+      });
+      mo.observe(document.body, { childList: true, subtree: true });
+    })();
+    </script>
+    <!-- === /Wrist Size Guide Button === -->
+<style>
+/* ===== Global page background (image + veil) ===== */
+html, body { height: 100%; }
+body {
+  position: relative;
+  background: transparent !important;
+}
+
+/* Background image layer */
+body::before{
+  content:"";
+  position: fixed; inset: 0;
+  z-index: 0;
+  background: center / cover no-repeat var(--vlg-page-bg, transparent);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* White veil on top of background image */
+body::after{
+  content:"";
+  position: fixed; inset: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.30); /* 30% white fade */
+  pointer-events: none;
+}
+
+/* Ensure app content sits above background layers */
+#root, main, header, footer { position: relative; z-index: 2; }
+
+/* ===== Section surfaces at 50% transparency ===== */
+main section, [data-section]{
+  position: relative;
+  background: rgba(253, 251, 248, 0.5); /* 50% to show bg through */
+  backdrop-filter: saturate(100%) blur(0px); /* keep crisp text */
+  -webkit-backdrop-filter: saturate(100%) blur(0px);
+  border-radius: 12px;
+}
+
+/* Keep interactive elements fully clickable */
+main section > *, [data-section] > *{ position: relative; z-index: 1; }
+
+/* Typography contrast helpers (fallbacks to your tokens) */
+:root{
+  --vlg-text-dark: var(--c-text-primary, #3d2a22);
+  --vlg-text-light: var(--c-heading-on-dark, #F5F5DC);
+}
+body, p, li { color: var(--vlg-text-color, var(--vlg-text-dark)); }
+
+/* Ensure nav/footer readable over veil */
+header, footer { color: var(--vlg-text-color, var(--vlg-text-dark)); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  body::before { filter: none !important; -webkit-filter: none !important; }
+}
+</style>
+
+
+<style>
+/* --- Infographic expand/collapse polish (non-destructive) --- */
+[data-infographic]{
+  position: relative;
+  overflow: clip; /* avoids layout jank on transitions */
+}
+[data-infographic-panel]{
+  transition: max-height 260ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease;
+  max-height: 0;
+  opacity: .0;
+}
+[data-infographic].is-expanded [data-infographic-panel]{
+  max-height: 2000px; /* ample room; content defines true height */
+  opacity: 1;
+}
+[data-infographic-toggle]{
+  cursor: pointer;
+}
+</style>
+
+<script>
+/*
+  Infographic "stay expanded until header" behavior (strict):
+  - User expands => sticky-open state.
+  - While scrolling DOWN: never auto-collapse.
+  - While scrolling UP: auto-collapse ONLY when near the header/top.
+  - SPA-safe; cleans up on route change. Non-destructive (data-attrs only).
+*/
+
+(function(){
+  const HEADER_SELECTOR = 'header, .site-header, .main-header';
+  const INFOGRAPHIC_SELECTOR = '[data-infographic]';
+  const TOGGLE_SELECTOR = '[data-infographic-toggle]';
+  const PANEL_SELECTOR = '[data-infographic-panel]';
+
+  let teardownFns = [];
+
+  function ready(fn){
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn, { once:true });
+  }
+
+  function nearHeader(header){
+    // Consider "at header" when scroll is very close to top.
+    // Works even if header is sticky (offsetTop often 0).
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    // Allow a small tolerance so it triggers only at the very top area.
+    const tol = 12; // px
+    const top = (header && typeof header.offsetTop === 'number') ? header.offsetTop : 0;
+    return y <= (top + tol);
+  }
+
+  function init(){
+    const header = document.querySelector(HEADER_SELECTOR) || document.body;
+    const sections = Array.from(document.querySelectorAll(INFOGRAPHIC_SELECTOR));
+    if (!sections.length) return;
+
+    // Ensure ARIA base state
+    sections.forEach(sec => {
+      if (!sec.hasAttribute('aria-expanded')) sec.setAttribute('aria-expanded','false');
+    });
+
+    // Wire toggles
+    sections.forEach(sec=>{
+      let toggle = sec.querySelector(TOGGLE_SELECTOR);
+      if (!toggle){
+        // Non-destructive fallback: allow a heading or button to act as toggle
+        toggle = sec.querySelector('h2,h3,button,[role="button"]') || sec;
+      }
+
+      const onToggle = (ev)=>{
+        ev.preventDefault && ev.preventDefault();
+        const expanded = !sec.classList.contains('is-expanded');
+        if (expanded){
+          sec.classList.add('is-expanded');
+          sec.setAttribute('aria-expanded','true');
+          sec.setAttribute('data-user-open','1');   // user intent remembered
+          sec.setAttribute('data-sticky-open','1'); // lock open until header reached
+          // ensure transition kicks
+          const panel = sec.querySelector(PANEL_SELECTOR);
+          if (panel) panel.getBoundingClientRect();
+          // optional: bring into view politely
+          sec.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        } else {
+          // user manually closed; unlock
+          sec.classList.remove('is-expanded');
+          sec.setAttribute('aria-expanded','false');
+          sec.setAttribute('data-sticky-open','0');
+        }
+      };
+
+      toggle.addEventListener('click', onToggle);
+      toggle.addEventListener('keydown', (e)=>{
+        if (e.key === 'Enter' || e.key === ' ') { onToggle(e); }
+      });
+
+      teardownFns.push(()=> {
+        toggle.removeEventListener('click', onToggle);
+        toggle.removeEventListener('keydown', onToggle);
+      });
+    });
+
+    // Scroll logic: collapse ONLY when scrolling UP and near the header
+    let lastY = window.scrollY || 0;
+    const onScroll = ()=>{
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const scrollingUp = y < lastY;
+      lastY = y;
+
+      if (!scrollingUp) return; // never collapse while scrolling down
+
+      // Only when near header:
+      if (!nearHeader(header)) return;
+
+      sections.forEach(sec=>{
+        const userOpened = sec.getAttribute('data-user-open') === '1';
+        const stickyOpen = sec.getAttribute('data-sticky-open') === '1';
+        if (userOpened && stickyOpen) {
+          sec.classList.remove('is-expanded');
+          sec.setAttribute('aria-expanded','false');
+          sec.setAttribute('data-sticky-open','0'); // unlock after collapse
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive:true });
+    teardownFns.push(()=> window.removeEventListener('scroll', onScroll));
+
+    // SPA route changes -> teardown and re-init
+    const onHash = () => { teardown(); setTimeout(init, 60); };
+    window.addEventListener('hashchange', onHash);
+    teardownFns.push(()=> window.removeEventListener('hashchange', onHash));
+  }
+
+  function teardown(){
+    while (teardownFns.length) {
+      try { (teardownFns.pop())(); } catch {}
+    }
+  }
+
+  ready(()=> {
+    // Initial run and a couple retries to catch late mounts
+    init();
+    setTimeout(()=>{ teardown(); init(); }, 200);
+    setTimeout(()=>{ teardown(); init(); }, 800);
+  });
+
+  window.addEventListener('beforeunload', teardown);
+})();
+</script>
+<style>
+/* ========== WELCOME POPUP (only on initial load, any page) ========== */
+#vlgWelcomeOverlay{display:none}
+#vlgWelcomeOverlay[data-open="1"]{display:flex}
+
+#vlgWelcomeOverlay{
+  position:fixed; inset:0; z-index:9999;
+  align-items:center; justify-content:center;
+  background:rgba(0,0,0,.28); /* dim behind */
+  backdrop-filter: blur(4px);
+}
+
+.vlg-welcome-panel{
+  width:min(720px,94vw);
+  border-radius:24px;
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,252,247,.94));
+  box-shadow:0 22px 70px rgba(0,0,0,.25);
+  padding:clamp(20px,4vw,40px);
+  color:var(--c-text-primary,#5D4037);
+  font-family: var(--font-body, "Tenor Sans", system-ui, sans-serif);
+  position:relative;
+}
+
+.vlg-lang{
+  position:absolute; top:10px; right:12px;
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.35rem .6rem; border-radius:999px;
+  background:#f6efe8; border:1px solid rgba(93,64,55,.15);
+  font-size:.92rem; cursor:pointer;
+}
+
+.vlg-welcome-title{
+  font-family: var(--font-heading, "Cormorant Garamond", serif);
+  font-size:clamp(1.8rem,3.8vw,2.6rem);
+  font-weight:700; line-height:1.15;
+  color:var(--c-heading,#5D4037);
+  text-align:center; margin: 28px 0 12px;
+}
+.vlg-welcome-desc{
+  text-align:center; opacity:.9;
+  line-height:1.7; margin: 0 0 22px;
+}
+
+/* Buttons (match screenshot tones) */
+.vlg-actions{ display:flex; flex-direction:column; gap:14px; margin-top:10px; }
+.vlg-btn{
+  display:flex; align-items:center; justify-content:center;
+  width:100%; padding:14px 16px; border-radius:14px;
+  font-weight:700; text-decoration:none; border:0;
+  box-shadow: 0 2px 0 rgba(0,0,0,.04), 0 18px 28px rgba(0,0,0,.08);
+  transition: transform .18s cubic-bezier(.2,.8,.2,1), opacity .18s;
+}
+.vlg-btn:active{ transform:translateY(1px); opacity:.96; }
+
+/* 1) Cognac primary */
+.vlg-btn--amber{ background: var(--c-accent-primary,#904a21); color:#fff; }
+/* 2) Beige secondary */
+.vlg-btn--beige{ background:#d9c3a7; color:#3B2A1E; }
+/* 3) Light blue tertiary */
+.vlg-btn--sky{ background:#a6dced; color:#16323f; }
+
+/* Date line */
+.vlg-date{ margin-top:18px; text-align:center; font-size:.95rem; opacity:.85; }
+
+/* Hide the language not selected */
+[data-vlg-lang="th"] [data-i18n="en"]{ display:none !important; }
+[data-vlg-lang="en"] [data-i18n="th"]{ display:none !important; }
+
+/* Suppress other popups on first load when welcome is open */
+#vlgWelcomeOverlay[data-open="1"] ~ .cookie-consent,
+#vlgWelcomeOverlay[data-open="1"] ~ [data-cookie-banner],
+#vlgWelcomeOverlay[data-open="1"] ~ .construction-popup,
+#vlgWelcomeOverlay[data-open="1"] ~ .chatbot-fab,
+#vlgWelcomeOverlay[data-open="1"] ~ .chatbot-widget,
+body[data-popups-mode="suppress-others"] .cookie-consent,
+body[data-popups-mode="suppress-others"] [data-cookie-banner],
+body[data-popups-mode="suppress-others"] .construction-popup,
+body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
+  display:none !important;
+}
+</style>
+
+<div id="vlgWelcomeOverlay" aria-modal="true" role="dialog" data-open="0" hidden></div>
+
+<script>
+/* ========== ONE welcome popup on any initial page load (SPA-safe) ========== */
+(function(){
+  const SS_KEY = 'vlg_welcome_shown_session';
+  const SHOW_EVERY_SESSION = true;  // show once per tab (first load), across any route
+  const DEFAULT_LANG = 'th';        // start in Thai (as your screenshot)
+
+  function alreadyShown(){ try{ return sessionStorage.getItem(SS_KEY)==='1'; }catch{return false;} }
+  function markShown(){ try{ sessionStorage.setItem(SS_KEY,'1'); }catch{} }
+
+  function ensureMarkup(){
+    const host = document.getElementById('vlgWelcomeOverlay');
+    if (!host) return null;
+    if (host.dataset.ready==='1') return host;
+
+    host.innerHTML = `
+      <div class="vlg-welcome-panel" data-vlg-lang="${DEFAULT_LANG}">
+        <button class="vlg-lang" type="button" aria-label="Switch language">
+          <span data-i18n="th">ภาษาไทย</span>
+          <span data-i18n="en">English</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+
+        <h1 class="vlg-welcome-title" data-i18n="th">ยินดีต้อนรับสู่เว็บไซต์ใหม่ของเรา!</h1>
+        <h1 class="vlg-welcome-title" data-i18n="en">Welcome to our new website!</h1>
+
+        <p class="vlg-welcome-desc" data-i18n="th">
+          ขณะนี้เรากำลังพัฒนาระบบให้คุณสามารถออกแบบสร้อยข้อมืออำพันได้ด้วยตัวเอง ส่วนระบบการสั่งซื้อและการชำระเงินยังอยู่ระหว่างการปรับปรุง
+          คุณสามารถทดลองใช้เครื่องมือ “ออกแบบสร้อยอำพัน” ได้แล้ววันนี้ หรือเยี่ยมชมเว็บไซต์หลักและเพจ Facebook ของเราเพื่อดูผลงานและข้อมูลเพิ่มเติม
+        </p>
+        <p class="vlg-welcome-desc" data-i18n="en">
+          We are building a system that lets you design your own amber bracelet. Our ordering and payment system is still being improved.
+          You can try the “Amber Bracelet Design” tool now, or visit our main website and Facebook page to see our work and learn more.
+        </p>
+
+        <div class="vlg-actions">
+          <a class="vlg-btn vlg-btn--amber" data-i18n="th" href="https://www.vickyluxgems.com/#/">สำรวจเว็บไซต์ใหม่</a>
+          <a class="vlg-btn vlg-btn--amber" data-i18n="en" href="https://www.vickyluxgems.com/#/">Explore the new site</a>
+
+          <a class="vlg-btn vlg-btn--beige" data-i18n="th" href="https://www.vickyamber.com" target="_blank" rel="noopener">เยี่ยมชมเว็บไซต์เดิมของเรา</a>
+          <a class="vlg-btn vlg-btn--beige" data-i18n="en" href="https://www.vickyamber.com" target="_blank" rel="noopener">Visit our main website</a>
+
+          <a class="vlg-btn vlg-btn--sky" data-i18n="th" href="https://www.facebook.com/vkmmamber" target="_blank" rel="noopener">เยี่ยมชมหน้า Facebook</a>
+          <a class="vlg-btn vlg-btn--sky" data-i18n="en" href="https://www.facebook.com/vkmmamber" target="_blank" rel="noopener">Visit our Facebook page</a>
+        </div>
+
+        <div class="vlg-date" id="vlgWelcomeDate" data-i18n="th"></div>
+        <div class="vlg-date" id="vlgWelcomeDateEn" data-i18n="en"></div>
+      </div>
+    `;
+    host.dataset.ready='1';
+    return host;
+  }
+
+  function formatDates(){
+    const th = document.getElementById('vlgWelcomeDate');
+    const en = document.getElementById('vlgWelcomeDateEn');
+    const now = new Date();
+
+    // Thai Buddhist calendar
+    try{
+      const thStr = new Intl.DateTimeFormat('th-TH-u-ca-buddhist', { day:'numeric', month:'long', year:'numeric'}).format(now);
+      if (th) th.textContent = `วันที่: ${thStr}`;
+    }catch{ if (th) th.textContent = ''; }
+
+    // English Gregorian
+    try{
+      const enStr = new Intl.DateTimeFormat('en-US', { day:'numeric', month:'long', year:'numeric'}).format(now);
+      if (en) en.textContent = `Date: ${enStr}`;
+    }catch{ if (en) en.textContent = ''; }
+  }
+
+  function openWelcome(){
+    const host = ensureMarkup(); if (!host) return;
+    document.body.setAttribute('data-popups-mode','suppress-others'); // hide any other popups
+    host.hidden = false; host.setAttribute('data-open','1');
+
+    // Close on any button click or backdrop click
+    host.addEventListener('click', (e)=>{
+      const within = e.target.closest('.vlg-welcome-panel');
+      const isAction = e.target.closest('a,button');
+      if (!within || isAction){ closeWelcome(); }
+    });
+
+    // Lang toggle
+    const panel = host.querySelector('.vlg-welcome-panel');
+    const switcher = host.querySelector('.vlg-lang');
+    if (panel && switcher){
+      switcher.addEventListener('click', ()=>{
+        const cur = panel.getAttribute('data-vlg-lang') || 'th';
+        panel.setAttribute('data-vlg-lang', cur === 'th' ? 'en' : 'th');
+      });
+    }
+
+    // ESC to close
+    window.addEventListener('keydown', escClose, { once:true });
+  }
+
+  function escClose(e){ if (e.key === 'Escape') closeWelcome(); }
+
+  function closeWelcome(){
+    const host = document.getElementById('vlgWelcomeOverlay');
+    if (!host) return;
+    markShown();
+    host.setAttribute('data-open','0'); host.hidden = true;
+    document.body.removeAttribute('data-popups-mode');
+  }
+
+  function maybeShow(){
+    if (!SHOW_EVERY_SESSION) return;
+    if (alreadyShown()) return;           // only once per tab
+    openWelcome();
+  }
+
+  // Run after React paints
+  function run(){ ensureMarkup(); formatDates(); maybeShow(); }
+  document.addEventListener('DOMContentLoaded', run);
+  setTimeout(run,120); setTimeout(run,600);
+
+  // Do NOT re-open on SPA navigation; only first load
+  window.addEventListener('hashchange', ()=>{ /* no-op */ });
+})();
+</script>
+<style>
+/* ===== Static Hero (no slide) for HOME only ===== */
+[data-hero-static="1"]{
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+/* Chosen image behind hero content */
+[data-hero-static="1"]::before{
+  content:"";
+  position:absolute; inset:0;
+  z-index:-1;
+  background-image: var(--vlg-hero-url, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Optional soft veil for readability */
+[data-hero-static="1"]::after{
+  content:"";
+  position:absolute; inset:0;
+  z-index:-1;
+  background: rgba(255,255,255,0.12);
+  pointer-events:none;
+}
+/* Hide any hero slideshow/carousel inside the hero only */
+[data-hero-static="1"] .swiper,
+[data-hero-static="1"] .splide,
+[data-hero-static="1"] .slick-slider,
+[data-hero-static="1"] .hero-slideshow,
+[data-hero-static="1"] [data-slideshow],
+[data-hero-static="1"] .carousel{
+  display: none !important;
+}
+</style>
+
+<script>
+/*
+  HOME HERO: random static banner (no slide)
+  - Applies only on Home (“#/” or empty hash)
+  - Picks ONE image on first load per tab session; keeps it while tab is open
+  - Image set: 1..30 (webp) from your CDN path
+  - Non-destructive: keeps hero content and CTAs; only changes background
+*/
+(function(){
+  const IS_HOME = () => !location.hash || location.hash === '#/' || location.hash === '#';
+  const SS_KEY = 'vlg_home_hero_img_index';
+  const CDN_BASE = 'https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/hero-section-main-banner/vickyluxgems-hero-section-banner-';
+  const EXT = '.webp';
+  const COUNT = 30;
+
+  // Set to true if you want a new random image every time user revisits Home in the same tab:
+  const ALWAYS_RANDOMIZE_ON_HOME_VISIT = false;
+
+  function randIndex(){ return Math.floor(Math.random() * COUNT) + 1; } // 1..30
+  function urlFor(i){ return `${CDN_BASE}${i}${EXT}`; }
+
+  // Robust hero finder: add data-hero to your container if possible
+  function findHero(){
+    const cands = [
+      document.querySelector('[data-hero]'),
+      document.querySelector('.lp-hero'),
+      document.querySelector('.home-hero'),
+      document.querySelector('#hero'),
+      ...Array.from(document.querySelectorAll('main section, .hero'))
+        .filter(el => /hero/i.test(el.className||'') || el.querySelector('h1, .hero-headline'))
+    ].filter(Boolean);
+    return cands[0] || null;
+  }
+
+  function chooseIndex(){
+    if (ALWAYS_RANDOMIZE_ON_HOME_VISIT) return randIndex();
+    try{
+      const saved = sessionStorage.getItem(SS_KEY);
+      if (saved) return Number(saved) || randIndex();
+      const i = randIndex();
+      sessionStorage.setItem(SS_KEY, String(i));
+      return i;
+    }catch{ return randIndex(); }
+  }
+
+  function applyHero(){
+    if (!IS_HOME()) return;
+    const hero = findHero();
+    if (!hero) return;
+
+    const idx = chooseIndex();
+    const url = urlFor(idx);
+
+    // Preload to avoid flash
+    const img = new Image();
+    img.onload = () => {
+      hero.setAttribute('data-hero-static','1');
+      hero.style.setProperty('--vlg-hero-url', `url("${url}")`);
+    };
+    img.src = url;
+  }
+
+  function run(){
+    if (!IS_HOME()) return;
+    // Allow React to mount hero
+    setTimeout(applyHero, 60);
+    setTimeout(applyHero, 300);
+  }
+
+  document.addEventListener('DOMContentLoaded', run);
+  window.addEventListener('hashchange', run);
+})();
+</script>
   </body>
 </html>

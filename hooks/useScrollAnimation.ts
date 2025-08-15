@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, RefObject } from 'react';
 
-const useScrollAnimation = (options?: IntersectionObserverInit) => {
+const useScrollAnimation = <T extends HTMLElement>(options?: IntersectionObserverInit): { ref: RefObject<T>, isVisible: boolean } => {
     const [isVisible, setIsVisible] = useState(false);
-    const elementRef = useRef<HTMLElement>(null);
+    const elementRef = useRef<T>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(

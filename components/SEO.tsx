@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
-import { useLanguage } from '../i18n/LanguageContext';
+import { useLocation } from 'react-router-dom';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
 import { translations as enTranslations } from '../i18n/translations/en';
 
 interface SEOProps {
@@ -60,7 +60,7 @@ const SEO: React.FC<SEOProps> = ({
     type = 'website' 
 }) => {
   const { t, lang } = useLanguage();
-  const location = ReactRouterDOM.useLocation();
+  const location = useLocation();
 
   const title = rawTitle || (titleKey ? t(titleKey) as string : 'Vicky LuxGems');
   const description = rawDescription || (descriptionKey ? t(descriptionKey) as string : 'Authentic Burmese amber and precious gems.');
@@ -95,7 +95,7 @@ const SEO: React.FC<SEOProps> = ({
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(link => link.remove());
     
     // 5. Open Graph & Twitter Cards
-    const ogImage = imageUrl || 'https://i.postimg.cc/Qd8yW639/vkambergems-logo-small.png';
+    const ogImage = imageUrl || 'https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkambergems-logo-small.png';
     const ogLocales = {
         en: 'en_US',
         th: 'th_TH'

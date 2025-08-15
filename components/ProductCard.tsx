@@ -1,6 +1,6 @@
 
 import React, { useState, useMemo } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Product } from '../types.ts';
 import { useAppContext } from '../context/AppContext.tsx';
 import { StarIcon, NaturalIcon, HandcraftedIcon, AncientEnergyIcon } from './IconComponents.tsx';
@@ -62,9 +62,9 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <div className="product-card-sacred">
         <div className="product-card-sacred__image-container">
-            <ReactRouterDOM.Link to={`/collection/${product.id}`} className="block w-full h-full">
+            <Link to={`/collection/${product.id}`} className="block w-full h-full">
                 <img src={product.media.mainImageUrl} alt={altText} loading="lazy" className="product-card-sacred__image"/>
-            </ReactRouterDOM.Link>
+            </Link>
             <div className="product-card-sacred__badge">Sacred Gift Inside</div>
             {product.isNewArrival && (
                 <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md z-10">
@@ -100,7 +100,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </div>
         
         <div className="mt-auto pt-4">
-            <p className="text-2xl font-semibold mb-2" style={{color: 'var(--c-sacred-text-primary)'}}>
+            <p className="text-2xl font-semibold mb-2 product-card-sacred__price text-[var(--c-sacred-text-primary)]">
                 {`฿${packagePrice.toLocaleString('en-US')}`}
             </p>
 
@@ -128,7 +128,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             </p>
             
             <div className="product-card-sacred__actions">
-                <ReactRouterDOM.Link to={`/collection/${product.id}`} className="btn-sacred-primary">View Product</ReactRouterDOM.Link>
+                <Link to={`/collection/${product.id}`} className="btn-sacred-primary">View Product</Link>
                 <button 
                     onClick={handleAddToCartClick} 
                     disabled={added || !product.inventory.isAvailable}

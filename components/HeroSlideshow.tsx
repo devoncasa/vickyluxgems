@@ -23,7 +23,7 @@ const HeroSlideshow: React.FC<HeroSlideshowProps> = ({ images }) => {
     }, [images]);
 
     return (
-        <div className="absolute inset-0 z-0" aria-live="polite" aria-atomic="true">
+        <div className="absolute inset-0 z-0 hero-slideshow" aria-live="polite" aria-atomic="true">
             {images.map((src, index) => (
                 <div
                     key={src}
@@ -31,13 +31,15 @@ const HeroSlideshow: React.FC<HeroSlideshowProps> = ({ images }) => {
                     style={{
                         backgroundImage: `url('${src}')`,
                         opacity: index === currentImageIndex ? 1 : 0,
+                        filter: 'blur(4px)',
+                        transform: 'scale(1.05)',
                     }}
                     aria-hidden={index !== currentImageIndex}
                     role="img"
                     aria-label={`Slideshow background image ${index + 1}`}
                 />
             ))}
-            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute inset-0 bg-white/30"></div>
         </div>
     );
 };

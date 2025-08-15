@@ -1,9 +1,9 @@
 
 import { useEffect } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const ScrollToTop = () => {
-  const { pathname, hash } = ReactRouterDOM.useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     // If there is a hash, and an element with that id exists, scroll to it

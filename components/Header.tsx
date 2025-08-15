@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useLocation, NavLink, Link } from 'react-router-dom';
 import { NAV_LINKS } from '../constants.ts';
 import { MenuIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, GlobeIcon } from './IconComponents.tsx';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
@@ -122,12 +122,12 @@ const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const headerRef = useRef<HTMLElement>(null);
     const { t } = useLanguage();
-    const location = ReactRouterDOM.useLocation();
+    const location = useLocation();
 
     // Close mobile menu on route change
     useEffect(() => {
         setIsMenuOpen(false);
-    }, [location.pathname]);
+    }, [location.pathname, location.search]);
 
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
@@ -176,6 +176,9 @@ const Header: React.FC = () => {
         const activeLinkClasses = "active font-semibold";
         const inactiveLinkClasses = "opacity-80";
 
+        const searchParams = new URLSearchParams(location.search);
+        const currentCategory = searchParams.get('category');
+
         return (
             <nav className="hidden lg:flex items-center space-x-4">
                 {NAV_LINKS.map((link) => (
@@ -186,7 +189,7 @@ const Header: React.FC = () => {
                         <button
                             onMouseEnter={() => handlePrefetch(link.path)}
                             onClick={(e) => {
-                                if (link.path) {
+                                if (link.path && !link.submenus) {
                                     return;
                                 }
                                 e.preventDefault();
@@ -194,34 +197,44 @@ const Header: React.FC = () => {
                             }}
                             className="w-full"
                         >
-                            <ReactRouterDOM.NavLink
+                            <NavLink
                                 to={link.path || '#'}
                                  onClick={(e) => {
-                                    if (!link.path) {
+                                    if (!link.path || link.submenus) {
                                         e.preventDefault();
                                         setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
                                     } else {
                                         setOpenDesktopSubmenu(null);
                                     }
                                 }}
-                                 className={({ isActive }) => `${linkClasses} ${link.path && isActive ? activeLinkClasses : inactiveLinkClasses}`}
+                                 className={({ isActive }) => `${linkClasses} ${link.path && isActive && !link.submenus ? activeLinkClasses : inactiveLinkClasses}`}
                             >
                                 <span>{t(getTranslationKey(link.name) as any)}</span>
                                 {link.submenus && <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${openDesktopSubmenu === link.name ? 'rotate-180' : ''}`} />}
-                            </ReactRouterDOM.NavLink>
+                            </NavLink>
                         </button>
                         {link.submenus && (
                             <div className={`absolute top-full start-0 mt-2 min-w-[250px] max-h-[80vh] overflow-y-auto bg-[var(--c-surface)] shadow-xl rounded-md border border-[var(--c-border)] p-2 z-30 transition-all duration-300 ${openDesktopSubmenu === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}>
-                                {link.submenus.map(submenu => (
-                                    <ReactRouterDOM.NavLink
-                                        key={submenu.name}
-                                        to={submenu.path || '#'}
-                                        onClick={() => setOpenDesktopSubmenu(null)}
-                                        className={({ isActive }) => `block px-4 py-2 text-sm rounded-md transition-colors ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)]' : 'text-[var(--c-text-primary)]/90 hover:bg-[var(--c-accent-primary)]/10 hover:text-[var(--c-accent-primary)]'}`}
-                                    >
-                                        {t(getTranslationKey(submenu.name) as any)}
-                                    </ReactRouterDOM.NavLink>
-                                ))}
+                                {link.submenus.map(submenu => {
+                                    const submenuPath = submenu.path || '#';
+                                    const submenuCategory = submenuPath.includes('?category=') ? new URLSearchParams(submenuPath.split('?')[1]).get('category') : null;
+                                    const isAllProducts = submenuPath === '/collection' && !submenuPath.includes('?');
+
+                                    const isActive = isAllProducts 
+                                        ? location.pathname === '/collection' && !currentCategory
+                                        : submenuCategory ? currentCategory === submenuCategory : location.pathname === submenuPath;
+
+                                    return (
+                                        <Link
+                                            key={submenu.name}
+                                            to={submenuPath}
+                                            onClick={() => setOpenDesktopSubmenu(null)}
+                                            className={`block px-4 py-2 text-sm rounded-md transition-colors ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold' : 'text-[var(--c-text-primary)]/90 hover:bg-[var(--c-accent-primary)]/10 hover:text-[var(--c-accent-primary)]'}`}
+                                        >
+                                            {t(getTranslationKey(submenu.name) as any)}
+                                        </Link>
+                                    )
+                                })}
                             </div>
                         )}
                     </div>
@@ -246,24 +259,24 @@ const Header: React.FC = () => {
                             {openMobileSubmenu === link.name && (
                                 <div className="ps-6 pb-2 space-y-1 mt-1">
                                     {link.submenus.map(submenu => (
-                                        <ReactRouterDOM.NavLink
+                                        <NavLink
                                             key={submenu.name}
                                             to={submenu.path || '#'}
                                             className={({ isActive }) => `block px-3 py-2 rounded-md font-medium text-sm ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold' : 'text-[var(--c-text-secondary)] hover:bg-[var(--c-accent-primary)]/10'}`}
                                         >
                                             {t(getTranslationKey(submenu.name) as any)}
-                                        </ReactRouterDOM.NavLink>
+                                        </NavLink>
                                     ))}
                                 </div>
                             )}
                         </>
                     ) : (
-                        <ReactRouterDOM.NavLink
+                        <NavLink
                             to={link.path || '#'}
                             className={({ isActive }) => `block px-4 py-4 text-start font-medium ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold' : 'text-[var(--c-text-primary)]/90'}`}
                         >
                             {t(getTranslationKey(link.name) as any)}
-                        </ReactRouterDOM.NavLink>
+                        </NavLink>
                     )}
                 </div>
             ))}
@@ -272,15 +285,15 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header ref={headerRef} className={`main-header sticky top-0 z-40 ${isScrolled ? 'scrolled' : ''}`}>
+            <header ref={headerRef} className={`main-header sticky top-0 z-50 ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="container mx-auto px-4 sm:px-6 md:px-8">
                     <div className="flex items-center justify-between h-20 md:h-24">
                         
                         {/* --- Left Side: Logo --- */}
                         <div className="flex-shrink-0">
-                            <ReactRouterDOM.Link to="/" className="logo-group flex items-center">
-                                <img src="https://i.postimg.cc/BZ7Qgx8s/vkluxgem-logo-smll.webp" alt="VickyLuxGems Logo" className="header-logo"/>
-                            </ReactRouterDOM.Link>
+                            <Link to="/" className="logo-group flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" alt="VickyLuxGems Logo" className="header-logo"/>
+                            </Link>
                         </div>
 
                         {/* --- Center: Desktop Navigation --- */}

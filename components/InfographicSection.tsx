@@ -1,9 +1,10 @@
 
-
 import React, { useState, useEffect, useRef } from 'react';
 import { CloseIcon } from './IconComponents.tsx';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
 
 const InfographicSection: React.FC = () => {
+    const { t } = useLanguage();
     const [isExpanded, setIsExpanded] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
     const observerRef = useRef<IntersectionObserver | null>(null);
@@ -377,8 +378,8 @@ const InfographicSection: React.FC = () => {
                 tabIndex={0}
                 style={{backgroundImage: "url('https://i.postimg.cc/yY0H0PRS/vkgems-info-Stories-in-Stone-Legendary-Gems-background.webp')"}}
             >
-                <h2 id="infographic-title" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-shadow-strong px-4 animate-fade-in-slow">Click here for infographic about Burmese Amber</h2>
-                <div className="hover-prompt" style={{opacity: 1}}>Click or Scroll Down to Explore</div>
+                <h2 id="infographic-title" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-shadow-strong px-4 animate-fade-in-slow">{t('infographic_title_teaser' as any)}</h2>
+                <div className="hover-prompt" style={{opacity: 1}}>{t('infographic_prompt_teaser' as any)}</div>
             </div>
 
             <div className={`infographic-content-wrapper ${isExpanded ? 'expanded' : ''}`}>
@@ -386,13 +387,13 @@ const InfographicSection: React.FC = () => {
                      <button 
                         onClick={handleCloseClick} 
                         className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 lg:hidden"
-                        aria-label="Close infographic"
+                        aria-label={t('infographic_close_button_label' as any)}
                     >
                         <CloseIcon className="w-6 h-6" />
                     </button>
                     <header className="text-center py-16 px-4 infographic-section" style={{paddingTop: '4rem', paddingBottom: '4rem'}}>
-                        <h1 className="text-5xl md:text-7xl font-bold text-[#904a21] mb-4">The Treasures of Myanmar</h1>
-                        <p className="text-xl max-w-3xl mx-auto text-gray-600">A journey into the ancient origins and geological wonders of Burmese Amber and the world's most coveted gemstones.</p>
+                        <h1 className="text-5xl md:text-7xl font-bold text-[#904a21] mb-4">{t('infographic_main_title' as any)}</h1>
+                        <p className="text-xl max-w-3xl mx-auto text-gray-600">{t('infographic_main_subtitle' as any)}</p>
                     </header>
                     <main>
                         {/* Part 1: Burmese Amber */}
@@ -402,45 +403,45 @@ const InfographicSection: React.FC = () => {
                                 <div className="section-overlay"></div>
                             </div>
                             <div className="container mx-auto px-4 text-center content-container">
-                                <h2 className="text-4xl md:text-5xl mb-4 fade-in-up">Burmese Amber</h2>
-                                <h3 className="text-2xl md:text-3xl text-gray-500 mb-12 fade-in-up" style={{transitionDelay: '100ms'}}>A 100-Million-Year-Old Time Capsule</h3>
+                                <h2 className="text-4xl md:text-5xl mb-4 fade-in-up">{t('infographic_amber_title' as any)}</h2>
+                                <h3 className="text-2xl md:text-3xl text-gray-500 mb-12 fade-in-up" style={{transitionDelay: '100ms'}}>{t('infographic_amber_subtitle' as any)}</h3>
                                 
                                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 text-center mb-16">
                                     <div className="fade-in-up" style={{transitionDelay: '200ms'}}>
                                         <div className="stat-number" data-target="99">0</div>
-                                        <div className="stat-label">Million Years Old</div>
-                                        <p className="mt-4 text-gray-600">Formed in the Cretaceous period, offering a direct link to the age of dinosaurs.</p>
+                                        <div className="stat-label">{t('infographic_stat_amber_age_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_amber_age_desc' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '300ms'}}>
                                         <div className="stat-number" data-target="1000">0</div>
-                                        <div className="stat-label">Extinct Species</div>
-                                        <p className="mt-4 text-gray-600">The most diverse range of prehistoric life found in any amber on Earth.</p>
+                                        <div className="stat-label">{t('infographic_stat_amber_species_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_amber_species_desc' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '400ms'}}>
                                         <div className="stat-number" data-target="2.8" data-decimal="1">0</div>
-                                        <div className="stat-label">Mohs Hardness</div>
-                                        <p className="mt-4 text-gray-600">Significantly harder and more durable than most other types of amber.</p>
+                                        <div className="stat-label">{t('infographic_stat_amber_hardness_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_amber_hardness_desc' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '500ms'}}>
                                         <div className="stat-number" data-target="15">0</div>
-                                        <div className="stat-label">China's Amber Market %</div>
-                                        <p className="mt-4 text-gray-600">Represents a significant portion of the high-end amber market in Asia.</p>
+                                        <div className="stat-label">{t('infographic_stat_amber_market_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_amber_market_desc' as any)}</p>
                                     </div>
                                 </div>
 
                                 <div className="max-w-4xl mx-auto fade-in-up" style={{transitionDelay: '600ms'}}>
-                                    <h3 className="text-3xl mb-6">Inclusions: A Prehistoric Zoo</h3>
+                                    <h3 className="text-3xl mb-6">{t('infographic_amber_inclusions_title' as any)}</h3>
                                      <div className="flex flex-wrap justify-center items-center gap-4 text-lg">
-                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">Insects & Arachnids</span>
+                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">{t('infographic_amber_inclusion_item1' as any)}</span>
                                         <span className="bg-red-100 text-red-800 px-4 py-2 rounded-full flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-fire mr-2" viewBox="0 0 16 16">
                                                 <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 8.249 7 7.5 7 7.5c-.101-.998.434-2.008 1.492-2.008.556 0 1.153.448 1.5.998.386.603.448 1.207.125 1.75h-.002c-.078.166-.178.332-.28.5C9.5 9.5 9 10.5 9 11.25c0 1.5-1.343 2.75-3 2.75"/>
                                             </svg>
-                                            Dinosaur Feathers
+                                            {t('infographic_amber_inclusion_item2' as any)}
                                         </span>
-                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">Snakes & Lizards</span>
-                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">Marine Life</span>
-                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">Ancient Flowers</span>
+                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">{t('infographic_amber_inclusion_item3' as any)}</span>
+                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">{t('infographic_amber_inclusion_item4' as any)}</span>
+                                        <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full">{t('infographic_amber_inclusion_item5' as any)}</span>
                                     </div>
                                 </div>
                             </div>
@@ -452,27 +453,27 @@ const InfographicSection: React.FC = () => {
                                 <div className="section-overlay"></div>
                             </div>
                             <div className="container mx-auto px-4 content-container">
-                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">The Journey of Burmite</h2>
+                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">{t('infographic_timeline_title' as any)}</h2>
                                 <div className="max-w-2xl mx-auto">
                                     <div className="timeline-item fade-in-up" style={{transitionDelay: '200ms'}}>
                                         <div className="timeline-dot"></div>
-                                        <h3 className="text-2xl mb-2">~99 Million Years Ago (Cretaceous)</h3>
-                                        <p className="text-gray-600">Coniferous trees in a tropical coastal forest in what is now Myanmar produce vast amounts of resin. This resin traps local flora and fauna, from insects to dinosaur feathers.</p>
+                                        <h3 className="text-2xl mb-2">{t('infographic_timeline_1_title' as any)}</h3>
+                                        <p className="text-gray-600">{t('infographic_timeline_1_desc' as any)}</p>
                                     </div>
                                     <div className="timeline-item fade-in-up" style={{transitionDelay: '400ms'}}>
                                         <div className="timeline-dot"></div>
-                                        <h3 className="text-2xl mb-2">1st Century AD</h3>
-                                        <p className="text-gray-600">First documented historical records show that Burmite is known and commercially exploited for trade and jewelry.</p>
+                                        <h3 className="text-2xl mb-2">{t('infographic_timeline_2_title' as any)}</h3>
+                                        <p className="text-gray-600">{t('infographic_timeline_2_desc' as any)}</p>
                                     </div>
                                     <div className="timeline-item fade-in-up" style={{transitionDelay: '600ms'}}>
                                         <div className="timeline-dot"></div>
-                                        <h3 className="text-2xl mb-2">Mid-19th Century</h3>
-                                        <p className="text-gray-600">Burmese Amber becomes known to Western science, sparking interest in its unique paleontological value.</p>
+                                        <h3 className="text-2xl mb-2">{t('infographic_timeline_3_title' as any)}</h3>
+                                        <p className="text-gray-600">{t('infographic_timeline_3_desc' as any)}</p>
                                     </div>
                                     <div className="timeline-item fade-in-up" style={{transitionDelay: '800ms'}}>
                                         <div className="timeline-dot"></div>
-                                        <h3 className="text-2xl mb-2">Present Day</h3>
-                                        <p className="text-gray-600">Recognized as a treasure for both gemology and science, Burmite is highly prized by collectors, jewelers, and researchers worldwide for its beauty and the secrets it holds.</p>
+                                        <h3 className="text-2xl mb-2">{t('infographic_timeline_4_title' as any)}</h3>
+                                        <p className="text-gray-600">{t('infographic_timeline_4_desc' as any)}</p>
                                     </div>
                                 </div>
                             </div>
@@ -484,28 +485,28 @@ const InfographicSection: React.FC = () => {
                                 <div className="section-overlay"></div>
                             </div>
                             <div className="container mx-auto px-4 text-center content-container">
-                                <h2 className="text-4xl md:text-5xl mb-4 fade-in-up">Myanmar's Gemstone Legacy</h2>
-                                <h3 className="text-2xl md:text-3xl text-gray-500 mb-12 fade-in-up" style={{transitionDelay: '100ms'}}>The Cradle of Jewels</h3>
+                                <h2 className="text-4xl md:text-5xl mb-4 fade-in-up">{t('infographic_gemstones_title' as any)}</h2>
+                                <h3 className="text-2xl md:text-3xl text-gray-500 mb-12 fade-in-up" style={{transitionDelay: '100ms'}}>{t('infographic_gemstones_subtitle' as any)}</h3>
 
                                 <div className="grid md:grid-cols-3 gap-12 text-center mb-16">
                                     <div className="fade-in-up" style={{transitionDelay: '200ms'}}>
                                         <div className="stat-number" data-target="90">0</div>
-                                        <div className="stat-label">% Of World's Rubies</div>
-                                        <p className="mt-4 text-gray-600">Historically, the legendary Mogok Valley has been the premier source of the finest rubies.</p>
+                                        <div className="stat-label">{t('infographic_stat_gem_rubies_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_gem_rubies_desc' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '300ms'}}>
                                         <div className="stat-number" data-target="70">0</div>
-                                        <div className="stat-label">% Of Quality Jadeite</div>
-                                        <p className="mt-4 text-gray-600">Myanmar is the world's powerhouse for high-quality jadeite, including Imperial Jade.</p>
+                                        <div className="stat-label">{t('infographic_stat_gem_jadeite_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_gem_jadeite_desc' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '400ms'}}>
                                         <div className="stat-number" data-target="30">0</div>
-                                        <div className="stat-label">Million USD for a Ruby</div>
-                                        <p className="mt-4 text-gray-600">"The Sunrise Ruby," a 25.59-carat Burmese gem, set a world record.</p>
+                                        <div className="stat-label">{t('infographic_stat_gem_ruby_price_label' as any)}</div>
+                                        <p className="mt-4 text-gray-600">{t('infographic_stat_gem_ruby_price_desc' as any)}</p>
                                     </div>
                                 </div>
                                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                                    <div className="gem-card fade-in-up" style={{transitionDelay: '500ms'}} onClick={(e) => handleCardClick(e, 'amber')} onMouseEnter={() => handleCardMouseEnter('amber')} onMouseLeave={handleCardMouseLeave}><div className={`gem-card-inner ${flippedCardId === 'amber' ? 'is-flipped' : ''}`}><div className="gem-card-front"><img src="https://i.postimg.cc/vHrJ4mRr/vkgems-info-amber-flipping-card.webp" alt="A polished piece of Burmese Amber with a prehistoric insect inclusion."/><div><h3 className="text-2xl mb-2">Burmese Amber</h3><p><strong>Hardness:</strong> 2.5 - 3.0 Mohs</p><p><strong>Defining Trait:</strong> A 99-million-year-old time capsule.</p></div></div><div className="gem-card-back"><div className="text-sm w-full"><h4 className="text-lg font-bold mb-2 text-white" style={{fontFamily: "'Cormorant Garamond', serif"}}>Burmite: A Prehistoric Time Capsule</h4><p className="mb-3 text-white/90 text-xs leading-relaxed">The world's oldest amber, Burmite is a 99-million-year-old time capsule offering a direct portal to the age of dinosaurs.</p><ul className="space-y-1 text-xs text-white/90 list-disc list-inside"><li><strong>Source:</strong> Hukawng Valley, Myanmar</li><li><strong>Identifier:</strong> Superior hardness & Cretaceous-era inclusions.</li><li><strong>Belief:</strong> Holds ancient Earth wisdom for grounding and protection.</li><li><strong>Did You Know?:</strong> It's the only amber known to contain non-avian dinosaur feathers.</li></ul></div></div></div></div>
+                                    <div className="gem-card fade-in-up" style={{transitionDelay: '500ms'}} onClick={(e) => handleCardClick(e, 'amber')} onMouseEnter={() => handleCardMouseEnter('amber')} onMouseLeave={handleCardMouseLeave}><div className={`gem-card-inner ${flippedCardId === 'amber' ? 'is-flipped' : ''}`}><div className="gem-card-front"><img src="https://i.postimg.cc/vHrJ4mRr/vkgems-info-amber-flipping-card.webp" alt="A polished piece of Burmese Amber with a prehistoric insect inclusion."/><div><h3 className="text-2xl mb-2">{t('infographic_gem_card_amber_title' as any)}</h3><p><strong>{t('infographic_gem_card_amber_hardness' as any)}</strong> 2.5 - 3.0 Mohs</p><p><strong>{t('infographic_gem_card_amber_trait' as any)}</strong> {t('infographic_gem_card_amber_trait_value' as any)}</p></div></div><div className="gem-card-back"><div className="text-sm w-full"><h4 className="text-lg font-bold mb-2 text-white" style={{fontFamily: "'Cormorant Garamond', serif"}}>{t('infographic_gem_card_amber_back_title' as any)}</h4><p className="mb-3 text-white/90 text-xs leading-relaxed">{t('infographic_gem_card_amber_back_desc' as any)}</p><ul className="space-y-1 text-xs text-white/90 list-disc list-inside"><li><strong>{t('infographic_gem_card_amber_back_source' as any)}</strong> {t('infographic_gem_card_amber_back_source_value' as any)}</li><li><strong>{t('infographic_gem_card_amber_back_identifier' as any)}</strong> {t('infographic_gem_card_amber_back_identifier_value' as any)}</li><li><strong>{t('infographic_gem_card_amber_back_belief' as any)}</strong> {t('infographic_gem_card_amber_back_belief_value' as any)}</li><li><strong>{t('infographic_gem_card_amber_back_fact' as any)}</strong> {t('infographic_gem_card_amber_back_fact_value' as any)}</li></ul></div></div></div></div>
                                     <div className="gem-card fade-in-up" style={{transitionDelay: '600ms'}} onClick={(e) => handleCardClick(e, 'ruby')} onMouseEnter={() => handleCardMouseEnter('ruby')} onMouseLeave={handleCardMouseLeave}><div className={`gem-card-inner ${flippedCardId === 'ruby' ? 'is-flipped' : ''}`}><div className="gem-card-front"><img src="https://i.postimg.cc/QNTGrb0n/vkgems-info-ruby-flipping-card.webp" alt="A vibrant, deep red Mogok Ruby gemstone."/><div><h3 className="text-2xl mb-2">Ruby</h3><p><strong>Hardness:</strong> 9 Mohs</p><p><strong>Defining Trait:</strong> The legendary "Pigeon's Blood" red.</p></div></div><div className="gem-card-back"><div className="text-sm w-full"><h4 className="text-lg font-bold mb-2 text-white" style={{fontFamily: "'Cormorant Garamond', serif"}}>The Essence of Ruby: A Stone of Kings</h4><p className="mb-3 text-white/90 text-xs leading-relaxed">Revered as the 'King of Gems,' ruby from Myanmar's Mogok Valley is the ultimate historical talisman of power, passion, and protection.</p><ul className="space-y-1 text-xs text-white/90 list-disc list-inside"><li><strong>Source:</strong> Mogok Valley, Myanmar</li><li><strong>Identifier:</strong> 'Pigeon's Blood' red color with a strong natural glow.</li><li><strong>Belief:</strong> A talisman for vitality, courage, and passion.</li><li><strong>Did You Know?:</strong> Ancient Burmese warriors embedded rubies in their skin for invincibility.</li></ul></div></div></div></div>
                                     <div className="gem-card fade-in-up" style={{transitionDelay: '700ms'}} onClick={(e) => handleCardClick(e, 'sapphire')} onMouseEnter={() => handleCardMouseEnter('sapphire')} onMouseLeave={handleCardMouseLeave}><div className={`gem-card-inner ${flippedCardId === 'sapphire' ? 'is-flipped' : ''}`}><div className="gem-card-front"><img src="https://i.postimg.cc/TYC1h47Q/vkgems-info-sapphire-flipping-card-1.webp" alt="A velvety, royal blue Burmese Sapphire."/><div><h3 className="text-2xl mb-2">Sapphire</h3><p><strong>Hardness:</strong> 9 Mohs</p><p><strong>Defining Trait:</strong> A rich, intense, and velvety "Burma Blue" color.</p></div></div><div className="gem-card-back"><div className="text-sm w-full"><h4 className="text-lg font-bold mb-2 text-white" style={{fontFamily: "'Cormorant Garamond', serif"}}>Burma Blue: A Glimpse of the Celestial</h4><p className="mb-3 text-white/90 text-xs leading-relaxed">The benchmark for celestial gems, the velvety 'Burma Blue' sapphire is a timeless symbol of wisdom, nobility, and divine truth.</p><ul className="space-y-1 text-xs text-white/90 list-disc list-inside"><li><strong>Source:</strong> Mogok, Myanmar</li><li><strong>Identifier:</strong> Rich, velvety 'Royal Blue' hue that holds its color in any light.</li><li><strong>Belief:</strong> A stone of wisdom, clarity, and spiritual connection.</li><li><strong>Did You Know?:</strong> Fine Burmese sapphires can be more valuable than diamonds.</li></ul></div></div></div></div>
                                     <div className="gem-card fade-in-up" style={{transitionDelay: '800ms'}} onClick={(e) => handleCardClick(e, 'jadeite')} onMouseEnter={() => handleCardMouseEnter('jadeite')} onMouseLeave={handleCardMouseLeave}><div className={`gem-card-inner ${flippedCardId === 'jadeite' ? 'is-flipped' : ''}`}><div className="gem-card-front"><img src="https://i.postimg.cc/1X6Lcm8Z/vkgems-info-jadeite-flipping-card.webp" alt="A piece of translucent, Imperial Green Jadeite."/><div><h3 className="text-2xl mb-2">Jadeite</h3><p><strong>Hardness:</strong> 6.5 - 7 Mohs</p><p><strong>Defining Trait:</strong> The vibrant, translucent green known as "Imperial Jade."</p></div></div><div className="gem-card-back"><div className="text-sm w-full"><h4 className="text-lg font-bold mb-2 text-white" style={{fontFamily: "'Cormorant Garamond', serif"}}>Imperial Jadeite: The Stone of Heaven</h4><p className="mb-3 text-white/90 text-xs leading-relaxed">More than a gem, prized 'Imperial Green' jadeite is a spiritual conduit believed to bridge the physical and metaphysical worlds.</p><ul className="space-y-1 text-xs text-white/90 list-disc list-inside"><li><strong>Source:</strong> Hpakant, Myanmar</li><li><strong>Identifier:</strong> Vibrant, semi-translucent green with a characteristic oily luster.</li><li><strong>Belief:</strong> Embodies wisdom and courage; a protector that brings good fortune.</li><li><strong>Did You Know?:</strong> Jadeite is much rarer than Nephrite, the other jade, and can be one of the most expensive gems per carat.</li></ul></div></div></div></div>
@@ -521,12 +522,12 @@ const InfographicSection: React.FC = () => {
                                 <div className="section-overlay"></div>
                             </div>
                             <div className="container mx-auto px-4 content-container">
-                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">Stories in Stone: Legendary Gems</h2>
+                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">{t('infographic_stories_title' as any)}</h2>
                                 <div className="grid md:grid-cols-2 gap-12 items-center">
                                     <div className="text-left fade-in-up" style={{transitionDelay: '200ms'}}>
-                                        <h3 className="text-3xl mb-4">The Sunrise Ruby</h3>
-                                        <p className="text-lg text-gray-600 mb-4">The Sunrise Ruby is a 25.59-carat Burmese ruby from Mogok, famed for its vivid "pigeon's blood" color. Sold for over $30 million USD, it holds the record as the most expensive ruby ever auctioned, outpricing even many diamonds per carat.</p>
-                                        <p className="text-gray-600">Its unmatched purity, size, and saturation—certified as unheated—established Burmese rubies as the world’s most valuable colored gemstones. Named after a poem by Rumi, this gem is more than rare—it’s a modern legend in high jewelry.</p>
+                                        <h3 className="text-3xl mb-4">{t('infographic_stories_sunrise_ruby_title' as any)}</h3>
+                                        <p className="text-lg text-gray-600 mb-4">{t('infographic_stories_sunrise_ruby_p1' as any)}</p>
+                                        <p className="text-gray-600">{t('infographic_stories_sunrise_ruby_p2' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '400ms'}}>
                                         <img src="https://i.postimg.cc/8zHg0ztp/vkgems-info-sunrise-ruby.webp" alt="The Sunrise Ruby, a legendary 25.59-carat Burmese ruby famed for its vivid 'pigeon's blood' color." className="rounded-lg shadow-lg w-full h-auto"/>
@@ -537,9 +538,9 @@ const InfographicSection: React.FC = () => {
                                         <img src="https://i.postimg.cc/05Tv63zs/vkgems-info-Emperial-Jade.webp" alt="Imperial Jade, the finest grade of jadeite from Myanmar, prized for its glowing emerald-green hue." className="rounded-lg shadow-lg w-full h-auto"/>
                                     </div>
                                     <div className="text-left fade-in-up md:order-1" style={{transitionDelay: '400ms'}}>
-                                        <h3 className="text-3xl mb-4">Imperial Jade</h3>
-                                        <p className="text-lg text-gray-600 mb-4">Imperial Jade from Hpakant, Myanmar, is the finest grade of jadeite, prized for its glowing emerald-green hue and smooth, oily luster. Once reserved for Chinese emperors, it symbolizes protection, harmony, and spiritual connection.</p>
-                                        <p className="text-gray-600">Revered for millennia in East Asian cultures, Imperial Jade is not just a gem—it’s a sacred stone believed to bridge the physical and spiritual worlds while attracting luck and longevity to its wearer.</p>
+                                        <h3 className="text-3xl mb-4">{t('infographic_stories_imperial_jade_title' as any)}</h3>
+                                        <p className="text-lg text-gray-600 mb-4">{t('infographic_stories_imperial_jade_p1' as any)}</p>
+                                        <p className="text-gray-600">{t('infographic_stories_imperial_jade_p2' as any)}</p>
                                     </div>
                                 </div>
                             </div>
@@ -551,36 +552,36 @@ const InfographicSection: React.FC = () => {
                                 <div className="section-overlay"></div>
                             </div>
                             <div className="container mx-auto px-4 content-container">
-                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">Myanmar vs. The World: A Gemstone Showdown</h2>
+                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">{t('infographic_comparison_title' as any)}</h2>
                                 <div className="overflow-x-auto fade-in-up" style={{transitionDelay: '200ms'}}>
                                     <table className="comparison-table">
                                         <thead>
                                             <tr>
-                                                <th>Feature</th>
-                                                <th>Burmese (Myanmar) Ruby</th>
-                                                <th>African (Mozambique) Ruby</th>
+                                                <th>{t('infographic_table_feature' as any)}</th>
+                                                <th>{t('infographic_table_burmese_ruby' as any)}</th>
+                                                <th>{t('infographic_table_african_ruby' as any)}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><strong>Color</strong></td>
-                                                <td className="highlight">"Pigeon's Blood" - a pure, vivid red with strong red fluorescence.</td>
-                                                <td>Can be beautiful, but often has a slight orange or purplish secondary tone.</td>
+                                                <td><strong>{t('infographic_table_color' as any)}</strong></td>
+                                                <td className="highlight">{t('infographic_table_color_burmese' as any)}</td>
+                                                <td>{t('infographic_table_color_african' as any)}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Clarity</strong></td>
-                                                <td>Often contains fine, silk-like rutile inclusions that give it a soft, velvety glow.</td>
-                                                <td>Typically has higher clarity with fewer large inclusions than Burmese rubies.</td>
+                                                <td><strong>{t('infographic_table_clarity' as any)}</strong></td>
+                                                <td>{t('infographic_table_clarity_burmese' as any)}</td>
+                                                <td>{t('infographic_table_clarity_african' as any)}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Fluorescence</strong></td>
-                                                <td className="highlight">Strong to intense red fluorescence under UV light, making it glow even in daylight.</td>
-                                                <td>Lower to medium fluorescence due to higher iron content.</td>
+                                                <td><strong>{t('infographic_table_fluorescence' as any)}</strong></td>
+                                                <td className="highlight">{t('infographic_table_fluorescence_burmese' as any)}</td>
+                                                <td>{t('infographic_table_fluorescence_african' as any)}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Rarity & Value</strong></td>
-                                                <td>Extremely rare, especially in larger sizes. The global benchmark for value.</td>
-                                                <td>More readily available, making it a more accessible but generally less valuable alternative.</td>
+                                                <td><strong>{t('infographic_table_rarity' as any)}</strong></td>
+                                                <td>{t('infographic_table_rarity_burmese' as any)}</td>
+                                                <td>{t('infographic_table_rarity_african' as any)}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -594,18 +595,18 @@ const InfographicSection: React.FC = () => {
                                 <div className="section-overlay"></div>
                             </div>
                             <div className="container mx-auto px-4 content-container">
-                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">Geographic Origin</h2>
+                                <h2 className="text-4xl md:text-5xl mb-12 text-center fade-in-up">{t('infographic_map_title' as any)}</h2>
                                 <div className="grid md:grid-cols-2 gap-8 items-center">
                                     <div className="fade-in-up" style={{transitionDelay: '200ms'}}>
                                         <img src="https://i.postimg.cc/Gmr1KyPg/vkgems-info-Geographic-Origin-background.webp" alt="Map of Myanmar showing key gemstone mining locations like Mogok, Hpakant, and the Hukawng Valley." className="rounded-lg shadow-lg w-full h-auto max-w-sm mx-auto"/>
                                     </div>
                                     <div className="text-left fade-in-up" style={{transitionDelay: '400ms'}}>
-                                        <h3 className="text-3xl mb-4">The Land of Jewels</h3>
-                                        <p className="text-lg text-gray-600 mb-4">Myanmar's unique geological history, born from the collision of tectonic plates, created the perfect conditions for these rare treasures to form. The mountainous regions in the north are particularly rich.</p>
+                                        <h3 className="text-3xl mb-4">{t('infographic_map_subtitle' as any)}</h3>
+                                        <p className="text-lg text-gray-600 mb-4">{t('infographic_map_desc' as any)}</p>
                                         <ul className="space-y-2">
-                                            <li><strong className="text-[#904a21]">Hukawng Valley:</strong> The world's primary source of Cretaceous-era Burmese Amber.</li>
-                                            <li><strong className="text-[#904a21]">Mogok Stone Tract:</strong> A legendary valley so rich in gems it's often called "The Valley of Rubies." It also produces world-class Sapphires and Spinels.</li>
-                                            <li><strong className="text-[#904a21]">Hpakant:</strong> The epicenter of high-quality Jadeite mining, producing the coveted Imperial Jade.</li>
+                                            <li><strong className="text-[#904a21]">{t('infographic_map_loc1_title' as any)}</strong> {t('infographic_map_loc1_desc' as any)}</li>
+                                            <li><strong className="text-[#904a21]">{t('infographic_map_loc2_title' as any)}</strong> {t('infographic_map_loc2_desc' as any)}</li>
+                                            <li><strong className="text-[#904a21]">{t('infographic_map_loc3_title' as any)}</strong> {t('infographic_map_loc3_desc' as any)}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -614,24 +615,24 @@ const InfographicSection: React.FC = () => {
 
                         <section id="comparison" className="infographic-section">
                             <div className="container mx-auto px-4 text-center content-container">
-                                 <h2 className="text-4xl md:text-5xl mb-12 fade-in-up">Organic vs. Mineral: A Tale of Two Treasures</h2>
+                                 <h2 className="text-4xl md:text-5xl mb-12 fade-in-up">{t('infographic_organic_vs_mineral_title' as any)}</h2>
                                  <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 text-left">
                                     <div className="bg-amber-50 p-8 rounded-lg border border-amber-200 fade-in-up" style={{transitionDelay: '200ms'}}>
-                                        <h3 className="text-3xl mb-4">Burmese Amber</h3>
+                                        <h3 className="text-3xl mb-4">{t('infographic_organic_vs_mineral_amber_title' as any)}</h3>
                                         <ul className="space-y-4 text-lg">
-                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>Origin:</strong> Organic (Fossilized Tree Resin)</li>
-                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>Age:</strong> ~99 Million Years</li>
-                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>Hardness:</strong> Soft (2.5 - 3 Mohs)</li>
-                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>Key Feature:</strong> Contains prehistoric life (inclusions)</li>
+                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_origin' as any)}</strong> {t('infographic_organic_vs_mineral_amber_origin_value' as any)}</li>
+                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_age' as any)}</strong> {t('infographic_organic_vs_mineral_amber_age_value' as any)}</li>
+                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_hardness' as any)}</strong> {t('infographic_organic_vs_mineral_amber_hardness_value' as any)}</li>
+                                            <li className="flex items-start"><span className="text-amber-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_feature' as any)}</strong> {t('infographic_organic_vs_mineral_amber_feature_value' as any)}</li>
                                         </ul>
                                     </div>
                                     <div className="bg-blue-50 p-8 rounded-lg border border-blue-200 fade-in-up" style={{transitionDelay: '400ms'}}>
-                                        <h3 className="text-3xl mb-4">Myanmar Gemstones</h3>
+                                        <h3 className="text-3xl mb-4">{t('infographic_organic_vs_mineral_gems_title' as any)}</h3>
                                          <ul className="space-y-4 text-lg">
-                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>Origin:</strong> Inorganic (Crystalline Minerals)</li>
-                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>Age:</strong> Formed deep in Earth's history</li>
-                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>Hardness:</strong> Very Hard (8 - 9 Mohs)</li>
-                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>Key Feature:</strong> Valued for color, clarity, and brilliance</li>
+                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_origin' as any)}</strong> {t('infographic_organic_vs_mineral_gems_origin_value' as any)}</li>
+                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_age' as any)}</strong> {t('infographic_organic_vs_mineral_gems_age_value' as any)}</li>
+                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_hardness' as any)}</strong> {t('infographic_organic_vs_mineral_gems_hardness_value' as any)}</li>
+                                            <li className="flex items-start"><span className="text-blue-500 mr-3 mt-1">&#10003;</span> <strong>{t('infographic_organic_vs_mineral_amber_feature' as any)}</strong> {t('infographic_organic_vs_mineral_gems_feature_value' as any)}</li>
                                         </ul>
                                     </div>
                                  </div>

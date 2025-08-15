@@ -1,5 +1,6 @@
+
 import React from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
 import { NAV_LINKS, BLOG_POSTS } from '../constants.ts';
 import { NavLink as NavLinkType } from '../types.ts';
@@ -19,7 +20,7 @@ const findNameForPath = (path: string, links: NavLinkType[]): string | null => {
 }
 
 const Breadcrumbs: React.FC = () => {
-    const location = ReactRouterDOM.useLocation();
+    const location = useLocation();
     const { t } = useLanguage();
     const { products } = useAppContext();
 
@@ -86,9 +87,9 @@ const Breadcrumbs: React.FC = () => {
                                             {crumb.name}
                                         </span>
                                     ) : (
-                                        <ReactRouterDOM.Link to={crumb.to} className="text-[var(--c-text-secondary)] hover:text-[var(--c-accent-primary)] transition-colors">
+                                        <Link to={crumb.to} className="text-[var(--c-text-secondary)] hover:text-[var(--c-accent-primary)] transition-colors">
                                             {crumb.name}
-                                        </ReactRouterDOM.Link>
+                                        </Link>
                                     )}
                                 </li>
                             );
