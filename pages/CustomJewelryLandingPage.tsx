@@ -1,9 +1,10 @@
 
+
 import React, { useState } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
-import SEO from '../components/SEO';
-import { BACKGROUND_IMAGES } from '../constants';
-import { useLanguage } from '../i18n/LanguageContext';
+import SEO from '../components/SEO.tsx';
+import { BACKGROUND_IMAGES } from '../constants.ts';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
 
 const CustomJewelryLandingPage: React.FC = () => {
     const { t } = useLanguage();

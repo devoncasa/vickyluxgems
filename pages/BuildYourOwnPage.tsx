@@ -1,7 +1,6 @@
 
-
 import React, { useState, useMemo } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AmberColorDetail, Grade, BeadSize, BeadQuantity, Amulet, Metal, CustomPreOrderDetails, PriceBreakdown } from '../types.ts';
 import { AMBER_COLOR_DETAILS, METAL_PRICES, AMULETS, BEAD_SPECS, BACKGROUND_IMAGES } from '../constants.ts';
 import GradeSelectionModal from '../components/GradeSelectionModal.tsx';
@@ -16,7 +15,7 @@ const formatCurrency = (amount: number) => {
 };
 
 const MalaBuilder: React.FC = () => {
-    const navigate = ReactRouterDOM.useNavigate();
+    const navigate = useNavigate();
     const { t } = useLanguage();
 
     // State
@@ -201,7 +200,6 @@ const BuildYourOwnPage: React.FC = () => {
     return (
         <div 
             className="page-container-with-bg min-h-screen py-16 md:py-20"
-            style={{ backgroundImage: `url('${BACKGROUND_IMAGES[20]}')` }}
         >
             <SEO 
                 titleKey="seo_build_your_own_title"

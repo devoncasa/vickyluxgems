@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import SectionDivider from '../components/SectionDivider';
-import { BACKGROUND_IMAGES, AMBER_COLOR_DETAILS } from '../constants';
-import SEO from '../components/SEO';
+import SectionDivider from '../components/SectionDivider.tsx';
+import { BACKGROUND_IMAGES, AMBER_COLOR_DETAILS } from '../constants.ts';
+import SEO from '../components/SEO.tsx';
 
 const ImageWithAlt: React.FC<{ src: string; alt: string; className?: string }> = ({ src, alt, className = 'aspect-video' }) => (
     <div className={`w-full bg-[var(--c-surface-alt)] rounded-lg flex items-center justify-center my-6 overflow-hidden ${className}`}>
@@ -52,7 +52,6 @@ const AmberColorsPage: React.FC = () => {
     return (
         <div 
             className="page-container-with-bg py-16 md:py-24"
-            style={{ backgroundImage: `url('${BACKGROUND_IMAGES[4]}')`}}
         >
             <SEO 
                 titleKey="seo_amber_colors_title"

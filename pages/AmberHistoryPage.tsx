@@ -62,7 +62,7 @@ const AmberHistoryPage: React.FC = () => {
                 imageUrl="https://i.postimg.cc/Xq6LWZ0y/Vicky-Amber-Gems-background-001.jpg"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="content-page-block max-w-4xl mx-auto p-8 md:p-12 rounded-lg shadow-xl border border-[var(--c-border-muted)]">
+                <div className="content-page-block max-w-4xl mx-auto p-6 md:p-12 rounded-lg shadow-xl border border-[var(--c-border-muted)]">
                     <div className="text-center mb-12">
                         <h1 className="text-5xl font-bold tracking-tight">History of Burmese Amber</h1>
                         <p className="mt-4 text-xl text-[var(--c-text-secondary)]">A Journey Through Time</p>

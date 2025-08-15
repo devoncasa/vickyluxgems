@@ -1,6 +1,6 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { BEAD_SPECS, SHOP_CATEGORIES, BACKGROUND_IMAGES } from '../constants.ts';
 import JsonLd from '../components/JsonLd.tsx';
 import SectionDivider from '../components/SectionDivider.tsx';
@@ -93,7 +93,7 @@ const ReviewsSection: React.FC = () => (
 
 
 const ProductDetailPage: React.FC = () => {
-    const { productId } = ReactRouterDOM.useParams<{ productId: string }>();
+    const { productId } = useParams<{ productId: string }>();
     const { products, addToCart } = useAppContext();
     const { t } = useLanguage();
     const { trackProductView } = useUserPreferences();
@@ -167,7 +167,7 @@ const ProductDetailPage: React.FC = () => {
                     keywordsKey="seo_product_not_found_keywords"
                 />
                 <h2 className="text-3xl font-semibold">{t('product_not_found_title')}</h2>
-                <ReactRouterDOM.Link to="/collection" className="mt-4 inline-block text-[var(--c-accent-primary)] hover:text-[var(--c-heading)]">{t('product_not_found_cta')}</ReactRouterDOM.Link>
+                <Link to="/collection" className="mt-4 inline-block text-[var(--c-accent-primary)] hover:text-[var(--c-heading)]">{t('product_not_found_cta')}</Link>
             </div>
         );
     }

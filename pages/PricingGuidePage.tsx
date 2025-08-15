@@ -1,6 +1,6 @@
 
 import React from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SectionDivider from '../components/SectionDivider';
 import { BACKGROUND_IMAGES } from '../constants';
 import SEO from '../components/SEO';
@@ -82,7 +82,7 @@ const PricingGuidePage: React.FC = () => {
                                 <p className="mt-2">For most colors, the Quality Tier (Standard, Select, Premium) directly corresponds to the amber's clarity. "Premium" pieces are exceptionally clear with minimal inclusions, while "Standard" pieces might have more visible natural patterns or "swirls."</p>
                             </div>
                             <div className="p-6 bg-white/10 border-l-4 border-[var(--c-accent-primary)] rounded-r-lg">
-                                <h3 className="text-2xl font-semibold">Exception: <ReactRouterDOM.Link to="/amber-colors#mila" className="hover:underline">Mila Amber</ReactRouterDOM.Link> & Richness</h3>
+                                <h3 className="text-2xl font-semibold"><Link to="/amber-colors#mila" className="hover:underline">Mila Amber</Link> & Richness</h3>
                                 <p className="mt-2">Mila amber is unique. Its value isn't just in clarity but in its 'richness'—the depth and complexity of its semi-liquid, semi-solid internal structure. A "Premium" Mila piece has an almost molten-gold appearance, a quality far rarer than simple clarity.</p>
                             </div>
                         </div>
@@ -109,9 +109,9 @@ const PricingGuidePage: React.FC = () => {
                         <div className="mt-16 text-center not-prose">
                             <h3 className="text-3xl">See It in Action</h3>
                             <p className="mt-2">Ready to see how these rules come together? Use our builder to create your pre-order and watch the transparent price breakdown update with every choice you make.</p>
-                            <ReactRouterDOM.Link to="/build-your-set" className="mt-6 inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg">
+                            <Link to="/build-your-set" className="mt-6 inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg">
                                 Build Your Custom Pre-Order
-                            </ReactRouterDOM.Link>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 
+
 import React, { useMemo } from 'react';
-import { ChevronDownIcon } from '../components/IconComponents';
-import { BACKGROUND_IMAGES } from '../constants';
-import SEO from '../components/SEO';
-import JsonLd from '../components/JsonLd';
-import { useLanguage } from '../i18n/LanguageContext';
+import { ChevronDownIcon } from '../components/IconComponents.tsx';
+import { BACKGROUND_IMAGES } from '../constants.ts';
+import SEO from '../components/SEO.tsx';
+import JsonLd from '../components/JsonLd.tsx';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
 
 const FAQ_DATA_KEYS = [
     'faq_q1', 'faq_q2', 'faq_q3', 'faq_q4', 'faq_q5', 'faq_q6', 'faq_q7', 'faq_q8', 'faq_q9', 'faq_q10', 'faq_q11', 'faq_q12'
@@ -68,7 +69,6 @@ const FaqPage: React.FC = () => {
     return (
         <div 
             className="page-container-with-bg py-16 md:py-24"
-            style={{ backgroundImage: `url('${BACKGROUND_IMAGES[23]}')` }}
         >
             <SEO 
                 titleKey="seo_faq_title"

@@ -1,7 +1,6 @@
 
-
 import React, { useEffect } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS, BACKGROUND_IMAGES } from '../constants.ts';
 import SectionDivider from '../components/SectionDivider.tsx';
 import JsonLd from '../components/JsonLd.tsx';
@@ -104,7 +103,7 @@ const DefaultArticleContent: React.FC<{ summary: string }> = ({ summary }) => (
 
 
 const BlogPostPage: React.FC = () => {
-    const { postId } = ReactRouterDOM.useParams<{ postId: string }>();
+    const { postId } = useParams<{ postId: string }>();
     const { lang, t } = useLanguage();
     const post = BLOG_POSTS.find(p => p.id === postId);
 
@@ -117,7 +116,7 @@ const BlogPostPage: React.FC = () => {
                     keywordsKey="seo_blog_post_not_found_keywords"
                  />
                 <h2 className="text-3xl font-semibold">{t('seo_blog_post_not_found_title')}</h2>
-                <ReactRouterDOM.Link to={`/blog`} className="mt-4 inline-block text-[var(--c-accent-primary)] hover:text-[var(--c-heading)]">{t('home_blog_cta')}</ReactRouterDOM.Link>
+                <Link to={`/blog`} className="mt-4 inline-block text-[var(--c-accent-primary)] hover:text-[var(--c-heading)]">{t('home_blog_cta')}</Link>
             </div>
         );
     }
@@ -170,7 +169,7 @@ const BlogPostPage: React.FC = () => {
             "name": "Vicky Lux Gems",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://i.postimg.cc/Qd8yW639/vkambergems-logo-small.png"
+                "url": "https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkambergems-logo-small.png"
             }
         },
         "inLanguage": lang,
@@ -196,7 +195,6 @@ const BlogPostPage: React.FC = () => {
     return (
         <div 
             className="page-container-with-bg py-16 md:py-24"
-            style={{ backgroundImage: `url('${BACKGROUND_IMAGES[19]}')` }}
         >
             <SEO
                 title={seoTitle}
@@ -209,9 +207,9 @@ const BlogPostPage: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <article className="max-w-4xl mx-auto">
                     <header className="text-center">
-                        <ReactRouterDOM.Link to={`/blog?filter=${post.category}`} className={`text-sm font-semibold uppercase tracking-wider ${getCategoryStyles()}`}>
+                        <Link to={`/blog?filter=${post.category}`} className={`text-sm font-semibold uppercase tracking-wider ${getCategoryStyles()}`}>
                            {getCategoryLabel()}
-                        </ReactRouterDOM.Link>
+                        </Link>
                         <h1 className="text-4xl md:text-6xl mt-4 font-bold tracking-tight">{post.title}</h1>
                         <p className="mt-6 text-[var(--c-text-secondary)]">
                             By {post.author.name} on {post.date} &bull; {post.readingTime} min read

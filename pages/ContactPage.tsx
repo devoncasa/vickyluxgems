@@ -1,11 +1,12 @@
 
 
+
 import React from 'react';
-import { BACKGROUND_IMAGES } from '../constants';
-import SEO from '../components/SEO';
-import JsonLd from '../components/JsonLd';
-import { useLanguage } from '../i18n/LanguageContext';
-import { EmailIcon, WhatsAppIcon } from '../components/IconComponents';
+import { BACKGROUND_IMAGES } from '../constants.ts';
+import SEO from '../components/SEO.tsx';
+import JsonLd from '../components/JsonLd.tsx';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { EmailIcon, WhatsAppIcon } from '../components/IconComponents.tsx';
 
 const ContactPage: React.FC = () => {
     const { lang, t } = useLanguage();
@@ -57,7 +58,6 @@ const ContactPage: React.FC = () => {
     return (
         <div 
             className="page-container-with-bg"
-            style={{ backgroundImage: `url('${BACKGROUND_IMAGES[22]}')` }}
         >
             <SEO 
                 titleKey="seo_contact_title"

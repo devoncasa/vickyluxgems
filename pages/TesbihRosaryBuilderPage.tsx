@@ -1,16 +1,15 @@
 
-
 import React from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
-import { BACKGROUND_IMAGES } from '../constants';
-import SEO from '../components/SEO';
-import { useLanguage } from '../i18n/LanguageContext';
-import SectionDivider from '../components/SectionDivider';
-import TesbihRosaryBuilder from '../components/TesbihRosaryBuilder';
+import { useLocation } from 'react-router-dom';
+import { BACKGROUND_IMAGES } from '../constants.ts';
+import SEO from '../components/SEO.tsx';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
+import SectionDivider from '../components/SectionDivider.tsx';
+import TesbihRosaryBuilder from '../components/TesbihRosaryBuilder.tsx';
 
 const TesbihRosaryBuilderPage: React.FC = () => {
     const { t } = useLanguage();
-    const location = ReactRouterDOM.useLocation();
+    const location = useLocation();
     const defaultTradition = location.state?.defaultTradition || 'Tesbih';
 
     return (

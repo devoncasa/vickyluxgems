@@ -1,7 +1,6 @@
 
-
 import React from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SectionDivider from '../components/SectionDivider.tsx';
 import { BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
@@ -92,7 +91,7 @@ const AboutPage: React.FC = () => {
                         </p>
                          <ul>
                             <li><strong>Verifiable Expertise:</strong> Our assessments are based on rigorous standards from world-renowned institutions like the GIA and GIT, backed by 40 years of family experience. This expertise underpins every item we offer.</li>
-                            <li><strong>Scientific Verification:</strong> We don't just rely on a trained eye. We use modern tools like UV fluorescence testing and microscopic analysis to ensure you are getting real, high-quality gems. You can read more on our <ReactRouterDOM.Link to="/our-guarantee">guarantee page</ReactRouterDOM.Link>.</li>
+                            <li><strong>Scientific Verification:</strong> We don't just rely on a trained eye. We use modern tools like UV fluorescence testing and microscopic analysis to ensure you are getting real, high-quality gems. You can read more on our <Link to="/our-guarantee">guarantee page</Link>.</li>
                              <li><strong>A Transparent Supply Chain:</strong> Our direct relationships with miners in regions like the Hukawng Valley and Mogok mean we can trace our gems from the mine to your hands, ensuring both authenticity and ethical practices. This is not just a promise; it's the foundation of our business.</li>
                         </ul>
                         <div className="not-prose">
@@ -106,9 +105,9 @@ const AboutPage: React.FC = () => {
                              <p className="text-lg text-[var(--c-text-secondary)] max-w-2xl mx-auto">
                                 We invite you to explore our collections and discover a piece of ancient history that resonates with your spirit. Experience the warmth, beauty, and timeless energy of the world's finest gemstones.
                              </p>
-                             <ReactRouterDOM.Link to="/collection" className="mt-8 inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg text-lg">
+                             <Link to="/collection" className="mt-8 inline-block btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg text-lg">
                                 Explore the Collection
-                            </ReactRouterDOM.Link>
+                            </Link>
                         </div>
                     </div>
                 </div>

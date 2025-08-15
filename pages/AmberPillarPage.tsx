@@ -1,11 +1,9 @@
-
-
 import React from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
-import { BACKGROUND_IMAGES } from '../constants';
-import SEO from '../components/SEO';
-import { useLanguage } from '../i18n/LanguageContext';
-import { ChevronRightIcon } from '../components/IconComponents';
+import { BACKGROUND_IMAGES } from '../constants.ts';
+import SEO from '../components/SEO.tsx';
+import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { ChevronRightIcon } from '../components/IconComponents.tsx';
 
 const GuideSection: React.FC<{
     title: string;
@@ -13,15 +11,15 @@ const GuideSection: React.FC<{
     imageUrl: string;
     links: { name: string; path: string; }[];
 }> = ({ title, description, imageUrl, links }) => (
-    <section className="py-12 md:py-16 border-b border-[var(--c-border)] last:border-b-0">
+    <section className="py-12 md:py-16 border-b border-white/10 last:border-b-0 bg-transparent">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="prose prose-lg max-w-none">
                 <h2 className="!text-4xl">{title}</h2>
-                <p className="text-[var(--c-text-secondary)]">{description}</p>
+                <p>{description}</p>
                 <ul className="mt-4 !p-0 !list-none space-y-2">
                     {links.map(link => (
                         <li key={link.path}>
-                            <ReactRouterDOM.Link to={link.path} className="flex items-center text-[var(--c-accent-primary)] hover:text-[var(--c-heading)] font-semibold group transition-colors no-underline">
+                            <ReactRouterDOM.Link to={link.path} className="flex items-center font-semibold group transition-colors no-underline">
                                 <span>{link.name}</span>
                                 <ChevronRightIcon className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
                             </ReactRouterDOM.Link>
@@ -97,7 +95,7 @@ const AmberPillarPage: React.FC = () => {
                 keywordsKey="seo_amber_guide_keywords"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="dark-context max-w-5xl mx-auto p-8 md:p-12 rounded-lg">
+                <div className="content-page-block--dark dark-context max-w-7xl mx-auto p-6 md:p-12 rounded-lg">
                     <div className="text-center mb-12">
                         <h1 className="text-5xl font-bold tracking-tight">The Ultimate Guide to Burmese Amber</h1>
                         <p className="mt-4 text-xl">Your complete resource for understanding the history, science, and significance of the world's most ancient amber.</p>

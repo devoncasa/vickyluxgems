@@ -1,14 +1,13 @@
 
-
 import React, { useState, useEffect } from 'react';
-import * as ReactRouterDOM from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { BLOG_POSTS, BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
 
 type FilterType = 'All' | 'Soul' | 'Science' | 'Craftsmanship' | 'GemTech Insights';
 
 const BlogPage: React.FC = () => {
-  const location = ReactRouterDOM.useLocation();
+  const location = useLocation();
   const [filter, setFilter] = useState<FilterType>('All');
 
   useEffect(() => {
@@ -56,7 +55,6 @@ const BlogPage: React.FC = () => {
   return (
     <div 
       className="page-container-with-bg py-16 md:py-24"
-      style={{ backgroundImage: `url('${BACKGROUND_IMAGES[18]}')` }}
     >
       <SEO 
         titleKey="seo_blog_title" 
@@ -80,7 +78,7 @@ const BlogPage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredArticles.map((post) => (
-                <ReactRouterDOM.Link 
+                <Link 
                   to={`/blog/${post.id}`} 
                   key={post.id} 
                   className="group block bg-white/20 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/40 backdrop-blur-sm"
@@ -96,7 +94,7 @@ const BlogPage: React.FC = () => {
                       Read More &rarr;
                     </p>
                   </div>
-                </ReactRouterDOM.Link>
+                </Link>
               ))}
             </div>
         </div>

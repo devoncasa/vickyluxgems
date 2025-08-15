@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from 'react';
+
+import React, { useState, useMemo, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Product, ShopCategory } from '../types.ts';
 import { SHOP_CATEGORIES } from '../constants.ts';
 import ProductCard from '../components/ProductCard.tsx';
@@ -78,21 +80,68 @@ const CategorySidebar: React.FC<{
 
 // --- Main Shop Page Component ---
 const ShopPage: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const { products } = useAppContext();
-  const { t } = useLanguage();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { products } = useAppContext();
+    const { t } = useLanguage();
+
+    const getCategoryFromUrl = () => new URLSearchParams(location.search).get('category');
+    
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(getCategoryFromUrl());
+
+    useEffect(() => {
+        setSelectedCategory(getCategoryFromUrl());
+    }, [location.search]);
+
+    const handleSetSelectedCategory = (slug: string | null) => {
+        const currentParams = new URLSearchParams(location.search);
+        if (slug) {
+            currentParams.set('category', slug);
+        } else {
+            currentParams.delete('category');
+        }
+        navigate({ search: currentParams.toString() });
+    };
   
   const filteredProducts = useMemo(() => {
     if (!selectedCategory) return products;
+        
+        let selectedCat: ShopCategory | undefined;
+        for (const cat of SHOP_CATEGORIES) {
+            if (cat.slug === selectedCategory) {
+                selectedCat = cat;
+                break;
+            }
+            if (cat.subCategories) {
+                const sub = cat.subCategories.find(s => s.slug === selectedCategory);
+                if (sub) {
+                    selectedCat = sub;
+                    break;
+                }
+            }
+        }
 
-    const topLevelCat = SHOP_CATEGORIES.find(c => c.slug === selectedCategory);
-    if (topLevelCat && topLevelCat.subCategories) {
-        // If a main category with subcategories is selected, show all products from its subcategories
-        const subCategorySlugs = topLevelCat.subCategories.map(sc => sc.slug);
-        return products.filter(p => subCategorySlugs.includes(p.category));
-    }
-    
-    return products.filter(p => p.category === selectedCategory);
+        // If a sub-category with a material is selected (e.g., Ruby)
+        if (selectedCat && selectedCat.material) {
+            return products.filter(p => p.material === selectedCat.material);
+        }
+
+        // If a top-level category is selected
+        if (selectedCat && selectedCat.subCategories) {
+            // Check if it's a material-based parent category (e.g. "Precious Stones")
+            if (selectedCat.subCategories.some(sc => sc.material)) {
+                const materials = selectedCat.subCategories.map(sc => sc.material).filter(Boolean);
+                return products.filter(p => materials.includes(p.material));
+            }
+            // It's a form-based parent category (e.g. "Prayer Beads")
+            else {
+                const subCategorySlugs = selectedCat.subCategories.map(sc => sc.slug);
+                return products.filter(p => subCategorySlugs.includes(p.category));
+            }
+        }
+        
+        // It's a top-level form-based category with no subs (e.g. "Bracelets")
+        return products.filter(p => p.category === selectedCategory);
 
   }, [selectedCategory, products]);
   
@@ -132,7 +181,7 @@ const ShopPage: React.FC = () => {
           <aside className="lg:col-span-1">
             <CategorySidebar 
               selectedCategory={selectedCategory} 
-              setSelectedCategory={setSelectedCategory} 
+              setSelectedCategory={handleSetSelectedCategory} 
             />
           </aside>
 
@@ -152,7 +201,7 @@ const ShopPage: React.FC = () => {
                 <div className="text-center py-20 bg-[var(--c-sacred-bg)] rounded-lg shadow-sm border border-[var(--c-sacred-border)]">
                     <h3 className="text-2xl font-semibold" style={{color: 'var(--c-sacred-text-primary)'}}>{t('shop_no_products_title')}</h3>
                     <p className="mt-2" style={{color: 'var(--c-sacred-text-secondary)'}}>{t('shop_no_products_subtitle')}</p>
-                     <button onClick={() => setSelectedCategory(null)} className="mt-6 text-sm font-semibold text-[var(--c-accent-primary)] hover:text-[var(--c-heading)]">
+                     <button onClick={() => handleSetSelectedCategory(null)} className="mt-6 text-sm font-semibold text-[var(--c-accent-primary)] hover:text-[var(--c-heading)]">
                         {t('shop_view_all_products')}
                     </button>
                 </div>
