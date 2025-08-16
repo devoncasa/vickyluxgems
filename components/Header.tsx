@@ -2,10 +2,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, NavLink, Link } from 'react-router-dom';
 import { NAV_LINKS } from '../constants.ts';
-import { MenuIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, GlobeIcon } from './IconComponents.tsx';
+import { MenuIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, GlobeIcon, SearchIcon } from './IconComponents.tsx';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
 import { languages } from '../i18n/config.ts';
 import GlobalCart from './GlobalCart.tsx';
+import SearchOverlay from './SearchOverlay.tsx';
 
 const prefetchScript = (href: string) => {
     // Check if a prefetch link for this href already exists
@@ -117,6 +118,7 @@ export const LanguageSwitcher: React.FC<{ forMobile?: boolean; isScrolled?: bool
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
     const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState<string | null>(null);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -127,11 +129,12 @@ const Header: React.FC = () => {
     // Close mobile menu on route change
     useEffect(() => {
         setIsMenuOpen(false);
+        setIsSearchOpen(false);
     }, [location.pathname, location.search]);
 
-    // Prevent body scroll when mobile menu is open
+    // Prevent body scroll when mobile menu or search is open
     useEffect(() => {
-        if (isMenuOpen) {
+        if (isMenuOpen || isSearchOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
@@ -139,7 +142,7 @@ const Header: React.FC = () => {
         return () => {
             document.body.style.overflow = '';
         };
-    }, [isMenuOpen]);
+    }, [isMenuOpen, isSearchOpen]);
 
     // Handle sticky header background on scroll
     useEffect(() => {
@@ -303,6 +306,13 @@ const Header: React.FC = () => {
 
                         {/* --- Right Side: Icons --- */}
                         <div className="flex items-center gap-2">
+                            <button
+                                onClick={() => setIsSearchOpen(true)}
+                                className="p-2 rounded-full hover:bg-[var(--c-accent-primary)]/10 transition-colors"
+                                aria-label="Open search"
+                            >
+                                <SearchIcon className={`h-6 w-6 opacity-80 ${isScrolled ? 'text-white' : 'text-[var(--c-text-primary)]'}`} />
+                            </button>
                              <LanguageSwitcher isScrolled={isScrolled} />
                              <GlobalCart />
                             {/* Mobile Menu Button */}
@@ -319,6 +329,8 @@ const Header: React.FC = () => {
                     </div>
                 </div>
             </header>
+
+            <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
             {/* Mobile Menu Overlay & Panel */}
             {isMenuOpen && (

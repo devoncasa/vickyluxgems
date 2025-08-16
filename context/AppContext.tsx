@@ -1,6 +1,16 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Product, CartItem, BeadSize } from '../types';
 import { calculateFinalPrice } from '../utils/priceLogic';
+
+interface PageContent {
+    title?: string;
+    url?: string;
+    heroTitle?: string;
+    heroSubtitle?: string;
+    body?: string;
+    'data-sb-object-id'?: string;
+}
 
 interface AppContextType {
     isAdminPanelOpen: boolean;
@@ -15,15 +25,23 @@ interface AppContextType {
     clearCart: () => void;
     usdtExchangeRate: number;
     setUsdtExchangeRate: React.Dispatch<React.SetStateAction<number>>;
+    pageContent: PageContent | null;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
+
+const pathToSlug = (p: string): string => {
+    if (p === "/") return "home";
+    return p.replace(/^\/+/,"").replace(/\//g,"-");
+};
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [cart, setCart] = useState<CartItem[]>([]);
     const [usdtExchangeRate, setUsdtExchangeRate] = useState<number>(36.50);
+    const [pageContent, setPageContent] = useState<PageContent | null>(null);
+    const location = useLocation();
 
     useEffect(() => {
         fetch('/data/products.json')
@@ -31,6 +49,34 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             .then(data => setProducts(data))
             .catch(err => console.error("Failed to fetch products:", err));
     }, []);
+
+    useEffect(() => {
+        const currentPath = () => {
+            const hash = location.hash || "";
+            if (hash.startsWith("#/")) return hash.slice(1).replace(/\/+$/,"") || "/";
+            return (location.pathname.replace(/\/+$/,"") || "/");
+        };
+
+        const slug = pathToSlug(currentPath());
+        const url = `/content/pages/${slug}.json`;
+
+        const fetchData = async () => {
+            try {
+                const res = await fetch(url, { cache: "no-store" });
+                if (res.ok) {
+                    const data = await res.json();
+                    setPageContent(data);
+                } else {
+                    setPageContent(null);
+                }
+            } catch (e) {
+                console.error(`Failed to fetch content for ${slug}`, e);
+                setPageContent(null);
+            }
+        };
+
+        fetchData();
+    }, [location.pathname, location.hash]);
     
     const addProduct = (newProduct: Product) => {
         setProducts(prevProducts => [newProduct, ...prevProducts]);
@@ -102,6 +148,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             clearCart,
             usdtExchangeRate,
             setUsdtExchangeRate,
+            pageContent
         }}>
             {children}
         </AppContext.Provider>

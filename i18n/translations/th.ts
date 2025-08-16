@@ -603,8 +603,8 @@ export const translations = {
     'custom_rosary_cta_button': 'สร้างประคำของคุณ',
 
     // --- New Translations for Custom Tesbih Page ---
-    'custom_landing_page_title': 'เครื่องประดับจิตวิญญาณสั่งทำ',
-    'custom_landing_page_subtitle': 'สร้างสรรค์ชิ้นงานที่เป็นเอกลักษณ์สำหรับการปฏิบัติทางจิตวิญญาณของคุณ เลือกประเพณีของคุณเพื่อเริ่มออกแบบเครื่องมือส่วนตัวที่มีความหมายสำหรับการอุทิศตน',
+    'custom_landing_page_title': 'เครื่องประดับจิตวิญญาณ...ในแบบของคุณ',
+    'custom_landing_page_subtitle': 'รังสรรค์ชิ้นงานอันเป็นเอกลักษณ์เพื่อการภาวนาและการเดินทางสู่ภายใน เลือกศรัทธาของคุณเพื่อเริ่มต้นออกแบบเครื่องมือภาวนาคู่กายที่มีความหมายลึกซึ้ง',
     'custom_landing_juzu_title': 'จูซุญี่ปุ่น',
     'custom_landing_juzu_desc': 'ออกแบบประคำพุทธแบบดั้งเดิมสำหรับการสวดมนต์และทำสมาธิ',
     'custom_landing_tesbih_title': 'ตัสบีห์อิสลาม',

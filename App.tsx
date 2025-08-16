@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, Outlet, Routes, Route, HashRouter } from 'react-router-dom';
 import Header from './components/Header.tsx';
@@ -162,11 +164,11 @@ const RoutedApp: React.FC = () => {
 const App: React.FC = () => {
     return (
         <LanguageProvider>
-            <AppProvider>
-                 <HashRouter>
+            <HashRouter>
+                <AppProvider>
                     <RoutedApp />
-                 </HashRouter>
-            </AppProvider>
+                </AppProvider>
+            </HashRouter>
         </LanguageProvider>
     );
 };
