@@ -1,14 +1,18 @@
 
 
+
 import React, { useState } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
 import SEO from '../components/SEO.tsx';
 import { BACKGROUND_IMAGES } from '../constants.ts';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { useAppContext } from '../context/AppContext.tsx';
 
 const CustomJewelryLandingPage: React.FC = () => {
     const { t } = useLanguage();
+    const { pageContent } = useAppContext();
     const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
+    const objectId = pageContent?.['data-sb-object-id'];
 
     const options = [
         {
@@ -59,19 +63,20 @@ const CustomJewelryLandingPage: React.FC = () => {
         <div
             className="page-container-with-bg py-16 md:py-24"
             style={{ backgroundImage: `url('${BACKGROUND_IMAGES[9]}')` }}
+            data-sb-object-id={objectId}
         >
             <SEO
-                title={t('custom_landing_page_title' as any)}
-                description={t('custom_landing_page_subtitle' as any)}
+                title={pageContent?.title || t('custom_landing_page_title' as any)}
+                description={pageContent?.heroSubtitle || t('custom_landing_page_subtitle' as any)}
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 dark-context">
-                    <h1 className="text-5xl font-bold tracking-tight">{t('custom_landing_page_title' as any)}</h1>
-                    <p className="mt-4 text-xl max-w-3xl mx-auto">
-                        {t('custom_landing_page_subtitle' as any)}
+                    <h1 className="text-5xl font-bold tracking-tight" data-sb-field-path="heroTitle">{pageContent?.heroTitle || t('custom_landing_page_title' as any)}</h1>
+                    <p className="mt-4 text-xl max-w-3xl mx-auto" data-sb-field-path="heroSubtitle">
+                        {pageContent?.heroSubtitle || t('custom_landing_page_subtitle' as any)}
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-sb-field-path="body">
                     {options.map((option) => (
                         <div
                             key={option.id}

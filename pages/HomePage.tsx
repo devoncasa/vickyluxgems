@@ -1,4 +1,5 @@
 
+
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS, HERO_SLIDESHOW_IMAGES } from '../constants.ts';
@@ -26,9 +27,10 @@ const StarIcon: React.FC<{className?: string}> = ({ className }) => (<svg classN
 
 const HomePage: React.FC = () => {
     const { t } = useLanguage();
-    const { products } = useAppContext();
+    const { products, pageContent } = useAppContext();
     const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
     const heroBgRef = useRef<HTMLDivElement>(null);
+    const objectId = pageContent?.['data-sb-object-id'];
 
     // Parallax effect for hero background
     useEffect(() => {
@@ -74,15 +76,15 @@ const HomePage: React.FC = () => {
     const handleCardClick = (id: string) => { setFlippedCardId(prevId => (prevId === id ? null : id)); };
 
     return (
-        <div className="overflow-x-hidden">
-            <SEO title="Vicky LuxGems — Burmese Amber & Fine Gemstones" description="Curated overview of Burmese amber, custom jewelry, collections, and learning hub." />
+        <div className="overflow-x-hidden" data-sb-object-id={objectId}>
+            <SEO title={pageContent?.title || "Vicky LuxGems — Burmese Amber & Fine Gemstones"} description={pageContent?.heroSubtitle || "Curated overview of Burmese amber, custom jewelry, collections, and learning hub."} />
             
             <section data-hero className="lp-hero h-screen min-h-[600px] flex items-center justify-center text-center">
                 <div className="hero-parallax-wrapper"><div ref={heroBgRef} className="hero-parallax-bg"><HeroSlideshow images={HERO_SLIDESHOW_IMAGES} /></div></div>
                 <div className="relative z-10 glass max-w-2xl mx-4">
                     <img src="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" alt="Vicky LuxGems Logo" className="hero-logo" />
-                    <h1 className="hero-headline">Vicky LuxGems</h1>
-                    <h2 className="mt-4 text-2xl md:text-3xl font-semibold text-[var(--c-text-primary)] font-serif">The Heart of Myanmar's Treasures</h2>
+                    <h1 className="hero-headline" data-sb-field-path="heroTitle">{pageContent?.heroTitle || 'Vicky LuxGems'}</h1>
+                    <h2 className="mt-4 text-2xl md:text-3xl font-semibold text-[var(--c-text-primary)] font-serif" data-sb-field-path="heroSubtitle">{pageContent?.heroSubtitle || "The Heart of Myanmar's Treasures"}</h2>
                     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link to="/collection" className="lp-cta text-lg gold-frame-button">Shop Burmese Amber</Link>
                         <Link to="/custom-jewelry" className="font-semibold text-[var(--c-text-primary)] hover:text-[var(--c-heading)] transition-colors group">

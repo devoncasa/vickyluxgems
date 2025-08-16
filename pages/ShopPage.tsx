@@ -1,4 +1,5 @@
 
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Product, ShopCategory } from '../types.ts';
@@ -82,8 +83,9 @@ const CategorySidebar: React.FC<{
 const ShopPage: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { products } = useAppContext();
+    const { products, pageContent } = useAppContext();
     const { t } = useLanguage();
+    const objectId = pageContent?.['data-sb-object-id'];
 
     const getCategoryFromUrl = () => new URLSearchParams(location.search).get('category');
     
@@ -161,10 +163,11 @@ const ShopPage: React.FC = () => {
     <div 
         style={{ backgroundColor: 'var(--c-sacred-page-bg)' }}
         className="py-16"
+        data-sb-object-id={objectId}
     >
       <SEO 
-        titleKey="shop_meta_title"
-        descriptionKey="shop_meta_description"
+        title={pageContent?.title || t('shop_meta_title' as any)}
+        description={pageContent?.heroSubtitle || t('shop_meta_description' as any)}
         keywordsKey="shop_meta_keywords"
       />
       <div className="shop-top-banner">
@@ -172,8 +175,8 @@ const ShopPage: React.FC = () => {
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold tracking-tight" style={{color: 'var(--c-sacred-text-primary)'}}>{t('shop_header_title')}</h1>
-          <p className="mt-4 text-xl" style={{color: 'var(--c-sacred-text-secondary)'}}>{t('shop_header_subtitle')}</p>
+          <h1 className="text-5xl font-bold tracking-tight" style={{color: 'var(--c-sacred-text-primary)'}} data-sb-field-path="heroTitle">{pageContent?.heroTitle || t('shop_header_title' as any)}</h1>
+          <p className="mt-4 text-xl" style={{color: 'var(--c-sacred-text-secondary)'}} data-sb-field-path="heroSubtitle">{pageContent?.heroSubtitle || t('shop_header_subtitle' as any)}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

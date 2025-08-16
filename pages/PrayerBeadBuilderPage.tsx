@@ -1,4 +1,5 @@
 
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
 import SEO from '../components/SEO.tsx';
@@ -130,7 +131,7 @@ const PrayerBeadBuilderPage: React.FC = () => {
         let metalPrice = 0;
         let individualPrices: Record<string, number> = {};
 
-        const materialPrices = JUZU_MATERIAL_PRICES[mainBeadMaterial];
+        const materialPrices = JUZU_MATERIAL_PRICES[mainBeadMaterial as keyof typeof JUZU_MATERIAL_PRICES];
 
         const getBeadPrice = (size: BeadSize, count: number) => {
             if (!size || !count) return 0;
@@ -141,14 +142,14 @@ const PrayerBeadBuilderPage: React.FC = () => {
             }
             if (materialPrices) {
                 const closestSize = PRAYER_BEAD_SIZES.reduce((prev, curr) => (Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev));
-                const pricePerGram = materialPrices[closestSize] || 0;
+                const pricePerGram = materialPrices[closestSize as keyof typeof materialPrices] || 0;
                 return pricePerGram * weight * count;
             }
             return 0;
         };
         
         const getMetalPrice = (weight_g: number, material: string) => {
-             const pricePerGram = METAL_COMPONENT_PRICES[material]?.[metalGrade] ?? 0;
+             const pricePerGram = METAL_COMPONENT_PRICES[material as keyof typeof METAL_COMPONENT_PRICES]?.[metalGrade] ?? 0;
              return pricePerGram * weight_g;
         };
 
@@ -262,7 +263,7 @@ const PrayerBeadBuilderPage: React.FC = () => {
                              <div className="admin-form-field">
                                 <label>Main Bead Material</label>
                                 <select value={mainBeadMaterial} onChange={(e) => setMainBeadMaterial(e.target.value)} className="admin-select">
-                                    {Object.keys(JUZU_MATERIAL_PRICES).map(m => <option key={m} value={m}>{t(`juzu_material_${m.replace(/\s/g, '_')}` as any)}</option>)}
+                                    {Object.keys(JUZU_MATERIAL_PRICES).map(m => <option key={m} value={m}>{t(`juzu_material_${m.replace(/\s/g, '_').replace(/[\(\)]/g, '')}` as any)}</option>)}
                                 </select>
                             </div>
                              {mainBeadMaterial === 'Burmese Amber' && (
@@ -275,7 +276,7 @@ const PrayerBeadBuilderPage: React.FC = () => {
                             )}
                             <div className="admin-form-field">
                                 <label>Main Bead Size: {mainBeadSize.toFixed(2)}mm (Max: {maxBeadSizes[currentTradition].toFixed(2)}mm)</label>
-                                <input type="range" min="6" max={maxBeadSizes[currentTradition]} step="0.25" value={mainBeadSize} onChange={handleBeadSizeChange} className="w-full custom-slider"/>
+                                <input type="range" min="6" max={maxBeadSizes[currentTradition]} step="0.50" value={mainBeadSize} onChange={handleBeadSizeChange} className="w-full custom-slider"/>
                             </div>
                         </ControlGroup>
                     </div>

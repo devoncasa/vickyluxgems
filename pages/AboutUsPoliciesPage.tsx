@@ -4,6 +4,7 @@ import SectionDivider from '../components/SectionDivider.tsx';
 import { BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { useAppContext } from '../context/AppContext.tsx';
 
 // Reusable component for consistent image presentation
 const ImageWithAlt: React.FC<{ src: string; alt: string; className?: string }> = ({ src, alt, className = 'aspect-video' }) => (
@@ -160,7 +161,9 @@ const OurGuaranteeContent: React.FC = () => (
             <div className="flex-grow">
                 <h2 className="text-4xl mt-0">Certificate of Authenticity</h2>
                 <SectionDivider />
-                <p className="text-[var(--c-text-secondary)]">Every item from <span className="brand-name">Vicky LuxGems</span> is accompanied by our official Certificate of Authenticity. This document is our written promise to you, confirming the item's genuine nature, unique specifications, and verified origin from Myanmar. For high-value items, we can also facilitate third-party certification from labs like GIA or GIT upon request.</p>
+                <p className="text-[var(--c-text-secondary)]">
+                   Every item from <span className="brand-name">Vicky LuxGems</span> is accompanied by our official, detailed Certificate of Authenticity. This document is our written promise to you, confirming the item's genuine nature, unique specifications, and verified origin from Myanmar. For high-value items, we can also facilitate third-party certification from labs like GIA or GIT upon request.
+                </p>
             </div>
             <ImageWithAlt src="https://placehold.co/400x300/F0EBE6/534B42?text=Certificate" alt="Vicky LuxGems Certificate of Authenticity" />
         </div>
@@ -258,6 +261,8 @@ const ReturnPolicyContent: React.FC = () => (
 
 const AboutUsPoliciesPage: React.FC = () => {
     const { t } = useLanguage();
+    const { pageContent } = useAppContext();
+    const objectId = pageContent?.['data-sb-object-id'];
 
     const tabs = [
         { id: 'story', name: t('nav_Our_Story'), component: <OurStoryContent />, seoTitle: t('seo_about_title'), seoDesc: t('seo_about_desc') },
@@ -291,16 +296,16 @@ const AboutUsPoliciesPage: React.FC = () => {
 
 
     return (
-        <div className="page-container-with-bg py-16 md:py-24">
+        <div className="page-container-with-bg py-16 md:py-24" data-sb-object-id={objectId}>
             <SEO 
-                title={activeTabData.seoTitle as any}
-                description={activeTabData.seoDesc as any}
+                title={pageContent?.title || (activeTabData.seoTitle as any)}
+                description={pageContent?.heroSubtitle || (activeTabData.seoDesc as any)}
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="content-page-block max-w-5xl mx-auto rounded-lg shadow-xl border border-[var(--c-border-muted)]">
                     <div className="p-8 md:p-12 text-center">
-                         <h1 className="text-5xl font-bold tracking-tight">About Us & Our Policies</h1>
-                         <p className="mt-4 text-xl text-[var(--c-text-secondary)]">Our Commitment to Quality, Transparency, and You</p>
+                         <h1 className="text-5xl font-bold tracking-tight" data-sb-field-path="heroTitle">{pageContent?.heroTitle || 'About Us & Our Policies'}</h1>
+                         <p className="mt-4 text-xl text-[var(--c-text-secondary)]" data-sb-field-path="heroSubtitle">{pageContent?.heroSubtitle || 'Our Commitment to Quality, Transparency, and You'}</p>
                     </div>
                     
                     <div className="tab-container sticky top-[80px] md:top-[96px] z-20 bg-[var(--c-surface)]/80 backdrop-blur-md">
@@ -321,7 +326,7 @@ const AboutUsPoliciesPage: React.FC = () => {
                     </div>
                     
                     <div className="p-8 md:p-12">
-                        <div id="tab-content-area" className="tab-content" role="tabpanel">
+                        <div id="tab-content-area" className="tab-content" role="tabpanel" data-sb-field-path="body">
                             {activeTabData.component}
                         </div>
                     </div>

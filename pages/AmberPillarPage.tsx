@@ -4,6 +4,7 @@ import { BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
 import { ChevronRightIcon } from '../components/IconComponents.tsx';
+import { useAppContext } from '../context/AppContext.tsx';
 
 const GuideSection: React.FC<{
     title: string;
@@ -36,6 +37,8 @@ const GuideSection: React.FC<{
 
 const AmberPillarPage: React.FC = () => {
     const { t } = useLanguage();
+    const { pageContent } = useAppContext();
+    const objectId = pageContent?.['data-sb-object-id'];
 
     const sections = [
         {
@@ -88,20 +91,21 @@ const AmberPillarPage: React.FC = () => {
         <div 
             className="page-container-with-bg py-16 md:py-24"
             style={{ backgroundImage: `url('${BACKGROUND_IMAGES[3]}')` }}
+            data-sb-object-id={objectId}
         >
             <SEO 
-                titleKey="nav_All_About_Burmese_Amber"
-                descriptionKey="seo_amber_guide_desc"
+                title={pageContent?.title || t('nav_All_About_Burmese_Amber' as any)}
+                description={pageContent?.heroSubtitle || t('seo_amber_guide_desc' as any)}
                 keywordsKey="seo_amber_guide_keywords"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="content-page-block--dark dark-context max-w-7xl mx-auto p-6 md:p-12 rounded-lg">
                     <div className="text-center mb-12">
-                        <h1 className="text-5xl font-bold tracking-tight">The Ultimate Guide to Burmese Amber</h1>
-                        <p className="mt-4 text-xl">Your complete resource for understanding the history, science, and significance of the world's most ancient amber.</p>
+                        <h1 className="text-5xl font-bold tracking-tight" data-sb-field-path="heroTitle">{pageContent?.heroTitle || "The Ultimate Guide to Burmese Amber"}</h1>
+                        <p className="mt-4 text-xl" data-sb-field-path="heroSubtitle">{pageContent?.heroSubtitle || "Your complete resource for understanding the history, science, and significance of the world's most ancient amber."}</p>
                     </div>
 
-                    <div className="mt-12 space-y-8">
+                    <div className="mt-12 space-y-8" data-sb-field-path="body">
                         {sections.map(section => (
                             <GuideSection key={section.title} {...section} />
                         ))}

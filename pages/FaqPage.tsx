@@ -6,6 +6,7 @@ import { BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
 import JsonLd from '../components/JsonLd.tsx';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { useAppContext } from '../context/AppContext.tsx';
 
 const FAQ_DATA_KEYS = [
     'faq_q1', 'faq_q2', 'faq_q3', 'faq_q4', 'faq_q5', 'faq_q6', 'faq_q7', 'faq_q8', 'faq_q9', 'faq_q10', 'faq_q11', 'faq_q12'
@@ -45,6 +46,8 @@ const AccordionItem: React.FC<{ title: string; children: React.ReactNode, id: st
 
 const FaqPage: React.FC = () => {
     const { t } = useLanguage();
+    const { pageContent } = useAppContext();
+    const objectId = pageContent?.['data-sb-object-id'];
 
     const faqData: FAQItem[] = useMemo(() => 
         FAQ_DATA_KEYS.map(key => ({
@@ -69,10 +72,11 @@ const FaqPage: React.FC = () => {
     return (
         <div 
             className="page-container-with-bg py-16 md:py-24"
+            data-sb-object-id={objectId}
         >
             <SEO 
-                titleKey="seo_faq_title"
-                descriptionKey="seo_faq_desc"
+                title={pageContent?.title || t('seo_faq_title' as any)}
+                description={pageContent?.heroSubtitle || t('seo_faq_desc' as any)}
                 keywordsKey="seo_faq_keywords"
                 imageUrl="https://i.postimg.cc/Bn7C6703/Vicky-Amber-Gems-background-002.jpg"
             />
@@ -80,18 +84,15 @@ const FaqPage: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="content-page-block max-w-3xl mx-auto p-8 md:p-12 rounded-lg shadow-xl border border-[var(--c-border-muted)]">
                     <div className="text-center mb-12">
-                        <h1 className="text-5xl font-bold text-[var(--c-heading)]">{t('nav_FAQs')}</h1>
-                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]">Find answers to our most common questions below.</p>
+                        <h1 className="text-5xl font-bold text-[var(--c-heading)]" data-sb-field-path="heroTitle">{pageContent?.heroTitle || t('nav_FAQs')}</h1>
+                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]" data-sb-field-path="heroSubtitle">{pageContent?.heroSubtitle || 'Find answers to our most common questions below.'}</p>
                     </div>
-
-                    <div className="mt-4">
-                        {faqData.length > 0 ? faqData.map((item, index) => (
+                     <div className="space-y-1">
+                        {faqData.map((item, index) => (
                             <AccordionItem key={index} title={item.q} id={`faq-${index}`}>
                                 {item.a}
                             </AccordionItem>
-                        )) : (
-                           <p className="p-4 text-center text-[var(--c-text-secondary)]">FAQ content is not available at the moment.</p>
-                        )}
+                        ))}
                     </div>
                 </div>
             </div>

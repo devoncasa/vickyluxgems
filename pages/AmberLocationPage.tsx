@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SectionDivider from '../components/SectionDivider';
 import { BACKGROUND_IMAGES } from '../constants';
 import SEO from '../components/SEO';
+import { useAppContext } from '../context/AppContext.tsx';
 
 const ImageWithAlt: React.FC<{ src: string; alt: string; className?: string }> = ({ src, alt, className = 'aspect-video' }) => (
     <div className={`w-full bg-[var(--c-surface-alt)] rounded-lg flex items-center justify-center my-6 overflow-hidden ${className}`}>
@@ -49,25 +50,29 @@ const BackToTopButton: React.FC = () => {
 
 
 const AmberLocationPage: React.FC = () => {
+    const { pageContent } = useAppContext();
+    const objectId = pageContent?.['data-sb-object-id'];
+
     return (
         <div 
             className="page-container-with-bg py-16 md:py-24"
             style={{ backgroundImage: `url('${BACKGROUND_IMAGES[11]}')`}}
+            data-sb-object-id={objectId}
         >
             <SEO
-                titleKey="seo_amber_location_title"
-                descriptionKey="seo_amber_location_desc"
+                title={pageContent?.title || "Where Burmese Amber is Found"}
+                description={pageContent?.heroSubtitle || "Discover the Hukawng Valley in northern Myanmar, the exclusive source of the world's 99-million-year-old Burmese amber."}
                 keywordsKey="seo_amber_location_keywords"
                 imageUrl="https://i.postimg.cc/YSjbzK3j/Vicky-Amber-Gems-background-0010.jpg"
             />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="content-page-block max-w-4xl mx-auto p-6 md:p-12 rounded-lg shadow-xl border border-[var(--c-border-muted)]">
                     <div className="text-center mb-12">
-                        <h1 className="text-5xl font-bold tracking-tight">Where Burmese Amber is Found</h1>
-                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]">The Heart of the Hukawng Valley</p>
+                        <h1 className="text-5xl font-bold tracking-tight" data-sb-field-path="heroTitle">{pageContent?.heroTitle || 'Where Burmese Amber is Found'}</h1>
+                        <p className="mt-4 text-xl text-[var(--c-text-secondary)]" data-sb-field-path="heroSubtitle">{pageContent?.heroSubtitle || 'The Heart of the Hukawng Valley'}</p>
                     </div>
 
-                    <div className="mt-12 prose prose-lg lg:prose-xl max-w-none text-[var(--c-text-primary)]/90 mx-auto">
+                    <div className="mt-12 prose prose-lg lg:prose-xl max-w-none text-[var(--c-text-primary)]/90 mx-auto" data-sb-field-path="body">
                         <h2>A Single, Precious Source</h2>
                         <SectionDivider/>
                         <div className="space-y-4">
