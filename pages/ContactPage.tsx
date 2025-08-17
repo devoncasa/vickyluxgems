@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { BACKGROUND_IMAGES } from '../constants.ts';
 import SEO from '../components/SEO.tsx';
@@ -150,9 +151,15 @@ const ContactPage: React.FC = () => {
                                         {/* Email Contact */}
                                         <div>
                                             <p className="font-medium">Email</p>
-                                            <div className="flex items-center gap-3 mt-1">
-                                                <EmailIcon className="w-5 h-5 text-[var(--c-accent-primary)] flex-shrink-0" />
-                                                <a href="mailto:info.vkamber@gmail.com?cc=vkamber91@gmail.com" className="text-sm hover:text-[var(--c-accent-primary)] transition-colors break-all">info.vkamber@gmail.com</a>
+                                            <div className="mt-2 space-y-2">
+                                                <div className="flex items-center gap-3">
+                                                    <EmailIcon className="w-5 h-5 text-[var(--c-accent-primary)] flex-shrink-0" />
+                                                    <a href="mailto:info@vickyluxgems.com" className="text-sm hover:text-[var(--c-accent-primary)] transition-colors break-all">info@vickyluxgems.com</a>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <EmailIcon className="w-5 h-5 text-[var(--c-text-secondary)] flex-shrink-0" />
+                                                    <a href="mailto:info.vkamber@gmail.com?cc=vkamber91@gmail.com" className="text-sm hover:text-[var(--c-accent-primary)] transition-colors break-all">info.vkamber@gmail.com</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

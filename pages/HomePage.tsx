@@ -1,5 +1,3 @@
-
-
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS, HERO_SLIDESHOW_IMAGES } from '../constants.ts';
@@ -95,17 +93,15 @@ const HomePage: React.FC = () => {
             </section>
 
             <main>
-                <section className="lp-section lp-section-dark">
-                    <div className="container trust-strip"><div className="trust-badge"><ShieldIcon /><span>Authenticity Guarantee</span></div><div className="trust-badge"><GlobeIcon /><span>Worldwide Shipping</span></div><div className="trust-badge"><StarIcon /><span>Master Craftsman Quality</span></div></div>
+                <section className="lp-section lp-section-light home-new-notable compact">
+                    <div className="container"><h2 className="text-4xl font-bold text-center">New & Notable</h2><SectionDivider /><div className="grid-2-3-4">{featuredProducts.map(product => <ProductCard key={product.id} product={product} className="product-card--compact" />)}</div><div className="text-center mt-12"><Link to="/collection" className="lp-cta gold-frame-button">View All Products</Link></div></div>
                 </section>
-                <section className="lp-section lp-section-light">
-                    <div className="container"><h2 className="text-4xl font-bold text-center">New & Notable</h2><SectionDivider /><div className="grid-2-3-4">{featuredProducts.map(product => <ProductCard key={product.id} product={product} />)}</div><div className="text-center mt-12"><Link to="/collection" className="lp-cta gold-frame-button">View All Products</Link></div></div>
-                </section>
+                
+                <InfographicSection forceExpanded />
+
                 <section className="lp-section lp-section-dark">
                     <div className="container"><h2 className="text-4xl font-bold text-center">Custom Creations</h2><SectionDivider /><div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">{customBuilders.map((builder) => (<div key={builder.id} className={`flipping-card ${flippedCardId === builder.id ? 'is-flipped' : ''}`} onMouseEnter={() => handleCardInteraction(builder.id, true)} onMouseLeave={() => handleCardInteraction(builder.id, false)} onClick={() => handleCardClick(builder.id)} role="button" tabIndex={0}><div className="flipping-card-inner relative aspect-[4/3]"><div className="flipping-card-front w-full h-full"><div className="relative w-full h-full rounded-lg shadow-lg overflow-hidden group"><LazyImage src={builder.imageUrl} alt={builder.altText} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 gold-frame" /><div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div><div className="absolute bottom-0 left-0 right-0 p-6 dark-context"><h3 className="text-3xl font-bold font-serif">{builder.label}</h3></div></div></div><div className="flipping-card-back w-full h-full shadow-2xl dark-context"><div><p className="text-sm leading-relaxed">Design a personal piece for devotion and meditation.</p><Link to={builder.href} className="mt-6 inline-block font-semibold border-b-2 border-white/50 hover:border-white transition-colors pb-1" onClick={(e) => e.stopPropagation()}>Start Building</Link></div></div></div></div>))}</div></div>
                 </section>
-
-                <InfographicSection />
 
                 <section className="lp-section lp-section-light">
                     <div className="container"><h2 className="text-4xl font-bold text-center">Amber Knowledge</h2><SectionDivider /><div className="grid grid-cols-1 md:grid-cols-3 gap-8">{amberGuideLinks.map(link => (<Link to={link.href} key={link.href} className="lp-card group block p-6 text-center"><LazyImage src={link.imageUrl} alt={link.label} className="w-full h-40 object-cover rounded-md mb-4 gold-frame" /><h3 className="text-2xl font-semibold group-hover:text-[var(--c-accent-primary)] transition-colors">{link.label}</h3></Link>))}</div><div className="text-center mt-12"><Link to="/amber-guide" className="lp-cta gold-frame-button">See the Full Guide</Link></div></div>

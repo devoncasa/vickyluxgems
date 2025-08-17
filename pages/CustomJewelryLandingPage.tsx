@@ -1,6 +1,4 @@
 
-
-
 import React, { useState } from 'react';
 import * as ReactRouterDOM from 'react-router-dom';
 import SEO from '../components/SEO.tsx';
@@ -28,7 +26,7 @@ const CustomJewelryLandingPage: React.FC = () => {
             titleKey: "custom_landing_tesbih_title",
             descriptionKey: "custom_landing_tesbih_desc",
             backContentKey: "custom_card_back_tesbih_full",
-            link: "/prayer-bead-builder/Tesbih",
+            link: "/custom-tesbih-configurator",
             imageUrl: "https://i.postimg.cc/8zZkNJMw/Tesbih.webp"
         },
         {
