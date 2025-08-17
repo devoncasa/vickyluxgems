@@ -1,6 +1,4 @@
 
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, Outlet, Routes, Route, HashRouter } from 'react-router-dom';
 import Header from './components/Header.tsx';
@@ -44,6 +42,7 @@ import AmberFutureTechPage from './pages/AmberFutureTechPage.tsx';
 import AmberMarketsPage from './pages/AmberMarketsPage.tsx';
 import AmberReligionPage from './pages/AmberReligionPage.tsx';
 import CustomRosaryConfiguratorPage from './pages/CustomRosaryConfiguratorPage.tsx';
+import CustomTesbihConfiguratorPage from './pages/CustomTesbihConfiguratorPage.tsx';
 import GemTechPillarPage from './pages/GemTechPillarPage.tsx';
 import PaymentPage from './pages/PaymentPage.tsx';
 
@@ -118,6 +117,7 @@ const RoutedApp: React.FC = () => {
                     <Route path="custom-jewelry" element={<CustomJewelryLandingPage />} />
                     <Route path="prayer-bead-builder/:tradition" element={<PrayerBeadBuilderPage />} />
                     <Route path="custom-rosary-configurator" element={<CustomRosaryConfiguratorPage />} />
+                    <Route path="custom-tesbih-configurator" element={<CustomTesbihConfiguratorPage />} />
 
                     {/* Detailed Content Pages */}
                     <Route path="pricing-guide" element={<PricingGuidePage />} />

@@ -1251,7 +1251,7 @@
         backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
         box-shadow:0 24px 48px rgba(0,0,0,.20); color:var(--c-text-primary); position:relative;
       }
-      @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+      @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
         .vlg-panel{ background:rgba(255, 248, 231, 0.95); }
       }
       @media(max-width:767px){ .vlg-panel{ backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(255, 248, 231, 0.98); } }
@@ -1513,7 +1513,7 @@
       backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
       box-shadow:0 24px 48px rgba(0,0,0,.20); color:var(--c-text-primary); position:relative;
     }
-    @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
       #vlgWristModal .panel { background:rgba(255, 248, 231, 0.95); }
     }
     @media (max-width:767px){
@@ -2015,17 +2015,34 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
     const th = document.getElementById('vlgWelcomeDate');
     const en = document.getElementById('vlgWelcomeDateEn');
     const now = new Date();
+    const timeZone = 'Asia/Bangkok';
 
-    // Thai Buddhist calendar
+    // Thai Buddhist calendar with time
     try{
-      const thStr = new Intl.DateTimeFormat('th-TH-u-ca-buddhist', { day:'numeric', month:'long', year:'numeric'}).format(now);
-      if (th) th.textContent = `วันที่: ${thStr}`;
+      const thOptions = {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: timeZone
+      };
+      const thStr = new Intl.DateTimeFormat('th-TH-u-ca-buddhist', thOptions).format(now);
+      if (th) th.textContent = `อัปเดตล่าสุด: ${thStr}`;
     }catch{ if (th) th.textContent = ''; }
 
-    // English Gregorian
+    // English Gregorian with time
     try{
-      const enStr = new Intl.DateTimeFormat('en-US', { day:'numeric', month:'long', year:'numeric'}).format(now);
-      if (en) en.textContent = `Date: ${enStr}`;
+      const enOptions = {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: timeZone
+      };
+      const enStr = new Intl.DateTimeFormat('en-US', enOptions).format(now);
+      if (en) en.textContent = `Last update: ${enStr}`;
     }catch{ if (en) en.textContent = ''; }
   }
 
@@ -2034,11 +2051,17 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
     document.body.setAttribute('data-popups-mode','suppress-others'); // hide any other popups
     host.hidden = false; host.setAttribute('data-open','1');
 
-    // Close on any button click or backdrop click
+    // Close on backdrop click or when an action link (<a>) is clicked.
     host.addEventListener('click', (e)=>{
-      const within = e.target.closest('.vlg-welcome-panel');
-      const isAction = e.target.closest('a,button');
-      if (!within || isAction){ closeWelcome(); }
+      const target = e.target;
+      const withinPanel = target.closest('.vlg-welcome-panel');
+
+      // The action links that should close the popup are <a> tags.
+      // The language switcher is a <button> and should not close it.
+      // This condition handles both cases correctly.
+      if (!withinPanel || target.closest('a.vlg-btn')) {
+        closeWelcome();
+      }
     });
 
     // Lang toggle
@@ -2190,5 +2213,48 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
   window.addEventListener('hashchange', run);
 })();
 </script>
+<style>
+/* ===== New & Notable: compact product cards ===== */
+.home-new-notable.compact .product-card--compact,
+.product-card--compact{
+  --pc-padding: 12px;
+  --pc-radius: 12px;
+  --pc-title: 0.95rem;
+  --pc-meta: 0.82rem;
+  background: var(--c-sacred-bg, #FBF9F6);
+  border: 1px solid var(--c-sacred-border, #EAE0D5);
+  border-radius: var(--pc-radius);
+  padding: var(--pc-padding);
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+.product-card--compact .product-card-sacred__title,
+.product-card--compact .title,
+.product-card--compact .product-title{ font-size: var(--pc-title); line-height: 1.2; color: var(--c-heading, #5D4037); }
+.product-card--compact .product-card-sacred__price,
+.product-card--compact .price,
+.product-card--compact .meta{ font-size: var(--pc-meta); color: var(--c-text-secondary, #8D6E63); }
+.product-card--compact img{ aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; }
+
+/* ===== Infographic: force expanded (hide any collapsers) ===== */
+.infographic-collapser, .infographic-toggle, [data-role="infographic-toggle"]{ display:none !important; }
+.infographic-collapsible{ max-height: none !important; opacity: 1 !important; transform: none !important; }
+
+/* ===== Image placeholders (only when an item has no image) ===== */
+.vlg-img-ph{ position: relative; background:
+  repeating-linear-gradient(45deg, rgba(180,155,94,.08) 0 12px, rgba(180,155,94,.02) 12px 24px),
+  var(--c-surface, #F8F5F2); border: 1px dashed var(--c-border-muted,#B49B5E);
+  border-radius: 12px; overflow: hidden;
+}
+.vlg-img-ph > div{ width:100%; }
+.vlg-img-ph__badge{
+  position: absolute; left: 8px; bottom: 8px;
+  background: rgba(255,255,255,.85); color: var(--c-heading,#5D4037);
+  border: 1px solid rgba(180,155,94,.35); border-radius: 10px;
+  padding: 4px 8px; font-size: .78rem; font-weight: 700;
+}
+</style>
+<style>
+.home-new-notable.grid-2-3-4{ gap: clamp(12px, 2.4vw, 20px); }
+</style>
   </body>
 </html>

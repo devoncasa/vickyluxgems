@@ -1,58 +1,21 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { CloseIcon } from './IconComponents.tsx';
 import { useLanguage } from '../i18n/LanguageContext.tsx';
+import { ImagePlaceholder } from './ImagePlaceholder.tsx';
 
-const InfographicSection: React.FC = () => {
+const InfographicSection: React.FC<{ forceExpanded?: boolean }> = ({ forceExpanded }) => {
     const { t } = useLanguage();
-    const [isExpanded, setIsExpanded] = useState(false);
+    const alwaysOn = forceExpanded ?? true;
+    const [isExpanded, setIsExpanded] = useState(true);
     const contentRef = useRef<HTMLDivElement>(null);
     const observerRef = useRef<IntersectionObserver | null>(null);
     const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
-    const lastScrollY = useRef(0);
-    const scrollDirectionRef = useRef<'up' | 'down' | null>(null);
-    const isFooterVisible = useRef(false);
-    const footerObserverRef = useRef<IntersectionObserver | null>(null);
-
+    
     useEffect(() => {
-        const footer = document.querySelector('footer.footer-with-bg');
-        if (!footer) return;
-
-        const observer = new IntersectionObserver(([entry]) => {
-            isFooterVisible.current = entry.isIntersecting;
-            if (isFooterVisible.current && scrollDirectionRef.current === 'down') {
-                setIsExpanded(true);
-            }
-        }, { threshold: 0.1 });
-
-        observer.observe(footer);
-        footerObserverRef.current = observer;
-
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY <= 10) { 
-                scrollDirectionRef.current = 'up';
-            } else if (currentScrollY > lastScrollY.current) {
-                scrollDirectionRef.current = 'down';
-            } else if (currentScrollY < lastScrollY.current) {
-                scrollDirectionRef.current = 'up';
-            }
-            lastScrollY.current = currentScrollY;
-
-            if (scrollDirectionRef.current === 'up') {
-                setIsExpanded(false);
-            }
-        };
-        
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            if (footerObserverRef.current) {
-                footerObserverRef.current.disconnect();
-            }
-        };
-    }, []);
+        if (alwaysOn) {
+            setIsExpanded(true);
+        }
+    }, [alwaysOn]);
 
     useEffect(() => {
         if (!isExpanded || !contentRef.current) {
@@ -112,15 +75,6 @@ const InfographicSection: React.FC = () => {
             }
         };
     }, [isExpanded]);
-    
-    const handleTeaserClick = () => {
-        setIsExpanded(prev => !prev);
-    };
-
-    const handleCloseClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setIsExpanded(false);
-    };
     
     const handleCardMouseEnter = (cardId: string) => {
         if (window.innerWidth > 1023) {
@@ -364,7 +318,7 @@ const InfographicSection: React.FC = () => {
 
     return (
         <section 
-            className={`expandable-infographic-section ${isExpanded ? 'expanded' : ''}`}
+            className={`expandable-infographic-section expanded`}
             role="region"
             aria-labelledby="infographic-title"
         >
@@ -372,20 +326,18 @@ const InfographicSection: React.FC = () => {
             
             <div 
                 className="infographic-teaser dark-context" 
-                onClick={handleTeaserClick}
                 role="button"
                 aria-expanded={isExpanded}
-                tabIndex={0}
+                tabIndex={-1}
                 style={{backgroundImage: "url('https://i.postimg.cc/yY0H0PRS/vkgems-info-Stories-in-Stone-Legendary-Gems-background.webp')"}}
             >
                 <h2 id="infographic-title" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-shadow-strong px-4 animate-fade-in-slow">{t('infographic_title_teaser' as any)}</h2>
                 <div className="hover-prompt" style={{opacity: 1}}>{t('infographic_prompt_teaser' as any)}</div>
             </div>
 
-            <div className={`infographic-content-wrapper ${isExpanded ? 'expanded' : ''}`}>
+            <div className={`infographic-content-wrapper expanded`}>
                 <div ref={contentRef}>
                      <button 
-                        onClick={handleCloseClick} 
                         className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 lg:hidden"
                         aria-label={t('infographic_close_button_label' as any)}
                     >
@@ -530,12 +482,12 @@ const InfographicSection: React.FC = () => {
                                         <p className="text-gray-600">{t('infographic_stories_sunrise_ruby_p2' as any)}</p>
                                     </div>
                                     <div className="fade-in-up" style={{transitionDelay: '400ms'}}>
-                                        <img src="https://i.postimg.cc/8zHg0ztp/vkgems-info-sunrise-ruby.webp" alt="The Sunrise Ruby, a legendary 25.59-carat Burmese ruby famed for its vivid 'pigeon's blood' color." className="rounded-lg shadow-lg w-full h-auto"/>
+                                        <ImagePlaceholder label="Placeholder — The Sunrise Ruby" ratio="16:9" />
                                     </div>
                                 </div>
                                 <div className="grid md:grid-cols-2 gap-12 items-center mt-16">
                                      <div className="fade-in-up md:order-2" style={{transitionDelay: '200ms'}}>
-                                        <img src="https://i.postimg.cc/05Tv63zs/vkgems-info-Emperial-Jade.webp" alt="Imperial Jade, the finest grade of jadeite from Myanmar, prized for its glowing emerald-green hue." className="rounded-lg shadow-lg w-full h-auto"/>
+                                        <ImagePlaceholder label="Placeholder — Imperial Jade" ratio="16:9" />
                                     </div>
                                     <div className="text-left fade-in-up md:order-1" style={{transitionDelay: '400ms'}}>
                                         <h3 className="text-3xl mb-4">{t('infographic_stories_imperial_jade_title' as any)}</h3>

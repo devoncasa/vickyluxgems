@@ -481,3 +481,25 @@ export type RosaryPart =
   | 'decadePaterBeads'
   | 'invitatoryAveBeads'
   | 'invitatoryPaterBead';
+
+// --- NEW TYPES FOR ADVANCED TESBIH CONFIGURATOR ---
+export type TesbihComponentType = 'mainBeads' | 'imame' | 'separators' | 'markerBeads' | 'accentBead' | 'cresset' | 'tasselToy' | 'signatureBead' | 'tasselCrown';
+
+export type TesbihComponentSelection = { 
+    materialId: string;
+    grade?: TesbihRosaryGrade;
+};
+
+export interface TesbihConfig {
+    mainBeadSize: number;
+    beadCount: 33 | 99;
+    mainBeads: TesbihComponentSelection;
+    imame: TesbihComponentSelection;
+    separators: TesbihComponentSelection;
+    markerBeads: TesbihComponentSelection; // Replaces 'The Fours'
+    accentBead: TesbihComponentSelection; // Replaces 'Deus'
+    cresset: TesbihComponentSelection;
+    tasselToy: TesbihComponentSelection;
+    signatureBead: TesbihComponentSelection;
+    tasselCrown: TesbihComponentSelection;
+}

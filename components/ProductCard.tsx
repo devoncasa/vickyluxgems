@@ -1,11 +1,10 @@
-
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../types.ts';
 import { useAppContext } from '../context/AppContext.tsx';
 import { StarIcon, NaturalIcon, HandcraftedIcon, AncientEnergyIcon } from './IconComponents.tsx';
 
-const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+const ProductCard: React.FC<{ product: Product, className?: string }> = ({ product, className }) => {
   const { addToCart } = useAppContext();
   const [selectedPackage, setSelectedPackage] = useState(1);
   const [added, setAdded] = useState(false);
@@ -60,7 +59,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const altText = `A luxurious ${product.name}, a piece of handmade spiritual jewelry with ${product.material} beads, perfect as a meaningful gift.`;
 
   return (
-    <div className="product-card-sacred">
+    <div className={`product-card-sacred ${className || ''}`}>
         <div className="product-card-sacred__image-container">
             <Link to={`/collection/${product.id}`} className="block w-full h-full">
                 <img src={product.media.mainImageUrl} alt={altText} loading="lazy" className="product-card-sacred__image"/>

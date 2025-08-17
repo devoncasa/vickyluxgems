@@ -410,3 +410,25 @@ export const TESBIH_ROSARY_MATERIALS: TesbihRosaryMaterial[] = [
     { id: 'burmese_amber', name: 'Burmese Amber', description: '...', imageUrl: 'https://i.postimg.cc/t44s81j2/golden-yellow.webp', prices: { [TesbihRosaryGrade.Standard]: 300, [TesbihRosaryGrade.Premium]: 600, [TesbihRosaryGrade.Exceptional]: 1200 } }
 ];
 export const GLOSSARY_TERMS = [ { termKey: 'term_agate', defKey: 'def_agate' }, { termKey: 'term_altar_beads', defKey: 'def_altar_beads' }, { termKey: 'term_amber', defKey: 'def_amber' }, { termKey: 'term_amulet', defKey: 'def_amulet' }, { termKey: 'term_anointing_oil', defKey: 'def_anointing_oil' }, { termKey: 'term_artisanal_gem', defKey: 'def_artisanal_gem' }, { termKey: 'term_aura_cleansing', defKey: 'def_aura_cleansing' }, { termKey: 'term_aventurine', defKey: 'def_aventurine' }, { termKey: 'term_balance_stones', defKey: 'def_balance_stones' }, { termKey: 'term_bezel_setting', defKey: 'def_bezel_setting' } ];
+
+export const TESBIH_MATERIALS = [
+    { id: 'burmese_amber', name: 'Burmese Amber', imageUrl: 'https://i.postimg.cc/t44s81j2/golden-yellow.webp', type: 'amber', pricePerGram: 300 },
+    { id: 'baltic_amber', name: 'Amber (Baltic)', imageUrl: 'https://placehold.co/100/F0A500/000000?text=Baltic', type: 'amber', pricePerGram: 150 },
+    { id: 'agarwood', name: 'Agarwood (Oud)', imageUrl: 'https://placehold.co/100/5C3A21/FFFFFF?text=Oud', type: 'wood', pricePerGram: 250 },
+    { id: 'black_onyx', name: 'Black Onyx', imageUrl: 'https://placehold.co/100/000000/FFFFFF?text=Onyx', type: 'gem', pricePerGram: 40 },
+    { id: 'jade_green', name: 'Jade (Green)', imageUrl: 'https://placehold.co/100/00A86B/FFFFFF?text=Jade', type: 'gem', pricePerGram: 150 },
+    { id: 'jade_white', name: 'Jade (White)', imageUrl: 'https://placehold.co/100/F5F5F5/000000?text=Jade', type: 'gem', pricePerGram: 140 },
+    { id: 'tigers_eye', name: 'Tiger’s Eye', imageUrl: 'https://placehold.co/100/B8860B/FFFFFF?text=TE', type: 'gem', pricePerGram: 35 },
+    { id: 'hematite', name: 'Hematite', imageUrl: 'https://placehold.co/100/696969/FFFFFF?text=Hema', type: 'gem', pricePerGram: 30 },
+    { id: 'lapis_lazuli', name: 'Lapis Lazuli', imageUrl: 'https://placehold.co/100/000080/FFFFFF?text=Lapis', type: 'gem', pricePerGram: 120 },
+    { id: 'turquoise', name: 'Turquoise', imageUrl: 'https://placehold.co/100/40E0D0/000000?text=Turq', type: 'gem', pricePerGram: 130 },
+    { id: 'obsidian', name: 'Obsidian', imageUrl: 'https://placehold.co/100/1C1C1C/FFFFFF?text=Obs', type: 'gem', pricePerGram: 38 },
+    { id: 'clear_quartz', name: 'Clear Quartz', imageUrl: 'https://placehold.co/100/F0F0F0/000000?text=Quartz', type: 'gem', pricePerGram: 42 },
+    { id: 'amethyst', name: 'Amethyst', imageUrl: 'https://placehold.co/100/9966CC/FFFFFF?text=Ameth', type: 'gem', pricePerGram: 50 },
+    { id: 'rose_quartz', name: 'Rose Quartz', imageUrl: 'https://placehold.co/100/FADADD/000?text=RQ', type: 'gem', pricePerGram: 45 },
+    { id: 'malachite', name: 'Malachite', imageUrl: 'https://placehold.co/100/0BDA51/FFFFFF?text=Mala', type: 'gem', pricePerGram: 90 },
+    { id: 'lava_stone', name: 'Lava Stone', imageUrl: 'https://placehold.co/100/3A3B3C/FFFFFF?text=Lava', type: 'gem', pricePerGram: 25 },
+    { id: 'howlite', name: 'Howlite/Magnesite', imageUrl: 'https://placehold.co/100/F0F0E0/000000?text=Howl', type: 'gem', pricePerGram: 28 },
+    { id: 'sterling_silver', name: 'Sterling Silver', imageUrl: 'https://placehold.co/100/C0C0C0/000000?text=Ag', type: 'metal', pricePerGram: 100 },
+    { id: 'gold_plated', name: 'Gold-Plated', imageUrl: 'https://placehold.co/100/FFD700/000000?text=Au', type: 'metal', pricePerGram: 120 },
+] as const;

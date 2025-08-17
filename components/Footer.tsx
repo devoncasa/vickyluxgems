@@ -74,8 +74,12 @@ export const Footer: React.FC = () => {
                       <img src="https://i.postimg.cc/13NPXHVW/tel-icon-small.webp" alt="Phone" className="w-5 h-5 flex-shrink-0" />
                       <span>{t('footer_office_phone')}</span>
                     </a>
-                    <a href="mailto:info.vkamber@gmail.com?cc=vkamber91@gmail.com" className="flex items-center gap-3 hover:text-[var(--c-accent-primary)] transition-colors group">
+                    <a href="mailto:info@vickyluxgems.com" className="flex items-center gap-3 hover:text-[var(--c-accent-primary)] transition-colors group">
                       <EmailIcon className="w-5 h-5 text-[var(--c-accent-primary)] flex-shrink-0" />
+                      <span>info@vickyluxgems.com</span>
+                    </a>
+                    <a href="mailto:info.vkamber@gmail.com?cc=vkamber91@gmail.com" className="flex items-center gap-3 hover:text-[var(--c-accent-primary)] transition-colors group">
+                      <EmailIcon className="w-5 h-5 text-[var(--c-text-secondary)] flex-shrink-0" />
                       <span>{t('footer_contact_email_1')}</span>
                     </a>
                   </div>
