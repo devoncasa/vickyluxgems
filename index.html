@@ -8,6 +8,7 @@
     <link rel="icon" type="image/webp" href="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" />
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" />
     <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" />
+    <meta name="app-build-version" content="v-lg-20250817_0622">
     <!-- Google Analytics (gtag.js) + Soft Consent Mode -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -2012,38 +2013,19 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
   }
 
   function formatDates(){
-    const th = document.getElementById('vlgWelcomeDate');
-    const en = document.getElementById('vlgWelcomeDateEn');
-    const now = new Date();
-    const timeZone = 'Asia/Bangkok';
+    const thEl = document.getElementById('vlgWelcomeDate');
+    const enEl = document.getElementById('vlgWelcomeDateEn');
 
-    // Thai Buddhist calendar with time
-    try{
-      const thOptions = {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: timeZone
-      };
-      const thStr = new Intl.DateTimeFormat('th-TH-u-ca-buddhist', thOptions).format(now);
-      if (th) th.textContent = `อัปเดตล่าสุด: ${thStr}`;
-    }catch{ if (th) th.textContent = ''; }
+    // --- Static, local timestamp captured at save time. ---
+    const WELCOME_LAST_UPDATED_TH = "17 สิงหาคม 2568 เวลา 06:22 น.";
+    const WELCOME_LAST_UPDATED_EN = "17 Aug 2025, 06:22 (local time)";
 
-    // English Gregorian with time
-    try{
-      const enOptions = {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: timeZone
-      };
-      const enStr = new Intl.DateTimeFormat('en-US', enOptions).format(now);
-      if (en) en.textContent = `Last update: ${enStr}`;
-    }catch{ if (en) en.textContent = ''; }
+    if (thEl) {
+        thEl.textContent = `วันที่ปรับปรุงล่าสุด: ${WELCOME_LAST_UPDATED_TH}`;
+    }
+    if (enEl) {
+        enEl.textContent = `Last updated: ${WELCOME_LAST_UPDATED_EN}`;
+    }
   }
 
   function openWelcome(){
@@ -2256,5 +2238,6 @@ body[data-popups-mode="suppress-others"] .popup-modal:not(#vlgWelcomeOverlay){
 <style>
 .home-new-notable.grid-2-3-4{ gap: clamp(12px, 2.4vw, 20px); }
 </style>
+<script>document.documentElement.setAttribute('data-build', 'v-lg-20250817_0622');</script>
   </body>
 </html>
