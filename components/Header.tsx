@@ -1,367 +1,190 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, NavLink, Link } from 'react-router-dom';
-import { NAV_LINKS } from '../constants.ts';
-import { MenuIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, GlobeIcon, SearchIcon } from './IconComponents.tsx';
-import { useLanguage } from '../i18n/LanguageContext.tsx';
-import { languages } from '../i18n/config.ts';
-import GlobalCart from './GlobalCart.tsx';
-import SearchOverlay from './SearchOverlay.tsx';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-scroll';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MENU_ITEMS } from '../constants';
+import { FiMenu, FiX, FiShoppingCart, FiChevronDown } from 'react-icons/fi';
+import { LanguageContext } from '../context/LanguageContext';
+import { useTranslations } from '../hooks/useTranslations';
 
-const prefetchScript = (href: string) => {
-    // Check if a prefetch link for this href already exists
-    if (document.querySelector(`link[rel="modulepreload"][href="${href}"]`)) {
-        return;
-    }
-    const link = document.createElement('link');
-    link.rel = 'modulepreload';
-    link.href = href;
-    document.head.appendChild(link);
+interface HeaderProps {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isOpen: boolean) => void;
+  setCartOpen: (isOpen: boolean) => void;
+  cartItemCount: number;
+}
+
+const LanguageSwitcher = () => {
+  const { language, setLanguage } = useContext(LanguageContext);
+  return (
+    <div className="flex items-center bg-stone-100 rounded-full p-1">
+      <button
+        onClick={() => setLanguage('en')}
+        className={`px-3 py-1 text-sm font-semibold rounded-full transition-colors duration-300 ${
+          language === 'en' ? 'bg-amber-800 text-white' : 'text-stone-600 hover:bg-stone-200'
+        }`}
+      >
+        EN
+      </button>
+      <button
+        onClick={() => setLanguage('th')}
+        className={`px-3 py-1 text-sm font-semibold rounded-full transition-colors duration-300 ${
+          language === 'th' ? 'bg-amber-800 text-white' : 'text-stone-600 hover:bg-stone-200'
+        }`}
+      >
+        TH
+      </button>
+    </div>
+  );
 };
 
-export const LanguageSwitcher: React.FC<{ forMobile?: boolean; isScrolled?: boolean; context?: 'dark' | 'light' | 'popup' }> = ({ forMobile = false, isScrolled = false, context = 'light' }) => {
-    const { lang, setLang } = useLanguage();
-    const [isOpen, setIsOpen] = useState(false);
-    const wrapperRef = useRef<HTMLDivElement>(null);
+const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen, setCartOpen, cartItemCount }) => {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const { t } = useTranslations();
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-                setIsOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
-    
-    const handleLanguageChange = (newLang: 'en' | 'th') => {
-        setLang(newLang);
-        setIsOpen(false);
-    };
+  return (
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <div className="flex-shrink-0">
+            <Link to="home" smooth={true} duration={500} className="cursor-pointer">
+              <img 
+                className="h-14 w-auto"
+                src="https://i.postimg.cc/mrQKP5dZ/taan-logo-small.webp" 
+                alt={t('header.brandName')} 
+              />
+            </Link>
+          </div>
 
-    const buttonClasses = () => {
-        const base = "flex items-center gap-2 rounded-full transition-colors";
-        if (forMobile) {
-            return `flex items-center gap-2 justify-between w-full p-3 rounded-md text-sm font-medium transition-colors !bg-[var(--c-surface-alt)] !text-[var(--c-text-primary)] border border-[var(--c-border)]`;
-        }
-        if (context === 'dark') {
-            return `${base} px-3 py-1.5 text-sm font-medium bg-transparent text-white border border-white/30 hover:border-white/60`;
-        }
-        if (context === 'popup') {
-            return `flex items-center gap-1.5 bg-[var(--c-surface-alt)] text-[var(--c-text-secondary)] border border-[var(--c-border)] py-1 px-3 text-xs font-normal rounded-full hover:border-[var(--c-accent-primary)]/50`;
-        }
-        // This is for Header on desktop (light context)
-        const baseDesktop = `${base} px-3 py-1.5 text-sm font-medium`;
-        const scrolledClasses = "text-white border-transparent hover:bg-white/10";
-        const notScrolledClasses = "text-[var(--c-text-primary)] border-[var(--c-border)] hover:bg-[var(--c-surface-alt)]";
-        return `${baseDesktop} ${isScrolled ? scrolledClasses : notScrolledClasses}`;
-    };
-
-    const dropdownClasses = () => {
-        const base = "absolute top-full mt-2 w-48 bg-[var(--c-surface)] rounded-lg shadow-xl border border-[var(--c-border)] z-50 overflow-hidden transition-all duration-300 animate-fade-in-up";
-        if (forMobile) return `${base} start-0 w-full`;
-        return `${base} end-0`;
-    };
-
-    return (
-        <div className="relative" ref={wrapperRef}>
-            <button
-                type="button"
-                className={buttonClasses()}
-                onClick={() => setIsOpen(!isOpen)}
-                aria-haspopup="true"
-                aria-expanded={isOpen}
-            >
-                <GlobeIcon className="w-5 h-5 opacity-80" />
-                <span>{languages[lang].name}</span>
-                <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
-            
-            {isOpen && (
-                <div
-                    className={dropdownClasses()}
-                    role="menu"
-                    aria-orientation="vertical"
-                >
-                    <style>{`
-                        @keyframes fade-in-up {
-                            from { opacity: 0; transform: translateY(-10px); }
-                            to { opacity: 1; transform: translateY(0); }
-                        }
-                        .animate-fade-in-up { animation: fade-in-up 0.2s ease-out forwards; }
-                    `}</style>
-                    {Object.entries(languages).map(([code, { name }]) => (
-                        <button
-                            key={code}
-                            onClick={() => handleLanguageChange(code as 'en' | 'th')}
-                            className={`w-full text-left px-4 py-2 text-sm flex items-center gap-3 transition-colors ${
-                                lang === code
-                                    ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold'
-                                    : 'text-[var(--c-text-primary)]/90 hover:bg-[var(--c-accent-primary)]/5'
-                            }`}
-                            role="menuitem"
-                        >
-                            <span className={`w-5 h-5 flex items-center justify-center font-bold text-sm ${lang === code ? 'text-[var(--c-accent-primary)]' : 'text-transparent'}`}>
-                                {lang === code && '✓'}
-                            </span>
-                            <span>{name}</span>
-                        </button>
-                    ))}
-                </div>
-            )}
-        </div>
-    );
-};
-
-
-const Header: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
-    const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState<string | null>(null);
-    const [isScrolled, setIsScrolled] = useState(false);
-    const headerRef = useRef<HTMLElement>(null);
-    const { t } = useLanguage();
-    const location = useLocation();
-
-    // Close mobile menu on route change
-    useEffect(() => {
-        setIsMenuOpen(false);
-        setIsSearchOpen(false);
-    }, [location.pathname, location.search]);
-
-    // Prevent body scroll when mobile menu or search is open
-    useEffect(() => {
-        if (isMenuOpen || isSearchOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [isMenuOpen, isSearchOpen]);
-
-    // Handle sticky header background on scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-                setOpenDesktopSubmenu(null);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
-    const getTranslationKey = (name: string) => `nav_${name.replace(/ /g, '_')}`;
-    const ChevronIcon = ChevronRightIcon; // Site is now LTR only
-
-    const handlePrefetch = (path?: string) => {
-        if (!path) return;
-        prefetchScript('/index.tsx');
-    };
-
-    const DesktopNav = () => {
-        const linkClasses = "py-1 px-1 lg:px-2 uppercase tracking-wider main-nav-link flex items-center gap-1";
-        const activeLinkClasses = "active font-semibold";
-        const inactiveLinkClasses = "opacity-80";
-
-        const searchParams = new URLSearchParams(location.search);
-        const currentCategory = searchParams.get('category');
-
-        return (
-            <nav className="hidden lg:flex items-center space-x-4">
-                {NAV_LINKS.map((link) => (
-                    <div 
-                        key={link.name} 
-                        className="relative"
-                    >
-                        <button
-                            onMouseEnter={() => handlePrefetch(link.path)}
-                            onClick={(e) => {
-                                if (link.path && !link.submenus) {
-                                    return;
-                                }
-                                e.preventDefault();
-                                setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
-                            }}
-                            className="w-full"
-                        >
-                            <NavLink
-                                to={link.path || '#'}
-                                 onClick={(e) => {
-                                    if (!link.path || link.submenus) {
-                                        e.preventDefault();
-                                        setOpenDesktopSubmenu(openDesktopSubmenu === link.name ? null : link.name);
-                                    } else {
-                                        setOpenDesktopSubmenu(null);
-                                    }
-                                }}
-                                 className={({ isActive }) => `${linkClasses} ${link.path && isActive && !link.submenus ? activeLinkClasses : inactiveLinkClasses}`}
-                            >
-                                <span>{t(getTranslationKey(link.name) as any)}</span>
-                                {link.submenus && <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${openDesktopSubmenu === link.name ? 'rotate-180' : ''}`} />}
-                            </NavLink>
-                        </button>
-                        {link.submenus && (
-                            <div className={`absolute top-full start-0 mt-2 min-w-[250px] max-h-[80vh] overflow-y-auto bg-[var(--c-surface)] shadow-xl rounded-md border border-[var(--c-border)] p-2 z-30 transition-all duration-300 ${openDesktopSubmenu === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}>
-                                {link.submenus.map(submenu => {
-                                    const submenuPath = submenu.path || '#';
-                                    const submenuCategory = submenuPath.includes('?category=') ? new URLSearchParams(submenuPath.split('?')[1]).get('category') : null;
-                                    const isAllProducts = submenuPath === '/collection' && !submenuPath.includes('?');
-
-                                    const isActive = isAllProducts 
-                                        ? location.pathname === '/collection' && !currentCategory
-                                        : submenuCategory ? currentCategory === submenuCategory : location.pathname === submenuPath;
-
-                                    return (
-                                        <Link
-                                            key={submenu.name}
-                                            to={submenuPath}
-                                            onClick={() => setOpenDesktopSubmenu(null)}
-                                            className={`block px-4 py-2 text-sm rounded-md transition-colors ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold' : 'text-[var(--c-text-primary)]/90 hover:bg-[var(--c-accent-primary)]/10 hover:text-[var(--c-accent-primary)]'}`}
-                                        >
-                                            {t(getTranslationKey(submenu.name) as any)}
-                                        </Link>
-                                    )
-                                })}
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </nav>
-        );
-    };
-
-    const MobileNav = () => (
-        <>
-            {NAV_LINKS.map((link) => (
-                <div key={link.name} className="border-b border-[var(--c-border)]">
-                    {link.submenus ? (
-                        <>
-                            <button
-                                onClick={() => setOpenMobileSubmenu(openMobileSubmenu === link.name ? null : link.name)}
-                                className="w-full flex justify-between items-center px-4 py-4 text-start font-medium text-[var(--c-text-primary)]/90"
-                            >
-                                <span>{t(getTranslationKey(link.name) as any)}</span>
-                                <ChevronIcon className={`w-5 h-5 transition-transform ${openMobileSubmenu === link.name ? 'rotate-90' : ''}`} />
-                            </button>
-                            {openMobileSubmenu === link.name && (
-                                <div className="ps-6 pb-2 space-y-1 mt-1">
-                                    {link.submenus.map(submenu => (
-                                        <NavLink
-                                            key={submenu.name}
-                                            to={submenu.path || '#'}
-                                            className={({ isActive }) => `block px-3 py-2 rounded-md font-medium text-sm ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold' : 'text-[var(--c-text-secondary)] hover:bg-[var(--c-accent-primary)]/10'}`}
-                                        >
-                                            {t(getTranslationKey(submenu.name) as any)}
-                                        </NavLink>
-                                    ))}
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <NavLink
-                            to={link.path || '#'}
-                            className={({ isActive }) => `block px-4 py-4 text-start font-medium ${isActive ? 'bg-[var(--c-accent-primary)]/10 text-[var(--c-accent-primary)] font-semibold' : 'text-[var(--c-text-primary)]/90'}`}
-                        >
-                            {t(getTranslationKey(link.name) as any)}
-                        </NavLink>
-                    )}
-                </div>
-            ))}
-        </>
-    );
-
-    return (
-        <>
-            <header ref={headerRef} className={`main-header sticky top-0 z-50 ${isScrolled ? 'scrolled' : ''}`}>
-                <div className="container mx-auto px-4 sm:px-6 md:px-8">
-                    <div className="flex items-center justify-between h-20 md:h-24">
-                        
-                        {/* --- Left Side: Logo --- */}
-                        <div className="flex-shrink-0">
-                            <Link to="/" className="logo-group flex items-center">
-                                <img src="https://cdn.jsdelivr.net/gh/devoncasa/VickyLuxGems-Assets@main/vkluxgem%20logo%20smll.webp" alt="VickyLuxGems Logo" className="header-logo"/>
-                            </Link>
-                        </div>
-
-                        {/* --- Center: Desktop Navigation --- */}
-                        <div className="hidden lg:flex justify-center flex-grow">
-                            <DesktopNav />
-                        </div>
-
-                        {/* --- Right Side: Icons --- */}
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={() => setIsSearchOpen(true)}
-                                className="p-2 rounded-full hover:bg-[var(--c-accent-primary)]/10 transition-colors"
-                                aria-label="Open search"
-                            >
-                                <SearchIcon className={`h-6 w-6 opacity-80 ${isScrolled ? 'text-white' : 'text-[var(--c-text-primary)]'}`} />
-                            </button>
-                             <LanguageSwitcher isScrolled={isScrolled} />
-                             <GlobalCart />
-                            {/* Mobile Menu Button */}
-                             <button
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="p-2 rounded-md lg:hidden mobile-menu-button"
-                                aria-label="Toggle menu"
-                                aria-controls="mobile-nav-panel"
-                                aria-expanded={isMenuOpen}
-                            >
-                                <MenuIcon className="h-6 w-6 mobile-menu-icon" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-
-            {/* Mobile Menu Overlay & Panel */}
-            {isMenuOpen && (
+          <nav className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {MENU_ITEMS.map((item) => (
                 <div 
-                    className="mobile-nav-overlay lg:hidden" 
-                    onClick={() => setIsMenuOpen(false)}
-                    aria-hidden="true"
-                ></div>
-            )}
-            <div 
-                id="mobile-nav-panel"
-                className={`mobile-nav-panel lg:hidden ${isMenuOpen ? 'open' : ''}`}
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="mobile-menu-heading"
-            >
-                <div className="flex items-center justify-between p-4 border-b border-[var(--c-border)]">
-                    <h2 id="mobile-menu-heading" className="font-serif font-bold text-lg text-[var(--c-heading)]">Menu</h2>
-                    <button onClick={() => setIsMenuOpen(false)} className="p-2 rounded-full -m-2">
-                        <CloseIcon className="h-6 w-6" />
-                    </button>
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => item.subItems && setOpenDropdown(item.name)}
+                  onMouseLeave={() => item.subItems && setOpenDropdown(null)}
+                >
+                  <Link
+                    to={item.to}
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    className="text-stone-600 hover:text-amber-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors flex items-center"
+                  >
+                    {t(item.name)}
+                    {item.subItems && <FiChevronDown className="ml-1 h-4 w-4" />}
+                  </Link>
+                  <AnimatePresence>
+                    {item.subItems && openDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 py-1"
+                      >
+                        {item.subItems.map(subItem => (
+                           <Link
+                            key={subItem.name}
+                            to={subItem.to}
+                            smooth={true}
+                            duration={500}
+                            offset={-80}
+                            onClick={() => setOpenDropdown(null)}
+                            className="text-stone-600 hover:text-amber-900 hover:bg-amber-50 block px-4 py-2 text-sm cursor-pointer whitespace-nowrap"
+                          >
+                            {t(subItem.name)}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-                <div className="flex-grow overflow-y-auto">
-                    <div className="p-4 border-b border-[var(--c-border)] lg:hidden">
-                        <LanguageSwitcher forMobile={true} />
-                    </div>
-                    <MobileNav />
-                </div>
+              ))}
             </div>
-        </>
-    );
+          </nav>
+
+          <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
+            <button onClick={() => setCartOpen(true)} className="relative p-2 rounded-full text-stone-600 hover:text-amber-900 hover:bg-amber-100 transition-colors">
+              <FiShoppingCart className="h-6 w-6" />
+              {cartItemCount > 0 && (
+                <span className="absolute top-0 right-0 block h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">{cartItemCount}</span>
+              )}
+            </button>
+          </div>
+
+          <div className="-mr-2 flex md:hidden">
+            <button onClick={() => setCartOpen(true)} className="relative mr-2 p-2 rounded-full text-stone-600 hover:text-amber-900 hover:bg-amber-100 transition-colors">
+              <FiShoppingCart className="h-6 w-6" />
+              {cartItemCount > 0 && (
+                <span className="absolute top-0 right-0 block h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">{cartItemCount}</span>
+              )}
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-stone-600 hover:text-amber-900 hover:bg-amber-100 focus:outline-none"
+            >
+              {isMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden"
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {MENU_ITEMS.map((item) => (
+                <div key={item.name}>
+                  <Link
+                    to={item.to}
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    onClick={() => !item.subItems && setIsMenuOpen(false)}
+                    className="text-stone-600 hover:text-amber-900 hover:bg-amber-100 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                  >
+                    {t(item.name)}
+                  </Link>
+                  {item.subItems && (
+                     <div className="pl-4">
+                        {item.subItems.map(subItem => (
+                            <Link
+                                key={subItem.name}
+                                to={subItem.to}
+                                smooth={true}
+                                duration={500}
+                                offset={-80}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-stone-500 hover:text-amber-900 hover:bg-amber-50 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                            >
+                                {t(subItem.name)}
+                            </Link>
+                        ))}
+                     </div>
+                  )}
+                </div>
+              ))}
+              <div className="flex justify-center pt-4">
+                <LanguageSwitcher />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
+  );
 };
 
 export default Header;

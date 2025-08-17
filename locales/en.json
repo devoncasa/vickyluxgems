@@ -1,0 +1,335 @@
+
+{
+  "header": {
+    "brandName": "Golden Taan",
+    "menu": {
+      "home": "Home",
+      "ourStory": "Our Story",
+      "ourStoryLegacy": "The Golden Taan Legacy",
+      "ourStoryPalmyra": "The Palmyra Palm: A Natural Wonder",
+      "ourStoryHarvest": "The Art of the Harvest",
+      "ourStoryCommitment": "Our Commitment: Planet & People",
+      "products": "Our Products",
+      "healthBenefits": "Health Benefits",
+      "recipes": "Recipes & Usage",
+      "faq": "FAQ",
+      "contactUs": "Contact Us"
+    }
+  },
+  "hero": {
+    "title": "Golden Taan: A Legacy of Sweetness, Naturally Perfected.",
+    "subtitle": "Discover the pure taste of authentic palmyra palm sugar.",
+    "button": "Explore Our Products"
+  },
+  "loadingMessage": "Loading Sweetness...",
+  "infographic": {
+    "title": "The Golden Taan Story",
+    "subtitle": "Discover the journey of an authentic Thai sweetener, from its role in a changing global market to its deep-rooted impact on a local community.",
+    "cta": {
+      "desktop": "Hover to explore the journey",
+      "mobile": "Tap to explore the journey"
+    },
+    "authenticity": {
+      "title": "A World Hungry for Authenticity",
+      "subtitle": "The global food landscape is experiencing a massive shift. Consumers are increasingly turning away from artificial products, creating a powerful demand for natural, transparent, and sustainable alternatives.",
+      "marketSize": "The Natural Sweetener Market is projected to reach",
+      "marketSizeSuffix": "by 2030",
+      "sourceMordor": "Source: Mordor Intelligence",
+      "consumerChoice": "of consumers globally are actively choosing products with natural, clean-label ingredients.",
+      "sourceMckinsey": "Source: McKinsey & Company",
+      "chartLabels": ["Prefer Clean & Natural", "Other"]
+    },
+    "difference": {
+      "title": "The Wholesome Difference",
+      "subtitle": "Unlike refined sugar, Golden Taan's traditional processing preserves vital minerals, offering a smarter choice for a balanced lifestyle.",
+      "chartTitle": "Nutritional Comparison (per 100g)",
+      "chartLabelTaan": "Golden Taan (per 100g)",
+      "chartLabelRefined": "Refined Sugar (per 100g)",
+      "chartYAxisLabels": ["Potassium (mg)", "Magnesium (mg)", "Iron (mg)", "Zinc (mg)"],
+      "giTitle": "Glycemic Index Comparison",
+      "giSubtitle": "A lower GI means a slower, more stable release of energy, avoiding sharp blood sugar spikes.",
+      "giRefined": "Refined Sugar",
+      "giTaan": "Golden Taan"
+    },
+    "process": {
+      "title": "A Tale of Two Sugars: The Process Matters",
+      "taanTitle": "Golden Taan (Artisanal)",
+      "taanStep1Title": "1. Harvest",
+      "taanStep1Desc": "Nectar is hand-tapped from Palmyra Palm blossoms.",
+      "taanStep2Title": "2. Simmer",
+      "taanStep2Desc": "Nectar is slow-simmered in open kettles to evaporate water.",
+      "taanStep3Title": "3. Crystallize",
+      "taanStep3Desc": "Syrup is agitated as it cools to form natural crystals. Nutrients are retained.",
+      "refinedTitle": "Refined White Sugar (Industrial)",
+      "refinedStep1Title": "1. Harvest & Crush",
+      "refinedStep1Desc": "Sugarcane is machine-harvested and crushed to extract juice.",
+      "refinedStep2Title": "2. Clarification",
+      "refinedStep2Desc": "Juice is mixed with lime and carbon dioxide to remove impurities.",
+      "refinedStep3Title": "3. Bleaching & Filtering",
+      "refinedStep3Desc": "Syrup is often bleached with sulfur dioxide and filtered through bone char. Most nutrients are stripped.",
+      "refinedStep4Title": "4. Crystallization",
+      "refinedStep4Desc": "Syrup is boiled and seeded to form pure sucrose crystals, which are then separated from molasses."
+    },
+    "sustainability": {
+      "title": "A Sustainable Ecosystem",
+      "subtitle": "Palmyra Palm cultivation is an inherently sustainable agricultural model that supports long-term land use without soil depletion or high water stress.",
+      "chartTitle": "Sustainability Impact Index (Higher is Better)",
+      "chartLabelTaan": "Golden Taan (Palmyra Palm)",
+      "chartLabelSugarcane": "Conventional Sugarcane",
+      "chartRadarLabels": [["Water", "Usage"], ["Soil", "Regeneration"], ["Pesticide", "Use"], ["Biodiversity", "Support"], ["Carbon", "Storage"]]
+    },
+    "community": {
+      "title": "Rooted in Community",
+      "subtitle": "Choosing Golden Taan is an investment in a cycle of prosperity, supporting the artisans and the land at the heart of our story.",
+      "card1_line1": "1 Palm Tree can provide income for a family for",
+      "card1_line2": "years",
+      "card2_line1": "Over",
+      "card2_line2": "rural households earn stable income",
+      "card3_line1": "Community enterprise exports generate over",
+      "card3_line2": "USD annually",
+      "card4_line1": "We pay",
+      "card4_line2": "higher wages than market rate"
+    },
+    "legacy": {
+      "title": "A 1,000-Year Sweet Tradition",
+      "item1_title": "9th Century",
+      "item1_desc": "Origins in Southeast Asia as a treasured sweetener.",
+      "item2_title": "Generations",
+      "item2_desc": "Traditional tapping methods passed down through families.",
+      "item3_title": "Royal & Ayurvedic",
+      "item3_desc": "Used in royal Thai desserts and traditional Ayurvedic remedies.",
+      "item4_title": "Today",
+      "item4_desc": "Rising as a superfood in wellness-focused markets worldwide."
+    }
+  },
+  "ourStory": {
+    "legacy": {
+        "title": "The Golden Taan Legacy",
+        "subtitle": "From Our Village in Ratchaburi to the World",
+        "rootsTitle": "Our Roots",
+        "rootsText": "Nestled in the fertile plains of Ratchaburi, Golden Taan is born from a tradition passed down through generations. Our family-owned farms cultivate Palmyra Palms with deep respect for the land, using sustainable practices that ensure the health of our ecosystem and the purity of our product.",
+        "harvestTitle": "The Art of the Harvest",
+        "harvestText": "Our skilled farmers climb the towering palms to gently collect the sweet nectar, or 'Taan,' from the blossoms. This delicate process, performed by hand, ensures that only the finest quality sap is harvested. It is then carefully simmered in traditional kettles, a slow method that concentrates the flavour and preserves the vital nutrients.",
+        "promiseTitle": "Our Promise",
+        "promiseText": "We guarantee a single-origin, unrefined product free from additives and preservatives. Every block, crystal, and drop of Golden Taan is a testament to our dedication to quality, authenticity, and the vibrant community we support.",
+        "link1": "Learn about the Palmyra Palm Tree",
+        "link2": "Discover the Traditional Process",
+        "link3": "Read Our Sustainability Pledge"
+    },
+    "palmyraPalm": {
+        "title": "The Palmyra Palm: A Natural Wonder",
+        "subtitle": "Botany and History of *Borassus flabellifer*",
+        "item1Title": "Botanical Profile",
+        "item1Content": "The Palmyra Palm (Borassus flabellifer) is a majestic, fan-leafed palm that stands as a pillar of Southeast Asian ecosystems. Capable of growing up to 30 meters tall and living for over 100 years, it is a keystone species, providing food and habitat for a diverse range of wildlife. Its robust trunk and large, distinctive leaves make it an easily recognizable feature of the rural landscape. Unlike annual crops, the Palmyra Palm is a perennial that contributes to its environment for its entire long lifespan.",
+        "item2Title": "The Terroir of Ratchaburi",
+        "item2Content": "Just as the environment shapes the taste of fine wine, the terroir of Ratchaburi, Thailand, imparts a unique character to Golden Taan. The region's mineral-rich alluvial soil, fed by the Mae Klong River, provides our palms with essential nutrients that are then transferred to the nectar. This specific soil composition, combined with a tropical savanna climate, results in a palm sap with a uniquely complex flavour profile, distinguished by deep caramel notes and a subtle, earthy undertone that cannot be found elsewhere.",
+        "item3Title": "Historical Significance: The \"Tree of Life\"",
+        "item3Content": "For centuries, the Palmyra Palm has been revered in Thai culture as a 'tree of life,' a testament to its profound utility. Historically, every part of the tree was used. The sweet sap provided nourishment; a durable wood was used for construction and tools; the fibrous leaves were woven into baskets, mats, and even manuscripts; and various parts were utilized in traditional medicine. By choosing Golden Taan, you are not just enjoying a sweetener, but partaking in a rich cultural heritage that celebrates resourcefulness and a deep connection to the natural world."
+    },
+    "harvestArt": {
+        "title": "From Blossom to Block",
+        "subtitle": "The Science of a Time-Honored Tradition",
+        "item1Title": "The Harvest (Tapping)",
+        "item1Content": "The collection of Palmyra nectar is a remarkable display of generational skill. Our farmers, with years of experience, free-climb the towering palms, often with minimal equipment. At the top, they make a precise, paper-thin incision in the flower spathe—the protective sheath covering the blossoms. This act, known as tapping, requires immense skill; a cut too deep can harm the tree, while one too shallow yields no sap. This sustainable, manual method ensures the tree remains healthy and productive for decades.",
+        "item2Title": "The Science of Simmering",
+        "item2Content": "From a food science perspective, our traditional kettle-simmering is a masterclass in flavour development. The slow, controlled heating of the fresh nectar accomplishes two crucial chemical reactions. Firstly, caramelization occurs, breaking down the sugars and forming hundreds of new aromatic compounds that create the rich, complex taste. Secondly, the Maillard reaction—a reaction between amino acids and reducing sugars—generates deep, savory, and roasted notes. This slow process, impossible to replicate with industrial evaporators, preserves volatile nutrients and builds a flavour profile of unparalleled depth.",
+        "item3Title": "From Nectar to Crystal",
+        "item3Content": "The transformation of the watery, translucent sap into its final form is a carefully controlled process. As the nectar simmers, water evaporates and it thickens into a rich, dark syrup. The critical moment comes when the syrup reaches the perfect supersaturated state. The heat is cut, and the syrup is agitated. This encourages nucleation, where sugar molecules begin to arrange themselves into microscopic seed crystals. With precise timing and temperature control, these crystals grow, forming the final texture of our sugar—either the fine crystals of our powder or the dense structure of our traditional blocks."
+    },
+    "commitment": {
+        "title": "Our Commitment: Planet & People",
+        "subtitle": "Sustainability and Community at Our Core",
+        "item1Title": "Ecological Sustainability",
+        "item1Content": "Palmyra Palm cultivation is an inherently sustainable agricultural model. As a perennial crop, the trees are not replanted annually, which means the soil is left undisturbed, preventing erosion and preserving its delicate microbial ecosystem. Their deep, powerful root systems improve soil structure and water retention. Furthermore, these palms are naturally drought-resistant and thrive without chemical pesticides or fertilizers, placing a minimal burden on the environment. This stands in stark contrast to the high ecological impact of many annual sugar crops, which often require intensive tilling, irrigation, and chemical inputs.",
+        "item2Title": "Community Empowerment",
+        "item2Content": "Golden Taan is built on a foundation of fair trade principles. We partner directly with local farming families, ensuring they receive stable, premium wages that reflect the skilled, artisanal nature of their work. This model bypasses intermediaries, allowing the local economy to benefit directly from the export of its unique heritage product. By investing in our community, we help preserve generational skills that might otherwise be lost, fostering economic stability and cultural continuity for the people of Ratchaburi.",
+        "item3Title": "Purity & Quality Assurance",
+        "item3Content": "Our 'single-origin' promise is your guarantee of unparalleled quality and traceability. Every batch of Golden Taan can be traced back to our community farms in Ratchaburi. This ensures a consistent, authentic flavour profile that is a true expression of its unique terroir. We are unconditionally committed to a 100% natural product. This means no chemical pesticides, no bleaching agents, no preservatives, and no anti-caking additives. It's a clean-label promise that meets the highest global standards for pure, wholesome food."
+    }
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Crafted with care, from our palms to your pantry.",
+    "items": {
+      "1": {
+        "title": "Golden Taan – Traditional Palm Sugar Block",
+        "description": "Round or square solid palm sugar blocks, packed in palm leaf wrappers or ziplock bags.",
+        "targetUsers": "Traditional Thai dessert shops, households, local restaurants.",
+        "usp": "Rich, intense aroma. Ideal for authentic Thai desserts like khanom tan and mor gaeng.",
+        "market": "Local markets and export destinations focused on traditional flavor profiles (e.g., Japan, Vietnam)."
+      },
+      "2": {
+        "title": "Golden Taan – Palm Sugar Powder",
+        "description": "Finely ground powder, easy to use for sprinkling or mixing.",
+        "targetUsers": "Modern restaurants, chefs, cafés, global consumers.",
+        "usp": "A gentle, aromatic alternative to white sugar in both savory and sweet dishes.",
+        "market": "Global kitchen-friendly markets such as the U.S., Europe, and South Korea."
+      },
+      "3": {
+        "title": "Golden Taan – Palm Sugar Syrup",
+        "description": "Packed in glass bottles or PET bottles for easy pouring.",
+        "targetUsers": "Coffee shops, restaurants, health-conscious consumers, bakers.",
+        "usp": "Perfect as a topping for coffee, tea, shaved ice, or fusion desserts.",
+        "market": "Specialty markets such as baristas, home cafés, and the clean-eating food sector."
+      },
+      "4": {
+        "title": "Golden Taan – Certified Organic Toddy Palm Sugar",
+        "description": "Premium packaging with USDA or EU Organic certification.",
+        "targetUsers": "Health-conscious consumers, vegan restaurants, premium export markets.",
+        "usp": "100% chemical-free, sustainable, traceable production.",
+        "market": "North America, Europe, South Korea, and high-end clientele."
+      },
+      "5": {
+        "title": "Golden Taan – Palm Sugar Fusion Flavors",
+        "description": "Blended with herbs or fruits such as roasted coconut or cinnamon.",
+        "targetUsers": "Bakeries, Modern Thai fusion restaurants, homemade dessert shops.",
+        "usp": "Unique and differentiated. Introduces new flavor notes to elevate signature dishes.",
+        "market": "Creative food industries, dessert innovation markets, and experimental restaurants."
+      }
+    },
+    "card": {
+      "moreInfoHover": "Hover for more info",
+      "moreInfoClick": "Tap for more info",
+      "targetUsers": "Target Users:",
+      "usp": "Unique Selling Point:",
+      "market": "Market:",
+      "requestQuote": "Request Quote",
+      "addToCart": "Add to Cart - ${price}"
+    }
+  },
+  "benefits": {
+    "title": "The Wholesome Difference",
+    "subtitle": "Why Choose Golden Taan?",
+    "items": {
+      "1": {
+        "title": "A Low Glycemic Index (GI) Sweetener",
+        "content": "Unlike refined sugars that cause sharp spikes in blood glucose levels, Golden Taan has a naturally low glycemic index. This means it is absorbed more slowly into the bloodstream, providing a steadier, more sustained release of energy without the subsequent 'crash.' This characteristic makes it a smarter choice for individuals managing blood sugar levels, athletes seeking sustained energy, and anyone looking for a more balanced sweetener."
+      },
+      "2": {
+        "title": "A Rich Source of Essential Minerals",
+        "content": "Our minimal, traditional processing preserves the natural goodness of the palm sap. Golden Taan is a notable source of essential minerals often stripped away from highly processed sweeteners. It contains significant levels of Potassium, which is vital for nerve function and blood pressure regulation; Iron, crucial for oxygen transport; and Zinc, important for immune function."
+      },
+      "3": {
+        "title": "Natural Electrolytes for Hydration",
+        "content": "The same minerals that make Golden Taan nutritious also make it a source of natural electrolytes. This makes it an excellent ingredient for creating natural hydration beverages or for use in post-workout recovery snacks, helping to replenish what the body loses during exercise."
+      },
+      "4": {
+        "title": "The Clean-Label Promise: Unrefined & Pure",
+        "content": "Experience the difference of a truly natural sugar. Golden Taan is 100% pure, unrefined, and free from bone char, anti-caking agents, and chemical additives. It is processed without the use of any chemicals, making it a clean, vegan-friendly choice for the conscious consumer."
+      }
+    }
+  },
+  "recipes": {
+    "title": "Inspire Your Kitchen with Golden Taan",
+    "subtitle": "From traditional desserts to modern cocktails, the possibilities are endless.",
+    "recipeGenerator": {
+      "title": "AI Recipe Creator",
+      "subtitle": "Have some ingredients? Let our AI create a unique recipe for you featuring Golden Taan.",
+      "placeholder": "Enter ingredients you have (e.g., chicken, coconut milk, chili)",
+      "button": "Generate Recipe",
+      "loading": "Crafting your delicious recipe...",
+      "error": "Sorry, we couldn't create a recipe right now. Please try again.",
+      "recipeTitle": "Your Custom Recipe"
+    },
+    "items": {
+      "1": {
+        "title": "For the Barista: Golden Taan Caramel Latte",
+        "description": "Elevate your morning coffee. The deep caramel notes of our palm sugar dissolve perfectly to create a rich, complex latte that rivals any specialty café."
+      },
+      "2": {
+        "title": "For the Baker: Gluten-Free Palmyra Blondies",
+        "description": "Add a moist texture and a sophisticated, butterscotch-like sweetness to your baking. Our palm sugar is a perfect 1:1 replacement for brown sugar in this delicious gluten-free recipe."
+      },
+      "3": {
+        "title": "For the Chef: Savory Glaze for Pan-Seared Salmon",
+        "description": "Balance savory and sweet. Create a simple, elegant glaze with Golden Taan syrup, soy sauce, and ginger to give your fish or chicken a perfectly caramelized crust."
+      },
+      "4": {
+        "title": "For the Mixologist: Smoky Old Fashioned",
+        "description": "Reinvent a classic cocktail. Use our palm sugar syrup to add a smoky depth and complexity that complements fine whiskey, creating a truly memorable Old Fashioned."
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "1": {
+        "question": "How can I differentiate authentic Golden Taan from other 'palm sugars'?",
+        "answerIsTable": true
+      },
+      "2": {
+        "question": "What is the difference between palm sugar and coconut sugar?",
+        "answer": "They come from different trees. Golden Taan is from the Palmyra Palm, known for its deeper, more complex caramel flavour, while coconut sugar comes from the Coconut Palm."
+      },
+      "3": {
+        "question": "What is the shelf life of your products?",
+        "answer": "Our powder and blocks have a shelf life of 24 months. The syrup should be refrigerated after opening and consumed within 6 months."
+      },
+      "4": {
+        "question": "Do you ship internationally?",
+        "answer": "Yes, we specialize in global export. Please use the \"Request Quote\" button on our Bulk Orders product or contact us for specific shipping inquiries."
+      }
+    },
+    "table": {
+        "intro": "This is an excellent question. True Palmyra Palm Sugar, like Golden Taan, is a unique artisanal product. Many mass-market \"palm sugars\" are actually made from sugarcane and mixed with other ingredients. Here’s how to tell the difference:",
+        "headerFeature": "Feature",
+        "headerGoldenTaan": "Golden Taan (Authentic Palmyra Palm Sugar)",
+        "headerCommonSugar": "Common Palm Sugar (Often Sugarcane-based)",
+        "row1Title": "Source",
+        "row1Taan": "100% nectar from the blossom of the Palmyra Palm tree (Borassus flabellifer).",
+        "row1Common": "Primarily sugarcane juice, sometimes mixed with coconut sugar.",
+        "row2Title": "Aroma",
+        "row2Taan": "A distinct, complex fragrance with notes of caramel, smoke, and a hint of floral sweetness.",
+        "row2Common": "A faint, simple sweet smell, or often no distinct aroma at all.",
+        "row3Title": "Taste",
+        "row3Taan": "A mellow, rich, and well-rounded sweetness. Not sharp or overpowering.",
+        "row3Common": "A one-dimensional, intensely sweet taste, similar to regular sugar.",
+        "row4Title": "Color",
+        "row4Taan": "A natural, beautiful golden-brown to dark-brown hue from traditional kettle simmering.",
+        "row4Common": "Often a darker, more uniform brown, sometimes from added molasses.",
+        "row5Title": "Purity",
+        "row5Taan": "Always unrefined, with no additives, preservatives, or bleaching agents.",
+        "row5Common": "May contain anti-caking agents or preservatives."
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have questions about our products, bulk orders, or partnerships? We'd love to hear from you.",
+    "addressTitle": "Address",
+    "addressText": "Golden Taan, 96/3 Moo.2, T. Wanyai, A. Bang Phae, Ratchaburi 70160, Thailand.",
+    "phoneTitle": "Phone",
+    "phoneHours": "Business hours: 9:00 AM - 5:00 PM (GMT+7)",
+    "emailTitle": "Email",
+    "emailLink": "sales@goldentaan.com",
+    "formTitle": "Send a Message",
+    "form": {
+        "name": "Your Name",
+        "email": "Your Email",
+        "subject": "Subject",
+        "message": "Your Message",
+        "button": "Send Message"
+    }
+  },
+  "footer": {
+    "brandName": "Golden Taan",
+    "description": "A Legacy of Sweetness from Nature. Bringing the finest, organic palmyra palm sugar from Thailand to the world.",
+    "quickLinksTitle": "Quick Links",
+    "linkHome": "Home",
+    "linkStory": "Our Story",
+    "linkProducts": "Products",
+    "linkFaq": "FAQ",
+    "connectTitle": "Connect",
+    "certifiedTitle": "Certified",
+    "copyright": "© Golden Taan 2025. All Rights Reserved."
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue Shopping",
+    "total": "Total",
+    "checkout": "Proceed to Checkout"
+  },
+  "liveChat": {
+    "title": "Chat with us!"
+  }
+}
