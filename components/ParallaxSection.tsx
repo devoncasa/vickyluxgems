@@ -36,8 +36,8 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({ children, id, classNa
       <div className="absolute inset-0 z-0 filter backdrop-blur-[8px]" />
       
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+        initial={{ y: 50 }}
+        animate={{ y: isInView ? 0 : 50 }}
         transition={{ duration: 0.8 }}
         className="relative z-10"
       >

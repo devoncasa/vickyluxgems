@@ -178,8 +178,8 @@ const App: React.FC = () => {
                     <div className="absolute inset-0 z-0 filter backdrop-blur-[8px]" />
 
                     <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ y: 20 }}
+                        animate={{ y: 0 }}
                         transition={{ duration: 1 }}
                         className="text-center z-10 p-4"
                     >

@@ -70,7 +70,7 @@ const TranslationTool = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch('./locales/en.json')
+    fetch('/locales/en.json')
         .then(res => {
             if (!res.ok) {
                 throw new Error('Failed to fetch translation file');

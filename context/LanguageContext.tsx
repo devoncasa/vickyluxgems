@@ -28,8 +28,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       setIsLoading(true);
       try {
         const [enResponse, thResponse] = await Promise.all([
-          fetch('./locales/en.json'),
-          fetch('./locales/th.json')
+          fetch('/locales/en.json'),
+          fetch('/locales/th.json')
         ]);
         if (!enResponse.ok || !thResponse.ok) {
             throw new Error('Failed to fetch translation files');
