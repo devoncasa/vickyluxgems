@@ -1,26 +1,29 @@
 {
-  "name": "golden-taan-170825",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "vicky-luxgems-29072025",
+  "version": "1.0.0",
+  "description": "A luxury brand offering authentic, high-quality precious gems from around the world. We bridge the gap between ancient wisdom and modern science, providing not just a beautiful gemstone, but a piece of natural history backed by verifiable scientific authenticity.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-dom": "^19.1.0",
-    "react": "^19.1.0",
-    "react-icons": "^5.5.0",
-    "framer-motion": "^12.23.6",
-    "react-scroll": "^1.9.3",
-    "chart.js": "^4.4.3",
-    "react-chartjs-2": "^5.2.0",
-    "@google/genai": "latest"
+    "@google/genai": "^0.15.0",
+    "@sendgrid/mail": "^8.1.3",
+    "@vitejs/plugin-react": "^4.3.1",
+    "algoliasearch": "^4.23.3",
+    "html-to-image": "^1.11.11",
+    "instantsearch.js": "^4.68.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.25.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.5"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "@stackbit/cms-git": "^1.0.0",
+    "@stackbit/types": "^1.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0"
   }
 }
