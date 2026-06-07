@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, Outlet, Routes, Route, HashRouter } from 'react-router-dom';
+import { useLocation, Outlet, Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import Header from './components/Header.tsx';
 import { Footer } from './components/Footer.tsx';
 import HomePage from './pages/HomePage.tsx';
@@ -45,14 +45,13 @@ import CustomRosaryConfiguratorPage from './pages/CustomRosaryConfiguratorPage.t
 import CustomTesbihConfiguratorPage from './pages/CustomTesbihConfiguratorPage.tsx';
 import GemTechPillarPage from './pages/GemTechPillarPage.tsx';
 import PaymentPage from './pages/PaymentPage.tsx';
+import PreciousGemstonesPage from './pages/PreciousGemstonesPage.tsx';
 
 import { AppProvider, useAppContext } from './context/AppContext.tsx';
 import { LanguageProvider } from './i18n/LanguageContext.tsx';
 
 const Layout: React.FC = () => {
     const { pathname } = useLocation();
-    
-    // The home page is now just '/'
     const isHomePage = pathname === `/`;
 
     return (
@@ -69,7 +68,6 @@ const Layout: React.FC = () => {
     );
 };
 
-// This new component contains all the logic that needs Router context.
 const RoutedApp: React.FC = () => {
     const { isAdminPanelOpen, setIsAdminPanelOpen } = useAppContext();
     const location = useLocation();
@@ -85,7 +83,6 @@ const RoutedApp: React.FC = () => {
         }
 
         if (availableImagesRef.current.length === 0) {
-            // Reset the pool if all images have been used in the session
             availableImagesRef.current = [...BACKGROUND_IMAGES];
         }
 
@@ -103,38 +100,38 @@ const RoutedApp: React.FC = () => {
             <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    {/* Main Pages */}
                     <Route index element={<HomePage />} />
+
                     <Route path="collection" element={<CollectionPage />} />
+                    <Route path="collections" element={<CollectionPage />} />
                     <Route path="collection/:productId" element={<ProductDetailPage />} />
+
                     <Route path="build-your-set" element={<BuildYourOwnPage />} />
+                    <Route path="custom-bracelet" element={<BuildYourOwnPage />} />
+                    <Route path="bespoke" element={<BuildYourOwnPage />} />
                     <Route path="order-confirmation" element={<OrderConfirmationPage />} />
                     <Route path="payment" element={<PaymentPage />} />
+
                     <Route path="blog" element={<BlogPage />} />
                     <Route path="blog/:postId" element={<BlogPostPage />} />
-                    
-                    {/* Customizer Pages */}
+
                     <Route path="custom-jewelry" element={<CustomJewelryLandingPage />} />
                     <Route path="prayer-bead-builder/:tradition" element={<PrayerBeadBuilderPage />} />
                     <Route path="custom-rosary-configurator" element={<CustomRosaryConfiguratorPage />} />
                     <Route path="custom-tesbih-configurator" element={<CustomTesbihConfiguratorPage />} />
 
-                    {/* Detailed Content Pages */}
+                    <Route path="gemstones" element={<PreciousGemstonesPage />} />
+                    <Route path="precious-semi-precious-gemstones" element={<PreciousGemstonesPage />} />
                     <Route path="pricing-guide" element={<PricingGuidePage />} />
                     <Route path="amber-colors" element={<AmberColorsPage />} />
-                    
-                    {/* New Standalone Pages */}
                     <Route path="faqs" element={<FaqPage />} />
                     <Route path="glossary" element={<GlossaryPage />} />
                     <Route path="contact" element={<ContactPage />} />
-
-                    {/* New Consolidated Page */}
+                    <Route path="about" element={<AboutUsPoliciesPage />} />
                     <Route path="about-us-policies" element={<AboutUsPoliciesPage />} />
-                    
-                    {/* Pillar Pages */}
                     <Route path="gemtech-pillar" element={<GemTechPillarPage />} />
-                    
-                    {/* Amber Guide (Pillar & Cluster) Pages */}
+
+                    <Route path="amber" element={<AmberPillarPage />} />
                     <Route path="amber-guide" element={<AmberPillarPage />} />
                     <Route path="amber/history" element={<AmberHistoryPage />} />
                     <Route path="amber/location" element={<AmberLocationPage />} />
@@ -151,9 +148,9 @@ const RoutedApp: React.FC = () => {
                     <Route path="amber/future-tech" element={<AmberFutureTechPage />} />
                     <Route path="amber/markets" element={<AmberMarketsPage />} />
                     <Route path="amber/religion" element={<AmberReligionPage />} />
-                    
-                    {/* For Dev/Info */}
+
                     <Route path="git-info" element={<GitInfoPage />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
             </Routes>
             {isAdminPanelOpen && <AdminPanel isOpen={isAdminPanelOpen} onClose={() => setIsAdminPanelOpen(false)} />}
@@ -164,11 +161,11 @@ const RoutedApp: React.FC = () => {
 const App: React.FC = () => {
     return (
         <LanguageProvider>
-            <HashRouter>
+            <BrowserRouter>
                 <AppProvider>
                     <RoutedApp />
                 </AppProvider>
-            </HashRouter>
+            </BrowserRouter>
         </LanguageProvider>
     );
 };
