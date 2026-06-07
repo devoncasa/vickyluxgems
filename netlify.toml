@@ -1,0 +1,53 @@
+[build]
+  publish = "."
+  command = "npm run build"
+
+[[redirects]]
+  from = "/amber"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/gemstones"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/precious-semi-precious-gemstones"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/collections"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/bespoke"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/custom-bracelet"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/build-your-set"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
