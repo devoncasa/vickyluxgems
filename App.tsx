@@ -23,6 +23,7 @@ import PrayerBeadBuilderPage from './pages/PrayerBeadBuilderPage.tsx';
 import { BACKGROUND_IMAGES } from './constants.ts';
 import CookieConsentBanner from './components/CookieConsentBanner.tsx';
 import Chatbot from './components/Chatbot.tsx';
+import FloatingWhatsApp from './components/FloatingWhatsApp.tsx';
 import CustomJewelryLandingPage from './pages/CustomJewelryLandingPage.tsx';
 import AdminPanel from './components/AdminPanel.tsx';
 import AmberPillarPage from './pages/AmberPillarPage.tsx';
@@ -46,6 +47,8 @@ import CustomTesbihConfiguratorPage from './pages/CustomTesbihConfiguratorPage.t
 import GemTechPillarPage from './pages/GemTechPillarPage.tsx';
 import PaymentPage from './pages/PaymentPage.tsx';
 import PreciousGemstonesPage from './pages/PreciousGemstonesPage.tsx';
+import EducationPage from './pages/EducationPage.tsx';
+import CertificatesPage from './pages/CertificatesPage.tsx';
 
 import { AppProvider, useAppContext } from './context/AppContext.tsx';
 import { LanguageProvider } from './i18n/LanguageContext.tsx';
@@ -55,13 +58,14 @@ const Layout: React.FC = () => {
     const isHomePage = pathname === `/`;
 
     return (
-        <div className="flex flex-col min-h-screen" dir="ltr">
+        <div className="flex flex-col min-h-screen page-wrapper" dir="ltr">
             <Header />
             {!isHomePage && <Breadcrumbs />}
             <main className="flex-grow pb-16 md:pb-0">
                 <Outlet />
             </main>
             <Footer />
+            <FloatingWhatsApp />
             <CookieConsentBanner />
             <Chatbot />
         </div>
@@ -82,9 +86,7 @@ const RoutedApp: React.FC = () => {
             return;
         }
 
-        if (availableImagesRef.current.length === 0) {
-            availableImagesRef.current = [...BACKGROUND_IMAGES];
-        }
+        if (availableImagesRef.current.length === 0) availableImagesRef.current = [...BACKGROUND_IMAGES];
 
         const randomIndex = Math.floor(Math.random() * availableImagesRef.current.length);
         const selectedImage = availableImagesRef.current[randomIndex];
@@ -101,27 +103,26 @@ const RoutedApp: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
-
                     <Route path="collection" element={<CollectionPage />} />
                     <Route path="collections" element={<CollectionPage />} />
                     <Route path="collection/:productId" element={<ProductDetailPage />} />
-
                     <Route path="build-your-set" element={<BuildYourOwnPage />} />
                     <Route path="custom-bracelet" element={<BuildYourOwnPage />} />
                     <Route path="bespoke" element={<BuildYourOwnPage />} />
                     <Route path="order-confirmation" element={<OrderConfirmationPage />} />
                     <Route path="payment" element={<PaymentPage />} />
-
                     <Route path="blog" element={<BlogPage />} />
                     <Route path="blog/:postId" element={<BlogPostPage />} />
-
                     <Route path="custom-jewelry" element={<CustomJewelryLandingPage />} />
                     <Route path="prayer-bead-builder/:tradition" element={<PrayerBeadBuilderPage />} />
+                    <Route path="prayer-beads" element={<PrayerBeadBuilderPage />} />
                     <Route path="custom-rosary-configurator" element={<CustomRosaryConfiguratorPage />} />
                     <Route path="custom-tesbih-configurator" element={<CustomTesbihConfiguratorPage />} />
-
                     <Route path="gemstones" element={<PreciousGemstonesPage />} />
                     <Route path="precious-semi-precious-gemstones" element={<PreciousGemstonesPage />} />
+                    <Route path="education" element={<EducationPage />} />
+                    <Route path="gem-guide" element={<EducationPage />} />
+                    <Route path="certificates" element={<CertificatesPage />} />
                     <Route path="pricing-guide" element={<PricingGuidePage />} />
                     <Route path="amber-colors" element={<AmberColorsPage />} />
                     <Route path="faqs" element={<FaqPage />} />
@@ -130,7 +131,6 @@ const RoutedApp: React.FC = () => {
                     <Route path="about" element={<AboutUsPoliciesPage />} />
                     <Route path="about-us-policies" element={<AboutUsPoliciesPage />} />
                     <Route path="gemtech-pillar" element={<GemTechPillarPage />} />
-
                     <Route path="amber" element={<AmberPillarPage />} />
                     <Route path="amber-guide" element={<AmberPillarPage />} />
                     <Route path="amber/history" element={<AmberHistoryPage />} />
@@ -148,7 +148,6 @@ const RoutedApp: React.FC = () => {
                     <Route path="amber/future-tech" element={<AmberFutureTechPage />} />
                     <Route path="amber/markets" element={<AmberMarketsPage />} />
                     <Route path="amber/religion" element={<AmberReligionPage />} />
-
                     <Route path="git-info" element={<GitInfoPage />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
