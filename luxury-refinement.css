@@ -1,273 +1,34 @@
-/* Vicky LuxGems — global luxury/minimal composition refinement */
-:root {
-  --vlg-textbox-max: 760px;
-  --vlg-reading-max: 880px;
-  --vlg-panel-pad: clamp(1.25rem, 2.4vw, 2.75rem);
-  --vlg-section-pad: clamp(4.5rem, 8vw, 7.5rem);
-  --vlg-radius-xl: 30px;
-  --vlg-radius-lg: 22px;
-  --vlg-frame: 1px solid rgba(196, 151, 58, 0.28);
-  --vlg-frame-strong: 1px solid rgba(196, 151, 58, 0.42);
-  --vlg-glass: rgba(255, 255, 255, 0.72);
-  --vlg-paper: rgba(253, 250, 246, 0.88);
+/* Vicky LuxGems — luxury minimalist refinement layer */
+:root{
+  --vlg-reading-max:840px;
+  --vlg-section-pad:clamp(4.5rem,8vw,7.5rem);
+  --vlg-radius-lg:22px;
+  --vlg-frame:1px solid rgba(196,151,58,.26);
+  --vlg-frame-strong:1px solid rgba(196,151,58,.42);
+  --vlg-soft-shadow:0 18px 58px rgba(28,26,23,.075);
+  --vlg-hover-shadow:0 24px 70px rgba(196,151,58,.16);
 }
 
-/* Page composition */
-.page-container-with-bg,
-.overflow-x-hidden {
-  background: radial-gradient(circle at 18% 8%, rgba(196,151,58,.10), transparent 28rem), var(--bg-primary, #FDFAF6);
-}
+body{font-weight:300;text-rendering:optimizeLegibility}.page-container-with-bg,.overflow-x-hidden{background:radial-gradient(circle at 18% 8%,rgba(196,151,58,.10),transparent 28rem),radial-gradient(circle at 88% 14%,rgba(74,124,111,.06),transparent 24rem),var(--bg-primary,#FDFAF6)}
+.container,.max-w-7xl,.max-w-6xl,.max-w-5xl{padding-left:clamp(1rem,2.2vw,2rem);padding-right:clamp(1rem,2.2vw,2rem)}.lp-section,section.py-20,section.py-24,section.py-32{padding-top:var(--vlg-section-pad)!important;padding-bottom:var(--vlg-section-pad)!important}
 
-.container,
-.max-w-7xl,
-.max-w-6xl,
-.max-w-5xl {
-  padding-left: clamp(1rem, 2.2vw, 2rem);
-  padding-right: clamp(1rem, 2.2vw, 2rem);
-}
+/* Luxury header/menu */
+header.main-header{background:rgba(253,250,246,.94)!important;border-top:3px solid var(--accent-gold,#C4973A)!important;border-bottom:1px solid rgba(196,151,58,.22)!important;box-shadow:0 12px 38px rgba(28,26,23,.055)!important;backdrop-filter:blur(18px)}header.main-header.scrolled{background:rgba(253,250,246,.985)!important;box-shadow:0 16px 48px rgba(28,26,23,.075)!important}.header-logo{max-height:50px!important;width:auto;object-fit:contain}.main-header .h-20,.main-header .md\:h-24{height:82px!important}.main-nav-link{font-size:.70rem!important;letter-spacing:.16em!important;text-transform:uppercase!important;font-weight:500!important;color:var(--text-primary,#1C1A17)!important;opacity:.86}.main-nav-link:hover,.main-nav-link.active{color:var(--accent-gold,#C4973A)!important;opacity:1}.main-nav-link:after{height:1px!important;background:var(--accent-gold,#C4973A)!important}.main-header [class*='shadow-xl'],.main-header [class*='shadow-2xl']{border:1px solid rgba(196,151,58,.24)!important;border-radius:22px!important;background:rgba(255,255,255,.96)!important;box-shadow:0 24px 70px rgba(28,26,23,.12)!important;backdrop-filter:blur(16px)}.main-header [class*='shadow-xl'] a,.main-header [class*='shadow-2xl'] a{border-radius:14px!important;letter-spacing:.035em}.main-header button[aria-label='Open search'] svg{color:var(--text-primary,#1C1A17)!important}.mobile-nav-panel{background:linear-gradient(180deg,#FDFAF6,#F5EFE6)!important;border-left:1px solid rgba(196,151,58,.25)!important}.mobile-nav-panel h2{font-weight:300!important;letter-spacing:.12em;text-transform:uppercase}.mobile-nav-panel a,.mobile-nav-panel button{letter-spacing:.08em}
 
-.lp-section,
-section.py-20,
-section.py-24,
-section.py-32 {
-  padding-top: var(--vlg-section-pad) !important;
-  padding-bottom: var(--vlg-section-pad) !important;
-}
+/* Balanced text boxes and page panels */
+.content-page-block,.glass,.lp-card,.gem-card,.bg-\[var\(--c-surface\)\],.bg-\[var\(--c-surface-alt\)\]{border-radius:var(--vlg-radius-lg)!important}.content-page-block,.glass,.gem-card,.lp-card{border:var(--vlg-frame)!important;box-shadow:var(--vlg-soft-shadow)!important}.content-page-block>.text-center,.section-heading,.head,.hero-content-block,.glass{max-width:var(--vlg-reading-max);margin-left:auto;margin-right:auto}.content-page-block p,.lp-card p,.gem-card__desc,.editorial-prose,.prose p,.text-\[var\(--c-text-secondary\)\]{font-size:clamp(.96rem,1vw,1.08rem);line-height:1.78}.content-page-block h1,.section-heading__title,.hero-headline{text-wrap:balance}.content-page-block h1{font-size:clamp(2.55rem,5vw,5rem)!important;line-height:.98!important;font-weight:300!important;letter-spacing:.08em!important;text-transform:uppercase}.content-page-block h2,.gem-card__title,.lp-card h3{text-wrap:balance}
 
-/* Text blocks: balanced modern size and reading width */
-.content-page-block,
-.glass,
-.lp-card,
-.gem-card,
-.bg-\[var\(--c-surface\)\],
-.bg-\[var\(--c-surface-alt\)\] {
-  border-radius: var(--vlg-radius-lg) !important;
-}
+/* Modern input/text boxes */
+input,select,textarea,.input,.textarea,select.w-full,input.w-full,textarea.w-full{min-height:48px;border-radius:14px!important;border:1px solid rgba(196,151,58,.26)!important;background:rgba(255,255,255,.80)!important;color:var(--text-primary,#1C1A17)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 8px 22px rgba(28,26,23,.035)!important;transition:border-color .22s ease,box-shadow .22s ease,background .22s ease}textarea,textarea.w-full{min-height:132px;resize:vertical}input:focus,select:focus,textarea:focus{outline:none!important;border-color:rgba(196,151,58,.68)!important;box-shadow:0 0 0 4px rgba(196,151,58,.12),0 12px 34px rgba(28,26,23,.06)!important;background:#fff!important}label,.font-semibold.mb-2.block,.font-semibold.text-lg{letter-spacing:.055em}
 
-.content-page-block,
-.glass,
-.gem-card,
-.lp-card {
-  border: var(--vlg-frame) !important;
-  box-shadow: 0 18px 58px rgba(28, 26, 23, .075) !important;
-}
+/* Important information frames */
+.important-notice,.notice-frame,.trust-frame,.certificate-note,.policy-note,.disclosure-note,[class*='notice'],[class*='Notice'],[class*='alert'],[class*='Alert']{position:relative;border:var(--vlg-frame-strong)!important;border-left:4px solid var(--accent-gold,#C4973A)!important;border-radius:var(--vlg-radius-lg)!important;background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(245,239,230,.72))!important;box-shadow:0 18px 52px rgba(28,26,23,.075)!important;padding:clamp(1.1rem,2vw,1.8rem)!important}.important-notice:before,.notice-frame:before,.trust-frame:before,.certificate-note:before,.policy-note:before,.disclosure-note:before{content:'◆';position:absolute;top:14px;right:18px;color:var(--accent-gold,#C4973A);opacity:.32;font-size:1.2rem}
 
-.content-page-block > .text-center,
-.section-heading,
-.head,
-.hero-content-block,
-.glass {
-  max-width: var(--vlg-reading-max);
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Custom bracelet display */
+#braceletSection,.content-page-block:has(#braceletSection){max-width:min(100%,1180px);margin-left:auto;margin-right:auto}#braceletSection{padding:clamp(1.25rem,2.5vw,2.6rem)!important;background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(245,239,230,.72))!important;border:1px solid rgba(196,151,58,.32)!important;border-radius:28px!important;box-shadow:0 26px 90px rgba(28,26,23,.10),inset 0 1px 0 rgba(255,255,255,.78)!important;overflow:hidden}#braceletSection>h3{font-size:clamp(1.8rem,3vw,2.7rem)!important;font-weight:300!important;letter-spacing:.08em;text-transform:uppercase;max-width:760px;margin-left:auto;margin-right:auto}#braceletSection>p{max-width:760px;margin-left:auto;margin-right:auto}#braceletSection .grid.grid-cols-1.lg\:grid-cols-5{gap:clamp(1.25rem,2.4vw,2rem)!important}#braceletSection .aspect-square{max-width:min(100%,620px);margin-left:auto;margin-right:auto;isolation:isolate}#braceletSection .bg-\[var\(--c-bg\)\]{background:radial-gradient(circle at 50% 44%,rgba(232,200,122,.28),transparent 34%),linear-gradient(180deg,#fffdf8,#f6efe2)!important;border:1px solid rgba(196,151,58,.26)!important;border-radius:24px!important;box-shadow:inset 0 0 80px rgba(196,151,58,.10)}#braceletSection .lg\:col-span-2{background:rgba(255,255,255,.72)!important;border:1px solid rgba(196,151,58,.24)!important;border-radius:20px!important;backdrop-filter:blur(8px);padding:clamp(1rem,2vw,1.6rem)!important}.rosary-preview-watermark-bg{position:absolute!important;inset:0!important;display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:18px!important;align-content:center!important;justify-items:center!important;pointer-events:none!important;z-index:0!important;opacity:.13!important;transform:rotate(-16deg) scale(1.12)!important}.rosary-preview-watermark-text{font-family:var(--font-display,'Cormorant Garamond',serif)!important;font-size:clamp(1.8rem,4vw,3.6rem)!important;font-weight:300!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:transparent!important;line-height:1!important;white-space:nowrap!important}.rosary-preview-watermark-text:before{content:'VickyLuxGems';color:rgba(92,79,61,.42);-webkit-text-stroke:1px rgba(196,151,58,.18);text-shadow:0 1px 0 rgba(255,255,255,.4)}#braceletSection .rounded-full{z-index:3;box-shadow:inset -8px -10px 16px rgba(0,0,0,.18),inset 6px 8px 18px rgba(255,255,255,.38),0 10px 22px rgba(28,26,23,.16)!important}
 
-.content-page-block p,
-.lp-card p,
-.gem-card__desc,
-.editorial-prose,
-.prose p,
-.text-\[var\(--c-text-secondary\)\] {
-  font-size: clamp(.98rem, 1.05vw, 1.1rem);
-  line-height: 1.82;
-}
+/* Cards and visual rhythm */
+.grid-2-3-4,.products-grid,.product-grid{gap:clamp(1rem,2.2vw,2rem)!important}.product-card--compact,.product-card,.lp-card,.gem-card{overflow:hidden}.product-card--compact img,.lp-card img,.gem-card img,.lazy-image{object-fit:cover}.lp-card:hover,.gem-card:hover,.product-card:hover{transform:translateY(-4px);box-shadow:var(--vlg-hover-shadow)!important}.gold-frame,.rounded-lg.shadow-lg,.rounded-3xl.border,.rounded-\[1\.75rem\],.rounded-\[2rem\]{border-color:rgba(196,151,58,.30)!important}.btn,.btn-primary,.lp-cta,.gold-frame-button{border-radius:2px!important;letter-spacing:.16em!important}
 
-.content-page-block h1,
-.section-heading__title,
-.hero-headline {
-  text-wrap: balance;
-}
-
-.content-page-block h1 {
-  font-size: clamp(2.6rem, 5vw, 5.2rem) !important;
-  line-height: .98 !important;
-}
-
-.content-page-block h2,
-.gem-card__title,
-.lp-card h3 {
-  text-wrap: balance;
-}
-
-/* Modern elegant form and text boxes */
-input,
-select,
-textarea,
-.input,
-.textarea,
-select.w-full,
-input.w-full,
-textarea.w-full {
-  min-height: 48px;
-  border-radius: 14px !important;
-  border: 1px solid rgba(196,151,58,.26) !important;
-  background: rgba(255,255,255,.78) !important;
-  color: var(--text-primary, #1C1A17) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 22px rgba(28,26,23,.035) !important;
-  transition: border-color .22s ease, box-shadow .22s ease, background .22s ease;
-}
-
-textarea,
-textarea.w-full {
-  min-height: 132px;
-  resize: vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none !important;
-  border-color: rgba(196,151,58,.68) !important;
-  box-shadow: 0 0 0 4px rgba(196,151,58,.12), 0 12px 34px rgba(28,26,23,.06) !important;
-  background: #fff !important;
-}
-
-label,
-.font-semibold.mb-2.block,
-.font-semibold.text-lg {
-  letter-spacing: .055em;
-}
-
-/* Important notice / trust frame styling */
-.important-notice,
-.notice-frame,
-.trust-frame,
-.certificate-note,
-.policy-note,
-.disclosure-note,
-[class*="notice"],
-[class*="Notice"],
-[class*="alert"],
-[class*="Alert"] {
-  position: relative;
-  border: var(--vlg-frame-strong) !important;
-  border-left: 4px solid var(--accent-gold, #C4973A) !important;
-  border-radius: var(--vlg-radius-lg) !important;
-  background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(245,239,230,.72)) !important;
-  box-shadow: 0 18px 52px rgba(28,26,23,.075) !important;
-  padding: clamp(1.1rem, 2vw, 1.8rem) !important;
-}
-
-.important-notice::before,
-.notice-frame::before,
-.trust-frame::before,
-.certificate-note::before,
-.policy-note::before,
-.disclosure-note::before {
-  content: '◆';
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  color: var(--accent-gold, #C4973A);
-  opacity: .32;
-  font-size: 1.2rem;
-}
-
-/* Builder page composition */
-#braceletSection,
-.content-page-block:has(#braceletSection) {
-  max-width: min(100%, 1180px);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#braceletSection {
-  padding: clamp(1.25rem, 2.5vw, 2.6rem) !important;
-}
-
-#braceletSection > p,
-#braceletSection > h3 {
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#braceletSection .grid.grid-cols-1.lg\:grid-cols-5 {
-  gap: clamp(1.25rem, 2.4vw, 2rem) !important;
-}
-
-#braceletSection .aspect-square {
-  max-width: min(100%, 620px);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#braceletSection .lg\:col-span-2 {
-  padding: clamp(1rem, 2vw, 1.6rem) !important;
-}
-
-/* Builder control cards */
-.space-y-8 > .bg-\[var\(--c-surface\)\],
-.space-y-8 > .bg-\[var\(--c-surface-alt\)\] {
-  border-radius: 22px !important;
-  border: 1px solid rgba(196,151,58,.22) !important;
-  background: rgba(255,255,255,.78) !important;
-  box-shadow: 0 14px 42px rgba(28,26,23,.055) !important;
-  padding: clamp(1rem, 2vw, 1.75rem) !important;
-}
-
-/* Tabs: cleaner scale */
-button.px-6.py-3.text-lg {
-  font-size: clamp(.9rem, 1vw, 1rem) !important;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
-
-/* Luxury frames around key visual/info blocks */
-.gold-frame,
-.rounded-lg.shadow-lg,
-.rounded-3xl.border,
-.rounded-\[1\.75rem\],
-.rounded-\[2rem\] {
-  border-color: rgba(196,151,58,.30) !important;
-}
-
-/* Product/blog cards: consistent composition */
-.grid-2-3-4,
-.products-grid,
-.product-grid {
-  gap: clamp(1rem, 2.2vw, 2rem) !important;
-}
-
-.product-card--compact,
-.product-card,
-.lp-card,
-.gem-card {
-  overflow: hidden;
-}
-
-.product-card--compact img,
-.lp-card img,
-.gem-card img,
-.lazy-image {
-  object-fit: cover;
-}
-
-/* Header/menu proportion */
-header.main-header nav,
-.main-header nav {
-  min-height: 78px;
-}
-
-.main-nav-link {
-  white-space: nowrap;
-}
-
-/* Mobile composition */
-@media (max-width: 767px) {
-  :root { --vlg-panel-pad: 1.15rem; }
-  .content-page-block h1 { font-size: clamp(2.25rem, 11vw, 3.4rem) !important; }
-  .content-page-block,
-  .glass,
-  .lp-card,
-  .gem-card {
-    border-radius: 20px !important;
-  }
-  #braceletSection {
-    padding: 1rem !important;
-    border-radius: 22px !important;
-  }
-  input, select, textarea {
-    font-size: 16px !important;
-  }
-}
+@media(max-width:1199px){header.main-header .container{max-width:100%!important}.main-header .h-20,.main-header .md\:h-24{height:76px!important}}
+@media(max-width:767px){.content-page-block h1{font-size:clamp(2.25rem,11vw,3.4rem)!important}.content-page-block,.glass,.lp-card,.gem-card{border-radius:20px!important}#braceletSection{padding:1rem!important;border-radius:22px!important}input,select,textarea{font-size:16px!important}.rosary-preview-watermark-bg{grid-template-columns:repeat(2,1fr)!important;opacity:.10!important}.rosary-preview-watermark-text{font-size:1.35rem!important}}
