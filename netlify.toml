@@ -18,12 +18,32 @@
   status = 200
 
 [[redirects]]
+  from = "/education"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/gem-guide"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/certificates"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/custom-bracelet"
   to = "/index.html"
   status = 200
 
 [[redirects]]
   from = "/build-your-set"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/prayer-beads"
   to = "/index.html"
   status = 200
 
